@@ -1,0 +1,17 @@
+.sidebar {
+  text-align: left;
+}
+
+.sidebar-about .profile-picture {
+  margin: 0;
+  border: 2px solid #ffffff;
+  max-width: 5rem;
+}
+
+.sidebar-about h1 {
+  font-size: 3rem;
+}
+
+.sidebar-about .lead {
+  font-size: 1.2rem;
+}

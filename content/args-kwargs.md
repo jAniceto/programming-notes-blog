@@ -3,7 +3,6 @@ Date: 2017-10-13 10:20
 Modified: 2017-10-13 11:03
 Category: Python
 Tags: python, 
-Slug: args-kwargs
 Authors: José Aniceto
 Summary: Python *args and **kwargs explained
 

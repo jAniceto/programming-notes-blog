@@ -3,12 +3,15 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'José Aniceto'
-SITENAME = 'Programming Notes'
+SITENAME = 'Annotatio'
 SITEURL = ''
+BIO = 'A collection of codding notes and snippets from my journey of self taught programming.'
+# PROFILE_IMAGE = 'photoB&W2_square.jpg'
 
 PATH = 'content'
 
 TIMEZONE = 'Europe/Lisbon'
+LOCALE = 'en_gb'
 
 DEFAULT_LANG = 'en'
 
@@ -20,16 +23,27 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+# LINKS = (('user', 'joseaniceto.com'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('Personal Page', 'http://joseaniceto.com'),
+          ('Github', 'https://github.com/jAniceto'),)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
+
+
+# Custom settings
+TYPOGRIFY = True
+THEME = 'themes/pelican-hyde-2'
+HYDE_THEME = 'theme-base-08'
+USE_FOLDER_AS_CATEGORY = True
+STATIC_PATHS = ['images']
+USE_FOLDER_AS_CATEGORY = True
+# ARTICLE_PATHS = ['']
+SLUGIFY_SOURCE = 'basename'
+
+# Debugging
+LOAD_CONTENT_CACHE = False

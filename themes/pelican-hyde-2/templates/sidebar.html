@@ -1,0 +1,24 @@
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					{% if PROFILE_IMAGE %}
+					<img class="profile-picture" src="{{ SITEURL }}/images/{{ PROFILE_IMAGE }}">
+					{% endif %}
+					{{ SITENAME }}
+				</a>
+			</h1>
+			<p class="lead">{{ BIO }} </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			{% for name, link in SOCIAL %}
+			<a class="sidebar-nav-item" href="{{ link }}">{{ name }}</a>
+			{% endfor %}
+		</nav>
+
+		<p>by {{ AUTHOR }}.</p>
+	</div>
+</div>

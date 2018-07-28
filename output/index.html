@@ -1,114 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>Programming Notes</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-</head>
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Programming Notes </a></h1>
-                <nav><ul>
-                    <li><a href="/category/python.html">Python</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+		<title>Annotatio</title>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/args-kwargs.html">*args and **kwargs</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2017-10-13T10:20:00+01:00">
-                Published: sex 13 outubro 2017
-        </abbr>
-		<br />
-        <abbr class="modified" title="2017-10-13T11:03:00+01:00">
-                Updated: sex 13 outubro 2017
-        </abbr>
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jose-aniceto.html">José Aniceto</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info --><h3>A normal function:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
+		<link rel="stylesheet" href="./theme/css/poole.css" />
+		<link rel="stylesheet" href="./theme/css/hyde.css" />
+		<link rel="stylesheet" href="./theme/css/syntax.css" />
+		<link rel="stylesheet" href="./theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">,</span> <span class="s1">&#39;arg two&#39;</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">)</span>  <span class="c1"># Error</span>
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">,</span> <span class="s1">&#39;arg two&#39;</span><span class="p">,</span> <span class="s1">&#39;arg three&#39;</span><span class="p">)</span>  <span class="c1"># Error</span>
-</pre></div>
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	</head>
 
+	<body class="theme-base-08">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
 
-<h3>*args usage:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span>
+			<h1>
+				<a href="/">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey of self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="http://joseaniceto.com">Personal Page</a>
+			<a class="sidebar-nav-item" href="https://github.com/jAniceto">Github</a>
+		</nav>
 
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
+		<p>by José Aniceto.</p>
+	</div>
+</div>		<div class="content container">
+	<div class="posts">
+			<div class="post">
+				<h1 class="post-title" href="./deploy-django.html#deploy-django">
+					<a href="./deploy-django.html#deploy-django">Deploy a Django app in an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
+				</h1>
+				<span class="post-date">Thu 30 November 2017</span>
+				<p>
+					<p>This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …</p>
+				</p>
+				<a class="read-more" href="deploy-django.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="./crontab.html#crontab">
+					<a href="./crontab.html#crontab">Linux&nbsp;Crontab</a>
+				</h1>
+				<span class="post-date">Wed 29 November 2017</span>
+				<p>
+					<p>To view currently active crontab entries: <code>$ sudo crontab -l</code></p>
+<p>To enter the edit the crontab enter the following command in the terminal: <code>$ sudo crontab -e</code></p>
+<p><strong>Note:</strong> Don&#8217;t use <code>sudo</code> in a cron job. Instead edit root&#8217;s crontab instead of your own, e.g. <code>sudo crontab -e</code> and then …</p>
+				</p>
+				<a class="read-more" href="crontab.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="./batch-script.html#batch-script">
+					<a href="./batch-script.html#batch-script">Create a Windows batch&nbsp;script</a>
+				</h1>
+				<span class="post-date">Tue 28 November 2017</span>
+				<p>
+					<p>A batch file is a text file with the extension <strong>.bat</strong> that contains one or more command line commands to be run&nbsp;consecutively. </p>
+<h2>Some usefull&nbsp;commands:</h2>
+<p><strong>@echo</strong> - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code …</p>
+				</p>
+				<a class="read-more" href="batch-script.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="./builtin.html#builtin">
+					<a href="./builtin.html#builtin">Built-in&nbsp;functions</a>
+				</h1>
+				<span class="post-date">Wed 25 October 2017</span>
+				<p>
+					<p>Python Built-in&nbsp;functions</p>
+				</p>
+				<a class="read-more" href="builtin.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="./bs4.html#bs4">
+					<a href="./bs4.html#bs4">Beautiful Soup&nbsp;4</a>
+				</h1>
+				<span class="post-date">Sat 21 October 2017</span>
+				<p>
+					<p>Python Web scrapping with Beautiful Soup&nbsp;4</p>
+				</p>
+				<a class="read-more" href="bs4.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="./args-kwargs.html#args-kwargs">
+					<a href="./args-kwargs.html#args-kwargs">*args and&nbsp;**kwargs</a>
+				</h1>
+				<span class="post-date">Fri 13 October 2017</span>
+				<p>
+					<p>Python <em>args and </em>*kwargs&nbsp;explained</p>
+				</p>
+				<a class="read-more" href="args-kwargs.html">Continue reading »</a>
+			</div>
+	</div>
+	<div class="pagination">
+		<span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span>
 
-<span class="n">func2</span><span class="p">(</span><span class="o">*</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func2</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># Correct</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func3</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span>
-
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
-
-<span class="n">func3</span><span class="p">(</span><span class="s1">&#39;required one&#39;</span><span class="p">,</span> <span class="s1">&#39;required two&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Correct</span>
-</pre></div>
-
-
-<h3>**kwargs usage:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func4</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
-<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">,</span> <span class="s1">&#39;key3&#39;</span><span class="p">:</span> <span class="s1">&#39;value3&#39;</span><span class="p">}</span>
-
-<span class="n">func4</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func4</span><span class="p">(</span><span class="n">key1</span> <span class="o">=</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="n">key2</span> <span class="o">=</span> <span class="s1">&#39;value2&#39;</span><span class="p">,</span> <span class="n">key3</span> <span class="o">=</span> <span class="s1">&#39;value3&#39;</span><span class="p">)</span>  <span class="c1"># Correct</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+	</div>
+		</div>
+	</body>
 </html>
