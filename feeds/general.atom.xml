@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - general</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2017-11-30T10:20:00+00:00</updated><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django.html" rel="alternate"></link><published>2017-11-30T10:20:00+00:00</published><updated>2017-11-30T10:20:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-11-30:/programming-notes-blog/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
+&lt;h2&gt;1) Initial Server&amp;nbsp;Setup&lt;/h2&gt;
+&lt;p&gt;Perform the initial server setup as detailed &lt;a href="server-setup.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;2) Install the Packages from the Ubuntu&amp;nbsp;Repositories&lt;/h2&gt;
+&lt;p&gt;We need to update the local apt package index and then download and install the packages. The packages we install depend on which version of Python your project will&amp;nbsp;use.&lt;/p&gt;
+&lt;p&gt;If you are using Django with Python 3,&amp;nbsp;type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install python3-pip python3-dev libpq-dev nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will install pip, the Python development files needed to build Gunicorn later and the Nginx web&amp;nbsp;server.&lt;/p&gt;
+&lt;h2&gt;3) Install the&amp;nbsp;Database&lt;/h2&gt;
+&lt;p&gt;Install the database system and the libraries needed to interact with&amp;nbsp;it.&lt;/p&gt;
+&lt;h4&gt;For&amp;nbsp;Postgres:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install postgresql postgresql-contrib&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;For&amp;nbsp;MySQL&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install libmysqlclient-dev
+$ sudo apt-get install mysql-server mysql-client
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now let&amp;#8217;s create the Database and User but first verify that the MySQL service is&amp;nbsp;running:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ systemctl status mysql.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the output is negative you can run &lt;code&gt;sudo systemctl start mysql&lt;/code&gt; to get &lt;code&gt;mysql.service&lt;/code&gt; started again. Now you can log in with your MySQL credentials using the following command. Where &lt;code&gt;-u&lt;/code&gt; is the flag for declaring your username and &lt;code&gt;-p&lt;/code&gt; is the flag that tells MySQL that this user requires a&amp;nbsp;password:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo mysql -u db_user -p
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;SHOW&lt;/span&gt; &lt;span class="k"&gt;DATABASES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;project_db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;SHOW&lt;/span&gt; &lt;span class="k"&gt;DATABASES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Whenever you&amp;#8217;d like to exit MySQL server, press &lt;span class="caps"&gt;CTRL&lt;/span&gt; +&amp;nbsp;D.&lt;/p&gt;
+&lt;h2&gt;4) Create a Python Virtual&amp;nbsp;Environment&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo -H pip3 install --upgrade pip
+$ sudo -H pip3 install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir ~/myproject
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/myproject
+$ virtualenv venv
+$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: Regardless of which version of Python you are using, when the virtual environment is activated, you should use the pip command (not&amp;nbsp;pip3).&lt;/p&gt;
+&lt;p&gt;Install the &lt;code&gt;mysqlclient&lt;/code&gt; library:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install mysqlclient
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With your virtual environment active, install Django and&amp;nbsp;Gunicorn:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install django gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;5) Create Django&amp;nbsp;project&lt;/h2&gt;
+&lt;p&gt;Since we already have a project directory, we will tell Django to install the files here. It will create a second level directory with the actual code, which is normal, and place a management script in this directory. The key to this is that we are defining the directory explicitly instead of allowing Django to make decisions relative to our current&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ django-admin startproject myproject ~/myproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point, your project directory (~/myproject in our case) should have the following&amp;nbsp;content:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/myproject/manage.py: A Django project management script.
+~/myproject/myproject/: The Django project package. This should contain the __init__.py, settings.py, urls.py, and wsgi.py files.
+~/myproject/myprojectenv/: The virtual environment directory we created earlier.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go to the end of the &lt;code&gt;settings.py&lt;/code&gt; file and add &lt;code&gt;STATIC_ROOT&lt;/code&gt; as shown&amp;nbsp;below:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Static files (CSS, JavaScript, Images)&lt;/span&gt;
+&lt;span class="c1"&gt;# https://docs.djangoproject.com/en/2.0/howto/static-files/&lt;/span&gt;
+
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/static/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add your server’s &lt;span class="caps"&gt;IP&lt;/span&gt; address between the square brackets and single quotes to the &lt;code&gt;ALLOWED_HOSTS&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# The simplest case: just add the domain name(s) and IP addresses of your Django server&lt;/span&gt;
+&lt;span class="c1"&gt;# ALLOWED_HOSTS = [ &amp;#39;example.com&amp;#39;, &amp;#39;203.0.113.5&amp;#39;]&lt;/span&gt;
+&lt;span class="c1"&gt;# To respond to &amp;#39;example.com&amp;#39; and any subdomains, start the domain with a dot&lt;/span&gt;
+&lt;span class="c1"&gt;# ALLOWED_HOSTS = [&amp;#39;.example.com&amp;#39;, &amp;#39;203.0.113.5&amp;#39;]&lt;/span&gt;
+&lt;span class="n"&gt;ALLOWED_HOSTS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;your_server_domain_or_IP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;second_domain_or_IP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Migrate the initial database schema to our database using the management&amp;nbsp;script:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(venv) $ python ~/myproject/manage.py makemigrations
+(venv) $ python ~/myproject/manage.py migrate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create an administrative user for the project by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(venv) $ ~/myproject/manage.py createsuperuser
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can collect all of the static content into the directory location we configured by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(venv) $ ~/myproject/manage.py collectstatic
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The static files will then be placed in a directory called static within your project&amp;nbsp;directory.&lt;/p&gt;
+&lt;h4&gt;Connect your Django app to&amp;nbsp;MySQL&lt;/h4&gt;
+&lt;p&gt;Navigate to the settings.py file and replace the current &lt;span class="caps"&gt;DATABASES&lt;/span&gt; lines with the following. We will configure your database dictionary so that it knows to use MySQL as your database backend and from what file to read your database connection&amp;nbsp;credentials:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Database&lt;/span&gt;
+&lt;span class="c1"&gt;# https://docs.djangoproject.com/en/2.0/ref/settings/#databases&lt;/span&gt;
+
+&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;django.db.backends.mysql&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;OPTIONS&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;read_default_file&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/etc/mysql/my.cnf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, let’s edit the config file so that it has your MySQL credentials. Use nano as sudo to edit the file and add the following&amp;nbsp;information:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/mysql/my.cnf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[client]&lt;/span&gt;
+&lt;span class="na"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db_name&lt;/span&gt;
+&lt;span class="na"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db_user&lt;/span&gt;
+&lt;span class="na"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db_password&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where database name in our case is mysite, your username for the MySQL server is the one you’ve created, and the password is the MySQL server password you’ve created. Also, you’ll notice that utf8 is set as the default encoding, this is a common way to encode unicode data in MySQL. Once the file has been edited, we need to restart MySQL for the changes to take&amp;nbsp;effect.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ systemctl daemon-reload
+$ systemctl restart mysql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Please note that restarting MySQL takes a few seconds, so please be patient. Now, let&amp;#8217;s test the MySQL connection to the application. We need to verify that the configurations in Django detect your MySQL server properly. We can do this by simply running the server. If it fails, it means that the connection isn’t working properly. Otherwise, the connection is&amp;nbsp;valid.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/mysite/mysite/
+$ python manage.py runserver your-server-ip:8000
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;6) Setting up Gunicorn&amp;#8217;s ability to serve the&amp;nbsp;project&lt;/h2&gt;
+&lt;p&gt;The last thing we want to do before leaving our virtual environment is test Gunicorn to make sure that it can serve the application. We can do this by entering our project directory and using gunicorn to load the project&amp;#8217;s &lt;span class="caps"&gt;WSGI&lt;/span&gt;&amp;nbsp;module:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/myproject
+$ gunicorn --bind &lt;span class="m"&gt;0&lt;/span&gt;.0.0.0:8000 myproject.wsgi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will start Gunicorn on the same interface that the Django development server was running on. You can go back and test the app&amp;nbsp;again. &lt;/p&gt;
+&lt;p&gt;We passed Gunicorn a module by specifying the relative directory path to Django&amp;#8217;s wsgi.py file, which is the entry point to our application, using Python&amp;#8217;s module syntax. Inside of this file, a function called application is defined, which is used to communicate with the application. When you are finished testing, hit &lt;span class="caps"&gt;CTRL&lt;/span&gt;-C in the terminal window to stop Gunicorn. We&amp;#8217;re now finished configuring our Django application. We can back out of our virtual environment by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create and open a systemd service file for Gunicorn with sudo privileges in your text&amp;nbsp;editor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/systemd/system/gunicorn.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
+&lt;span class="na"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;gunicorn daemon&lt;/span&gt;
+&lt;span class="na"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;network.target&lt;/span&gt;
+
+&lt;span class="k"&gt;[Service]&lt;/span&gt;
+&lt;span class="na"&gt;User&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;synergix&lt;/span&gt;
+&lt;span class="na"&gt;Group&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;www-data&lt;/span&gt;
+&lt;span class="na"&gt;WorkingDirectory&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/home/synergix/myproject&lt;/span&gt;
+&lt;span class="na"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/home/synergix/myproject/myprojectenv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/synergix/myproject/myproject.sock myproject.wsgi:application&lt;/span&gt;
+
+&lt;span class="k"&gt;[Install]&lt;/span&gt;
+&lt;span class="na"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;multi-user.target&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can now start the Gunicorn service we created and enable it so that it starts at&amp;nbsp;boot:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl start gunicorn
+$ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can confirm that the operation was successful by checking for the socket&amp;nbsp;file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl status gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next, check for the existence of the myproject.sock file within your project&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls /home/synergix/myproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the systemctl status command indicated that an error occurred or if you do not find the myproject.sock file in the directory, it&amp;#8217;s an indication that Gunicorn was not able to start correctly. Check the Gunicorn process logs by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo journalctl -u gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;7) Configure Nginx to Proxy Pass to&amp;nbsp;Gunicorn&lt;/h2&gt;
+&lt;p&gt;Now that Gunicorn is set up, we need to configure Nginx to pass traffic to the process. Start by creating and opening a new server block in Nginx&amp;#8217;s sites-available&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/nginx/sites-available/myproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Inside, open up a new server block. We will start by specifying that this block should listen on the normal port 80 and that it should respond to our server&amp;#8217;s domain name or &lt;span class="caps"&gt;IP&lt;/span&gt; address. Next, we will tell Nginx to ignore any problems with finding a favicon. We will also tell it where to find the static assets that we collected in our ~/myproject/static directory. All of these files have a standard &lt;span class="caps"&gt;URI&lt;/span&gt; prefix of &amp;#8220;/static&amp;#8221;, so we can create a location block to match those requests. Finally, we&amp;#8217;ll create a location / {} block to match all other requests. Inside of this location, we&amp;#8217;ll include the standard proxy_params file included with the Nginx installation and then we will pass the traffic to the socket that our Gunicorn process&amp;nbsp;created:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;listen&lt;/span&gt; &lt;span class="err"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;server_name&lt;/span&gt; &lt;span class="err"&gt;server_domain_or_IP&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="err"&gt;location&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;/favicon.ico&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;access_log&lt;/span&gt; &lt;span class="err"&gt;off&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="err"&gt;log_not_found&lt;/span&gt; &lt;span class="err"&gt;off&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;root&lt;/span&gt; &lt;span class="err"&gt;/home/sammy/myproject&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;include&lt;/span&gt; &lt;span class="err"&gt;proxy_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;proxy_pass&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sammy&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Save and close the file when you are finished. Now, we can enable the file by linking it to the sites-enabled&amp;nbsp;directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Test your Nginx configuration for syntax errors by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nginx -t
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If no errors are reported, go ahead and restart Nginx by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl restart nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, we need to open up our firewall to normal traffic on port 80. Since we no longer need access to the development server, we can remove the rule to open port 8000 as&amp;nbsp;well:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo ufw delete allow &lt;span class="m"&gt;8000&lt;/span&gt;
+$ sudo ufw allow &lt;span class="s1"&gt;&amp;#39;Nginx Full&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You should now be able to go to your server&amp;#8217;s domain or &lt;span class="caps"&gt;IP&lt;/span&gt; address to view your&amp;nbsp;application.&lt;/p&gt;
+&lt;h2&gt;8)&amp;nbsp;Troubleshooting&lt;/h2&gt;
+&lt;p&gt;Logs can help narrow down root causes. Check each of them in turn and look for messages indicating problem areas. The following logs may be&amp;nbsp;helpful:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check the Nginx process logs by typing: &lt;code&gt;sudo journalctl -u nginx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check the Nginx access logs by typing: &lt;code&gt;sudo less /var/log/nginx/access.log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check the Nginx error logs by typing: &lt;code&gt;sudo less /var/log/nginx/error.log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check the Gunicorn application logs by typing: &lt;code&gt;sudo journalctl -u gunicorn&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As you update your configuration or application, you will likely need to restart the processes to adjust to your changes. If you update your Django application, you can restart the Gunicorn process to pick up the changes by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl restart gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you change gunicorn systemd service file, reload the daemon and restart the process by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo systemctl daemon-reload
+$ sudo systemctl restart gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you change the Nginx server block configuration, test the configuration and then Nginx by&amp;nbsp;typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nginx -t &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo systemctl restart nginx
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04"&gt;DigitalOcean - Setup Django, Postgres, nginx and Gunicorn on&amp;nbsp;Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04"&gt;DigitalOcean - Serve Django with uwsgi and ngix on&amp;nbsp;Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database"&gt;DigitalOcean - Create Django app and connect to&amp;nbsp;database&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="server"></category><category term="python"></category><category term="django"></category></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes-blog/crontab.html" rel="alternate"></link><published>2017-11-29T10:20:00+00:00</published><updated>2017-11-29T10:20:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-11-29:/programming-notes-blog/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then …&lt;/p&gt;</summary><content type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then enter commands without &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At the bottom of the file enter one line for each task in the following&amp;nbsp;format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Minute   Hour   Day of Month       Month          Day of Week        Command    
+(0-59)  (0-23)     (1-31)    (1-12 or Jan-Dec)  (0-6 or Sun-Sat)               
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The command must use a complete link. Instead of the first five fields, one of eight special strings may&amp;nbsp;appear:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;string&lt;/th&gt;
+&lt;th&gt;meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;@reboot&lt;/td&gt;
+&lt;td&gt;Run once, at startup.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@yearly&lt;/td&gt;
+&lt;td&gt;Run once a year, &amp;#8220;0 0 1 1 *&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@annually&lt;/td&gt;
+&lt;td&gt;(same as @yearly)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@monthly&lt;/td&gt;
+&lt;td&gt;Run once a month, &amp;#8220;0 0 1 * *&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@weekly&lt;/td&gt;
+&lt;td&gt;Run once a week, &amp;#8220;0 0 * * 0&amp;#8221;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@daily&lt;/td&gt;
+&lt;td&gt;Run once a day, &amp;#8220;0 0 * &lt;em&gt; &lt;/em&gt;&amp;#8220;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@midnight&lt;/td&gt;
+&lt;td&gt;(same as @daily)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;@hourly&lt;/td&gt;
+&lt;td&gt;Run once an hour, &amp;#8220;0 * &lt;em&gt; * &lt;/em&gt;&amp;#8220;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;Example 1: Run a python script every day a&amp;nbsp;16:15&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;15 16 * * * sudo python /home/pi/projects/script1.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Example 2: Run a python script every five days a&amp;nbsp;18:30&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;30 18 */5 * * sudo python /home/pi/projects/script1.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Helpfull&amp;nbsp;links:&lt;/h3&gt;
+&lt;p&gt;https://crontab.guru&lt;/p&gt;</content><category term="server"></category><category term="linux"></category></entry><entry><title>Create a Windows batch script</title><link href="https://janiceto.github.io/programming-notes-blog/batch-script.html" rel="alternate"></link><published>2017-11-28T10:20:00+00:00</published><updated>2017-11-28T10:20:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-11-28:/programming-notes-blog/batch-script.html</id><summary type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
+&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
+&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has&amp;nbsp;finished.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; - This will provide a title for your batch script in your Command Prompt&amp;nbsp;window.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cls&lt;/strong&gt; - Clears your command prompt, best used when extraneous code can make what you’re accessing had to&amp;nbsp;find.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;rem&lt;/strong&gt; &lt;span class="caps"&gt;OR&lt;/span&gt; &lt;strong&gt;::&lt;/strong&gt; - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding the&amp;nbsp;code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;%%a&lt;/strong&gt; - Each file in the&amp;nbsp;folder.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(“.\”)&lt;/strong&gt; - The root folder. When using the command prompt, one must direct the prompt to a particular directory before changing a files name, deleting a file, and so on. With batch files, you only need to paste your .bat file into the directory of your&amp;nbsp;choosing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;pause&lt;/strong&gt; - Allows a break in the logical chain of your .bat file. This allows for users to read over command lines before proceeding with the code. The phrase “Press any key to continue…” will denote a&amp;nbsp;pause.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;start “” [website]&lt;/strong&gt; - Will head to a website of your choice using your default web&amp;nbsp;browser.&lt;/p&gt;
+&lt;p&gt;A complete list can be found &lt;a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Useful batch&amp;nbsp;files:&lt;/h2&gt;
+&lt;h3&gt;Start Flask&amp;nbsp;server&lt;/h3&gt;
+&lt;p&gt;The following script starts a Flask development server provided the batch file is located in the project root&amp;nbsp;directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo off
+cd %localhost%
+call venv\Scripts\activate.bat
+start python dashboard\__init__.py
+pause
+&lt;/pre&gt;&lt;/div&gt;</content><category term="cmd"></category></entry></feed>
