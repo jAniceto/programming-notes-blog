@@ -14,11 +14,15 @@
 			<p></p>
 		</div>
 		<nav class="sidebar-nav">
+			{% for category, articles in categories %}
+			<a class="sidebar-nav-item" href="{{ SITEURL }}/{{ category.url }}">{{ category|capitalize }}</a>
+			{% endfor %}
+			<br>
 			{% for name, link in SOCIAL %}
 			<a class="sidebar-nav-item" href="{{ link }}">{{ name }}</a>
 			{% endfor %}
 		</nav>
 
-		<p>by {{ AUTHOR }}.</p>
+		<p>by {{ AUTHOR }}</p>
 	</div>
 </div>
