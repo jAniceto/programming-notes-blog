@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>Annotatio</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://janiceto.github.io/programming-notes-blog/theme/css/style.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	</head>
+
+	<body class="theme-base-08">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					Annotatio
+				</a>
+			</h1>
+			<p class="lead">A collection of codding notes and snippets from my journey of self taught programming. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-css.html">Html-css</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
+			<br>
+			<a class="sidebar-nav-item" href="http://joseaniceto.com">Personal Page</a>
+			<a class="sidebar-nav-item" href="https://github.com/jAniceto">Github</a>
+		</nav>
+
+		<p>by José Aniceto</p>
+	</div>
+</div>		<div class="content container">
+	<div class="posts">
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">
+					<a href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">String formatting in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">Thu 26 July 2018</span>
+				<p>
+					<h3>F-strings (Python&nbsp;&gt;=3.6)</h3>
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+<span class="n">f</span><span class="s1">&#39;My app name is {name}.&#39;</span>  <span class="c1"># &#39;My app name is Test.</span>
+</pre></div>
+
+
+<h3>New method (Python&nbsp;&gt;=2.6)</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2&#39;</span>
+</pre></div>
+
+
+<h3>Old&nbsp;method</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2 …</span></pre></div>
+				</p>
+				<a class="read-more" href="string-formatting.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html#ubuntu-vps">
+					<a href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html#ubuntu-vps">Deploy a Flask Application on an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
+				</h1>
+				<span class="post-date">Thu 26 July 2018</span>
+				<p>
+					<p>This page details the process of seting up a Ubuntu <span class="caps">VPS</span> (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&nbsp;used.</p>
+<h2>1) Install&nbsp;Apache</h2>
+<div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
+</pre></div>
+
+
+<p>You can do a …</p>
+				</p>
+				<a class="read-more" href="ubuntu-vps.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">
+					<a href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">Virtual&nbsp;enviroments</a>
+				</h1>
+				<span class="post-date">Thu 26 July 2018</span>
+				<p>
+					<h3>Virtual environment using <strong>virtualenv</strong></h3>
+<p>Install: <code>$ pip install virtualenv</code></p>
+<h4>Create a new virtual&nbsp;enviroment:</h4>
+<p>My prefered method is to create the environment in the respective project folder and naming it <strong>venv</strong>. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective …</p>
+				</p>
+				<a class="read-more" href="virtual-environments.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html#web-dev-resources">
+					<a href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html#web-dev-resources">Online Resources For Web&nbsp;Developers</a>
+				</h1>
+				<span class="post-date">Thu 26 July 2018</span>
+				<p>
+					<h2><span class="caps">GENERATORS</span>:</h2>
+<ul>
+<li>Text Content Generator -&nbsp;http://www.lipsum.com</li>
+<li>Favicon Generator -&nbsp;http://tools.dynamicdrive.com/favicon     </li>
+<li>Data Generator -&nbsp;https://mockaroo.com/                        </li>
+<li>Mobile Mockup Generator -&nbsp;https://mockuphone.com</li>
+<li>Logo Generator -&nbsp;https://www.logaster.com</li>
+<li><span class="caps">UUID</span> Generator -&nbsp;https://www.uuidgenerator.net/</li>
+<li>Hash Generator -&nbsp;https://passwordsgenerator.net/sha256-hash-generator/</li>
+</ul>
+<h2><span class="caps">IMAGE</span> <span class="caps">RESOURCES</span>:</h2>
+<ul>
+<li>Free Stock Images -&nbsp;https …</li></ul>
+				</p>
+				<a class="read-more" href="web-dev-resources.html">Continue reading »</a>
+			</div>
+	</div>
+	<div class="pagination">
+		<span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span>
+
+	</div>
+		</div>
+	</body>
+</html>

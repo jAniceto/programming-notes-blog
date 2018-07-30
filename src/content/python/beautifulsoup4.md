@@ -1,9 +1,6 @@
-Title: Beautiful Soup 4 
-Date: 2017-10-21 10:20
-Category: Python
-Tags: python, web scrapping
+Title: Web scrapping with Beautiful Soup 4 
+Date: 2018-07-26 17:21 
 Authors: José Aniceto
-Summary: Python Web scrapping with Beautiful Soup 4 
 
 
 ## Required modules

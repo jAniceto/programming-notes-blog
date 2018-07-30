@@ -1,12 +1,7 @@
-Title: Built-in functions
-Date: 2017-10-25 10:20
-Category: Python
-Tags: python
+Title: Sorting lists
+Date: 2018-07-26 17:21 
 Authors: José Aniceto
-Summary: Python Built-in functions 
 
-
-# Sorting lists
 
 `sorted()` returns a **new** sorted list, leaving the original list unaffected. `list.sort()` sorts the list **in-place**, mutating the list indices, and returns None (like all in-place operations).
 

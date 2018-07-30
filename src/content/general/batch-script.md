@@ -1,8 +1,6 @@
 Title: Create a Windows batch script
-Date: 2017-11-28 10:20
-Tags: cmd, 
+Date: 2018-07-26 17:21 
 Authors: José Aniceto
-
 
 
 A batch file is a text file with the extension **.bat** that contains one or more command line commands to be run consecutively. 

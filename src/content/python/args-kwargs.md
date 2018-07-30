@@ -1,11 +1,6 @@
 Title: *args and **kwargs
-Date: 2017-10-13 10:20
-Modified: 2017-10-13 11:03
-Category: Python
-Tags: python, 
+Date: 2018-07-26 17:21 
 Authors: José Aniceto
-Summary: Python *args and **kwargs explained
-
 
 
 ### A normal function: 

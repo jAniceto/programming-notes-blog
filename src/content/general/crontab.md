@@ -1,6 +1,5 @@
 Title: Linux Crontab
-Date: 2017-11-29 10:20
-Tags: server, linux
+Date: 2018-07-26 17:21 
 Authors: José Aniceto
 
 
