@@ -25,13 +25,12 @@ AUTHOR_FEED_RSS = None
 # LINKS = (('user', 'joseaniceto.com'),)
 
 # Social widget
-SOCIAL = (('Personal Page', 'http://joseaniceto.com'),
-          ('Github', 'https://github.com/jAniceto'),)
+# SOCIAL = (('Personal Page', 'http://joseaniceto.com'),)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 
 # Custom settings

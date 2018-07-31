@@ -10,6 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
+# Overrride options from development
 SITEURL = 'https://janiceto.github.io/programming-notes-blog'
 RELATIVE_URLS = False
 
@@ -20,5 +21,5 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-#DISQUS_SITENAME = ""
+DISQUS_SITENAME = "annotatio"
 #GOOGLE_ANALYTICS = ""

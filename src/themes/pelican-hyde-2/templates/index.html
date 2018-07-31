@@ -16,9 +16,11 @@
 		{% endfor %}
 	</div>
 	<div class="pagination">
-		<span class="pagination-item older">Older</span>
-		<span class="pagination-item newer">Newer</span>
-
+		<!-- <span class="pagination-item older">Older</span>
+		<span class="pagination-item newer">Newer</span> -->
+		{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+		{% endif %}
 	</div>
 {% endblock %}
 

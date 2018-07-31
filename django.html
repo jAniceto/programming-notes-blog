@@ -23,14 +23,14 @@
 		<!-- RSS -->
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 	</head>
-
+	
 	<body class="theme-base-08">
 <div class="sidebar">
 	<div class="container sidebar-sticky">
 		<div class="sidebar-about">
 
 			<h1>
-				<a href="/">
+				<a href="https://janiceto.github.io/programming-notes-blog">
 					Annotatio
 				</a>
 			</h1>
@@ -39,12 +39,10 @@
 		</div>
 		<nav class="sidebar-nav">
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
-			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-css.html">Html-css</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
-			<br>
-			<a class="sidebar-nav-item" href="http://joseaniceto.com">Personal Page</a>
-			<a class="sidebar-nav-item" href="https://github.com/jAniceto">Github</a>
+			
 		</nav>
 
 		<p>by José Aniceto</p>
@@ -267,11 +265,23 @@ python manage.py runserver
 
 
 <p>With that being done, all you have to do is add the <span class="caps">CSRF</span> token into the template like&nbsp;this:</p>
-<div class="highlight"><pre><span></span>{% csrf_token %}
+<div class="highlight"><pre><span></span>{% raw %}
+{% csrf_token %}
+{% endraw %}
 </pre></div>
 
 
 <p>That takes care of it! You can now make <span class="caps">AJAX</span> <span class="caps">POST</span> requests from within your application, without doing any specific work on a per instance&nbsp;basis.</p>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 		</div>
 	</body>

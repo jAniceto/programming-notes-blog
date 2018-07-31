@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - python</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/python.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-07-26T17:21:00+01:00</updated><entry><title>*args and **kwargs</title><link href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html" rel="alternate"></link><published>2018-07-26T17:21:00+01:00</published><updated>2018-07-26T17:21:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-26:/programming-notes-blog/args-kwargs.html</id><summary type="html">&lt;h3&gt;A normal&amp;nbsp;function:&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Python</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/python.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-07-26T17:21:00+01:00</updated><entry><title>*args and **kwargs</title><link href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html" rel="alternate"></link><published>2018-07-26T17:21:00+01:00</published><updated>2018-07-26T17:21:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-26:/programming-notes-blog/args-kwargs.html</id><summary type="html">&lt;h3&gt;A normal&amp;nbsp;function:&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -531,7 +531,9 @@ python manage.py runserver
 
 
 &lt;p&gt;With that being done, all you have to do is add the &lt;span class="caps"&gt;CSRF&lt;/span&gt; token into the template like&amp;nbsp;this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% csrf_token %}
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{% raw %}
+{% csrf_token %}
+{% endraw %}
 &lt;/pre&gt;&lt;/div&gt;
 
 
