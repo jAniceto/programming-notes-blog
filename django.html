@@ -265,7 +265,9 @@ python manage.py runserver
 
 
 <p>With that being done, all you have to do is add the <span class="caps">CSRF</span> token into the template like&nbsp;this:</p>
-<div class="highlight"><pre><span></span>{% csrf_token %}
+<div class="highlight"><pre><span></span>{% raw %}
+{% csrf_token %}
+{% endraw %}
 </pre></div>
 
 
