@@ -1,5 +1,5 @@
 Title: Storing dictionaries for later use: JSON and Pickle
-Date: 2018-07-26 17:21 
+Date: 2018-05-10 10:58 
 Authors: José Aniceto
 
 

@@ -1,5 +1,5 @@
 Title: Interfacing with Strava API using stavalib
-Date: 2018-07-26 17:21 
+Date: 2017-05-13 14:57 
 Authors: José Aniceto
 
 

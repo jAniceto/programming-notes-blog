@@ -1,5 +1,5 @@
 Title: Building a Django site
-Date: 2018-07-26 17:21 
+Date: 2016-08-15 22:47 
 Authors: José Aniceto
 
 
@@ -263,9 +263,7 @@ $.ajaxSetup({
 With that being done, all you have to do is add the CSRF token into the template like this:
 
 ```
-{% raw %}
 {% csrf_token %}
-{% endraw %}
 ```
 
 That takes care of it! You can now make AJAX POST requests from within your application, without doing any specific work on a per instance basis.

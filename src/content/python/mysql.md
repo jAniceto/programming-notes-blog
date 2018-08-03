@@ -1,5 +1,5 @@
 Title: Using MySQL in Python
-Date: 2018-07-26 17:21 
+Date: 2018-07-18 23:47 
 Authors: José Aniceto
 
 

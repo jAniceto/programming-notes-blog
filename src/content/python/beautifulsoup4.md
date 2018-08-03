@@ -1,5 +1,5 @@
 Title: Web scrapping with Beautiful Soup 4 
-Date: 2018-07-26 17:21 
+Date: 2018-06-26 08:47 
 Authors: José Aniceto
 
 

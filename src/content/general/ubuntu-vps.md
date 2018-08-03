@@ -1,5 +1,5 @@
 Title: Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)
-Date: 2018-07-26 17:21 
+Date: 2018-07-21 23:00 
 Authors: José Aniceto
 
 

@@ -36,7 +36,7 @@ RELATIVE_URLS = True
 # Custom settings
 TYPOGRIFY = True
 THEME = 'themes/pelican-hyde-2'
-HYDE_THEME = 'theme-base-08'
+HYDE_THEME = 'theme-flat'
 STATIC_PATHS = ['images']
 USE_FOLDER_AS_CATEGORY = True
 # ARTICLE_PATHS = ['']

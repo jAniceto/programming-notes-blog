@@ -1,5 +1,5 @@
 Title: Sending e-mails with Python
-Date: 2018-07-26 17:21 
+Date: 2018-03-09 21:18 
 Authors: José Aniceto
 
 
