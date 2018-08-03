@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -24,7 +24,7 @@
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 	</head>
 	
-	<body class="theme-base-08">
+	<body class="theme-flat">
 <div class="sidebar">
 	<div class="container sidebar-sticky">
 		<div class="sidebar-about">
@@ -50,7 +50,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Building a Django&nbsp;site</h1>
-	<span class="post-date">Thu 26 July 2018</span>
+	<span class="post-date">Mon 15 August 2016</span>
 	<h2>Installing&nbsp;Django</h2>
 <p><code>pip install Django</code></p>
 <h2>Start&nbsp;project</h2>
@@ -265,13 +265,12 @@ python manage.py runserver
 
 
 <p>With that being done, all you have to do is add the <span class="caps">CSRF</span> token into the template like&nbsp;this:</p>
-<div class="highlight"><pre><span></span>{% raw %}
-{% csrf_token %}
-{% endraw %}
+<div class="highlight"><pre><span></span>{% csrf_token %}
 </pre></div>
 
 
 <p>That takes care of it! You can now make <span class="caps">AJAX</span> <span class="caps">POST</span> requests from within your application, without doing any specific work on a per instance&nbsp;basis.</p>
+	<br><br><br>
 	<div id="disqus_thread"></div>
 		<script type="text/javascript">
 			var disqus_shortname = 'annotatio';

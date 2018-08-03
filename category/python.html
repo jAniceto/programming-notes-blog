@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -24,7 +24,7 @@
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 	</head>
 	
-	<body class="theme-base-08">
+	<body class="theme-flat">
 <div class="sidebar">
 	<div class="container sidebar-sticky">
 		<div class="sidebar-about">
@@ -50,39 +50,28 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html#args-kwargs">
-					<a href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html#args-kwargs">*args and&nbsp;**kwargs</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/mysql.html#mysql">
+					<a href="https://janiceto.github.io/programming-notes-blog/mysql.html#mysql">Using MySQL in&nbsp;Python</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Wed 18 July 2018</span>
 				<p>
-					<h3>A normal&nbsp;function:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
-
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">,</span> <span class="s1">&#39;arg two&#39;</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">)</span>  <span class="c1"># Error</span>
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">,</span> <span class="s1">&#39;arg two&#39;</span><span class="p">,</span> <span class="s1">&#39;arg three&#39;</span><span class="p">)</span>  <span class="c1"># Error</span>
+					<h3>Some basic MySQL&nbsp;commands</h3>
+<p>In MySQL a <code>DATABASE</code> is composed by one or more <code>TABLE</code>s. Typically you create a database for each&nbsp;project.</p>
+<h5>To create a new MySQL database named <code>database_name</code> (the starting point of a new project using&nbsp;MySQL):</h5>
+<div class="highlight"><pre><span></span>CREATE DATABASE database_name;
 </pre></div>
 
 
-<h3>*args&nbsp;usage:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span>
-
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
-
-<span class="n">func2</span><span class="p">(</span><span class="o">*</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func2</span><span class="p">(</span><span class="s1">&#39;green …</span></pre></div>
+<p>Show all databases:  <code>SHOW DATABASES;</code></p>
+<h5>To …</h5>
 				</p>
-				<a class="read-more" href="args-kwargs.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/mysql.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/beautifulsoup4.html#beautifulsoup4">
 					<a href="https://janiceto.github.io/programming-notes-blog/beautifulsoup4.html#beautifulsoup4">Web scrapping with Beautiful Soup&nbsp;4</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Tue 26 June 2018</span>
 				<p>
 					<h2>Required&nbsp;modules</h2>
 <div class="highlight"><pre><span></span>pip install beautifulsoup4
@@ -104,91 +93,44 @@ pip install requests
 <h2>References</h2>
 <p>https://www.youtube.com/watch?v=ng2o98k983k</p>
 				</p>
-				<a class="read-more" href="beautifulsoup4.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/beautifulsoup4.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/builtin-functions.html#builtin-functions">
-					<a href="https://janiceto.github.io/programming-notes-blog/builtin-functions.html#builtin-functions">Sorting&nbsp;lists</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/snippets.html#snippets">
+					<a href="https://janiceto.github.io/programming-notes-blog/snippets.html#snippets">Useful Python code&nbsp;snippets</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Tue 19 June 2018</span>
 				<p>
-					<p><code>sorted()</code> returns a <strong>new</strong> sorted list, leaving the original list unaffected. <code>list.sort()</code> sorts the list <strong>in-place</strong>, mutating the list indices, and returns None (like all in-place&nbsp;operations).</p>
-<p><code>sorted()</code> works on any iterable, not just lists. Strings, tuples, dictionaries (you&#8217;ll get the keys), generators, etc., returning a list containing …</p>
+					<p>A collection of several code snippets of common or useful operation in&nbsp;Python.</p>
+<h2>Remove dictionary from&nbsp;list</h2>
+<p>Here&#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which …</p>
 				</p>
-				<a class="read-more" href="builtin-functions.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/snippets.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">
-					<a href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/store-dicts.html#store-dicts">
+					<a href="https://janiceto.github.io/programming-notes-blog/store-dicts.html#store-dicts">Storing dictionaries for later use: <span class="caps">JSON</span> and&nbsp;Pickle</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Thu 10 May 2018</span>
 				<p>
-					<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>  <span class="c1"># &lt;-- instance variable</span>
-
-    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;- instance method</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># &lt;-- class method</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">foobar</span><span class="p">():</span>   <span class="c1"># &lt;-- function</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="n">foo</span><span class="p">())</span>
+					<h2><span class="caps">JSON</span></h2>
+<p><strong>Saving:</strong></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
 </pre></div>
 
 
-<p>A function and a method are …</p>
+<p>Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&nbsp;spaces.</p>
+<div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp …</span></pre></div>
 				</p>
-				<a class="read-more" href="classes.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/csv.html#csv">
-					<a href="https://janiceto.github.io/programming-notes-blog/csv.html#csv"><span class="caps">CSV</span>&nbsp;files</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<p><span class="caps">CSV</span> (Comma Separated Values) is a very popular import and export data format used in spreadsheets and databases. Each line in a <span class="caps">CSV</span> file is a data record. Each record consists of one or more fields, separated by commas. While <span class="caps">CSV</span> is a very simple data format, there can be …</p>
-				</p>
-				<a class="read-more" href="csv.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/django.html#django">
-					<a href="https://janiceto.github.io/programming-notes-blog/django.html#django">Building a Django&nbsp;site</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<h2>Installing&nbsp;Django</h2>
-<p><code>pip install Django</code></p>
-<h2>Start&nbsp;project</h2>
-<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then&nbsp;do:</p>
-<p><code>django-admin startproject mysite</code></p>
-<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage …</p>
-				</p>
-				<a class="read-more" href="django.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/email.html#email">
-					<a href="https://janiceto.github.io/programming-notes-blog/email.html#email">Sending e-mails with&nbsp;Python</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<p>In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the&nbsp;port.</p>
-<ul>
-<li>Gmail: smtp.gmail.com, port&nbsp;587</li>
-<li>Hotmail: smtp.live.com, port&nbsp;587</li>
-<li>Outlook: smtp-mail.outlook.com, port&nbsp;587 …</li></ul>
-				</p>
-				<a class="read-more" href="email.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/store-dicts.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/flask.html#flask">
 					<a href="https://janiceto.github.io/programming-notes-blog/flask.html#flask">Building a Flask&nbsp;site</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Sun 22 April 2018</span>
 				<p>
 					<h3>Installing Flask and other usefull Python&nbsp;modules</h3>
 <div class="highlight"><pre><span></span>pip install Flask
@@ -216,13 +158,74 @@ pip install passlib
 <h3>The <code>__init__.py</code> file</h3>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">session …</span></pre></div>
 				</p>
-				<a class="read-more" href="flask.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/flask.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/slice-notation.html#slice-notation">
+					<a href="https://janiceto.github.io/programming-notes-blog/slice-notation.html#slice-notation">Slice&nbsp;notation</a>
+				</h1>
+				<span class="post-date">Fri 30 March 2018</span>
+				<p>
+					<p>The <span class="caps">ASCII</span> art diagram is helpful too for remembering how slices&nbsp;work:</p>
+<div class="highlight"><pre><span></span> +---+---+---+---+---+---+
+ | P | y | t | h | o | n |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1
+</pre></div>
+
+
+<p>One way to remember how slices work is to think of the indices as pointing <em>between</em> characters, with the …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/slice-notation.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/email.html#email">
+					<a href="https://janiceto.github.io/programming-notes-blog/email.html#email">Sending e-mails with&nbsp;Python</a>
+				</h1>
+				<span class="post-date">Fri 09 March 2018</span>
+				<p>
+					<p>In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the&nbsp;port.</p>
+<ul>
+<li>Gmail: smtp.gmail.com, port&nbsp;587</li>
+<li>Hotmail: smtp.live.com, port&nbsp;587</li>
+<li>Outlook: smtp-mail.outlook.com, port&nbsp;587 …</li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/email.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">
+					<a href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</a>
+				</h1>
+				<span class="post-date">Mon 22 January 2018</span>
+				<p>
+					<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>  <span class="c1"># &lt;-- instance variable</span>
+
+    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;- instance method</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># &lt;-- class method</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">foobar</span><span class="p">():</span>   <span class="c1"># &lt;-- function</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="n">foo</span><span class="p">())</span>
+</pre></div>
+
+
+<p>A function and a method are …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/classes.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/hosting.html#hosting">
 					<a href="https://janiceto.github.io/programming-notes-blog/hosting.html#hosting">Hosting Python scripts and&nbsp;services</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Fri 05 January 2018</span>
 				<p>
 					<h2>Hosting&nbsp;options:</h2>
 <ul>
@@ -238,21 +241,31 @@ pip install passlib
 <li><a href="https://www.putty.org/">PuTTY</a> - for <span class="caps">SSH</span>&nbsp;access</li>
 <li><a href="https://winscp.net/eng/index.php">WinSCP</a> - To transfer files to …</li></ul>
 				</p>
-				<a class="read-more" href="hosting.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/hosting.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html#image-manipulation">
-					<a href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html#image-manipulation">Image manipulation in&nbsp;Python</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">
+					<a href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">String formatting in&nbsp;Python</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Sun 19 November 2017</span>
 				<p>
-					<p>The <strong>Python Imaging Library</strong> (<span class="caps">PIL</span>) development has stagnated, with its last release in 2009. Luckily, there’s an actively-developed fork of <span class="caps">PIL</span> called <strong>Pillow</strong>.
-<strong>Pillow</strong> is easier to install, runs on all operating systems, and supports Python&nbsp;3.</p>
-<h2>Pillow</h2>
-<ul>
-<li>Pillow and <span class="caps">PIL</span> cannot co-exist in the same environment. Before installing …</li></ul>
+					<h3>F-strings (Python&nbsp;&gt;=3.6)</h3>
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+<span class="n">f</span><span class="s1">&#39;My app name is {name}.&#39;</span>  <span class="c1"># &#39;My app name is Test.</span>
+</pre></div>
+
+
+<h3>New method (Python&nbsp;&gt;=2.6)</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2&#39;</span>
+</pre></div>
+
+
+<h3>Old&nbsp;method</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2 …</span></pre></div>
 				</p>
-				<a class="read-more" href="image-manipulation.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

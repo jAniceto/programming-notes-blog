@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<!-- <link href="http://gmpg.org/xfn/11" rel="profile"> -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -24,7 +24,7 @@
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 	</head>
 	
-	<body class="theme-base-08">
+	<body class="theme-flat">
 <div class="sidebar">
 	<div class="container sidebar-sticky">
 		<div class="sidebar-about">
@@ -50,129 +50,50 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/deploy-django.html#deploy-django">
-					<a href="https://janiceto.github.io/programming-notes-blog/deploy-django.html#deploy-django">Deploy a Django app in an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/server-setup.html#server-setup">
+					<a href="https://janiceto.github.io/programming-notes-blog/server-setup.html#server-setup">Initial Server Setup with Ubuntu&nbsp;18.04</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Mon 05 March 2018</span>
 				<p>
-					<p>This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …</p>
+					<p>When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&nbsp;setup.</p>
+<h2>1) Creating a New&nbsp;User</h2>
+<p>Once you are logged in as root, we&#8217;re prepared to add the new user (synergix) account that …</p>
 				</p>
-				<a class="read-more" href="deploy-django.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/server-setup.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/dev-environments.html#dev-environments">
-					<a href="https://janiceto.github.io/programming-notes-blog/dev-environments.html#dev-environments">Development&nbsp;environments</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">
+					<a href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Mon 22 January 2018</span>
 				<p>
-					<p>My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&nbsp;Pycharm.</p>
-<h2>Atom</h2>
-<h4>Essentials</h4>
-<ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
-</ul>
-<h2>Visual Studio&nbsp;Code</h2>
-<h4>Essentials</h4>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> for Python and&nbsp;more</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> for web&nbsp;dev</li>
-</ul>
-<h4>Other</h4>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme">OneDark-Pro&nbsp;theme</a> </li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython">Magic&nbsp;Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer">Bracket Pair&nbsp;Colorizer</a></li>
-</ul>
-				</p>
-				<a class="read-more" href="dev-environments.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/django.html#django">
-					<a href="https://janiceto.github.io/programming-notes-blog/django.html#django">Building a Django&nbsp;site</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<h2>Installing&nbsp;Django</h2>
-<p><code>pip install Django</code></p>
-<h2>Start&nbsp;project</h2>
-<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then&nbsp;do:</p>
-<p><code>django-admin startproject mysite</code></p>
-<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage …</p>
-				</p>
-				<a class="read-more" href="django.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/email.html#email">
-					<a href="https://janiceto.github.io/programming-notes-blog/email.html#email">Sending e-mails with&nbsp;Python</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<p>In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the&nbsp;port.</p>
-<ul>
-<li>Gmail: smtp.gmail.com, port&nbsp;587</li>
-<li>Hotmail: smtp.live.com, port&nbsp;587</li>
-<li>Outlook: smtp-mail.outlook.com, port&nbsp;587 …</li></ul>
-				</p>
-				<a class="read-more" href="email.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/flask.html#flask">
-					<a href="https://janiceto.github.io/programming-notes-blog/flask.html#flask">Building a Flask&nbsp;site</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<h3>Installing Flask and other usefull Python&nbsp;modules</h3>
-<div class="highlight"><pre><span></span>pip install Flask
-pip install flask-mysqldb
-pip install Flask-WTF
-pip install passlib
+					<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>  <span class="c1"># &lt;-- instance variable</span>
+
+    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;- instance method</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># &lt;-- class method</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">foobar</span><span class="p">():</span>   <span class="c1"># &lt;-- function</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">Foo</span><span class="o">.</span><span class="n">foo</span><span class="p">())</span>
 </pre></div>
 
 
-<h3>Project file&nbsp;structure</h3>
-<div class="highlight"><pre><span></span>/flask-site
-    /venv
-    /flask-site
-        __init__.py
-        /static
-            style.css
-        /templates
-            layout.html
-            index.html
-            about.html
-            ...
-</pre></div>
-
-
-<h3>The <code>__init__.py</code> file</h3>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">session …</span></pre></div>
+<p>A function and a method are …</p>
 				</p>
-				<a class="read-more" href="flask.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/git.html#git">
-					<a href="https://janiceto.github.io/programming-notes-blog/git.html#git">Git Version Control&nbsp;System</a>
-				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
-				<p>
-					<h3>Starting&nbsp;repositories</h3>
-<p>Clone an existing repository: <code>$ git clone ssh://user@domain.com/repo.git</code> </p>
-<p>Create a new local repository: <code>$ git init</code></p>
-<h3>Local&nbsp;changes</h3>
-<p>Show changed files in your working directory: <code>$ git status</code></p>
-<p>Add all current changes to the next commit: <code>$ git add</code></p>
-<p>Add some changes in <file> to the next commit …</file></p>
-				</p>
-				<a class="read-more" href="git.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/classes.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/hosting.html#hosting">
 					<a href="https://janiceto.github.io/programming-notes-blog/hosting.html#hosting">Hosting Python scripts and&nbsp;services</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Fri 05 January 2018</span>
 				<p>
 					<h2>Hosting&nbsp;options:</h2>
 <ul>
@@ -188,13 +109,93 @@ pip install passlib
 <li><a href="https://www.putty.org/">PuTTY</a> - for <span class="caps">SSH</span>&nbsp;access</li>
 <li><a href="https://winscp.net/eng/index.php">WinSCP</a> - To transfer files to …</li></ul>
 				</p>
-				<a class="read-more" href="hosting.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/hosting.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/css-selectors.html#css-selectors">
+					<a href="https://janiceto.github.io/programming-notes-blog/css-selectors.html#css-selectors"><span class="caps">CSS</span>&nbsp;selectors</a>
+				</h1>
+				<span class="post-date">Tue 26 December 2017</span>
+				<p>
+					<p>In <span class="caps">CSS</span>, selectors are patterns used to select the element(s) you want to&nbsp;style.</p>
+<p>The &#8220;<span class="caps">CSS</span>&#8221; column indicates in which <span class="caps">CSS</span> version the property is defined (<span class="caps">CSS1</span>, <span class="caps">CSS2</span>, or <span class="caps">CSS3</span>).</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Example</th>
+<th>Example description</th>
+<th><span class="caps">CSS</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.class</td>
+<td>.intro</td>
+<td>Selects all elements with class=&#8221;intro&#8221;</td>
+<td>1</td>
+</tr>
+<tr>
+<td>#id</td>
+<td>#firstname</td>
+<td>Selects the element …</td></tr></tbody></table>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/css-selectors.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">
+					<a href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">String formatting in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">Sun 19 November 2017</span>
+				<p>
+					<h3>F-strings (Python&nbsp;&gt;=3.6)</h3>
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+<span class="n">f</span><span class="s1">&#39;My app name is {name}.&#39;</span>  <span class="c1"># &#39;My app name is Test.</span>
+</pre></div>
+
+
+<h3>New method (Python&nbsp;&gt;=2.6)</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2&#39;</span>
+</pre></div>
+
+
+<h3>Old&nbsp;method</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2 …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/batch-script.html#batch-script">
+					<a href="https://janiceto.github.io/programming-notes-blog/batch-script.html#batch-script">Create a Windows batch&nbsp;script</a>
+				</h1>
+				<span class="post-date">Fri 17 November 2017</span>
+				<p>
+					<p>A batch file is a text file with the extension <strong>.bat</strong> that contains one or more command line commands to be run&nbsp;consecutively. </p>
+<h2>Some usefull&nbsp;commands:</h2>
+<p><strong>@echo</strong> - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/batch-script.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">
+					<a href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">Virtual&nbsp;enviroments</a>
+				</h1>
+				<span class="post-date">Fri 10 November 2017</span>
+				<p>
+					<h3>Virtual environment using <strong>virtualenv</strong></h3>
+<p>Install: <code>$ pip install virtualenv</code></p>
+<h4>Create a new virtual&nbsp;enviroment:</h4>
+<p>My prefered method is to create the environment in the respective project folder and naming it <strong>venv</strong>. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html">Continue reading »</a>
 			</div>
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html#image-manipulation">
 					<a href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html#image-manipulation">Image manipulation in&nbsp;Python</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Sun 03 September 2017</span>
 				<p>
 					<p>The <strong>Python Imaging Library</strong> (<span class="caps">PIL</span>) development has stagnated, with its last release in 2009. Luckily, there’s an actively-developed fork of <span class="caps">PIL</span> called <strong>Pillow</strong>.
 <strong>Pillow</strong> is easier to install, runs on all operating systems, and supports Python&nbsp;3.</p>
@@ -202,45 +203,31 @@ pip install passlib
 <ul>
 <li>Pillow and <span class="caps">PIL</span> cannot co-exist in the same environment. Before installing …</li></ul>
 				</p>
-				<a class="read-more" href="image-manipulation.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">
-					<a href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">Imports in&nbsp;Python</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/cache-data.html#cache-data">
+					<a href="https://janiceto.github.io/programming-notes-blog/cache-data.html#cache-data">Caching&nbsp;data</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Fri 14 July 2017</span>
 				<p>
-					<h3>Namespace</h3>
-<p>For example, you might be writing some code that has a function called <code>fun()</code> and there is another module available, which also has a function with the name <code>fun()</code>. Now the interpreter has no way of knowing which version of <code>fun()</code> function you are referring within your&nbsp;code.</p>
-<p><strong>Namespace …</strong></p>
+					<p>You have three&nbsp;options:</p>
+<ol>
+<li>Cookies: https://developer.mozilla.org/en-<span class="caps">US</span>/docs/<span class="caps">DOM</span>/document.cookie</li>
+<li>DOMStorage (sessionStorage or localStorage): https://developer.mozilla.org/en-<span class="caps">US</span>/docs/<span class="caps">DOM</span>/Storage</li>
+<li>If your users are logged in, you could persist data in your server&#8217;s <span class="caps">DB</span> that is keyed to a user (or …</li></ol>
 				</p>
-				<a class="read-more" href="imports.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/cache-data.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html#keep-ssh-running">
-					<a href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html#keep-ssh-running">Keep <span class="caps">SSH</span> sessions running after&nbsp;disconnecting</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/deploy-django.html#deploy-django">
+					<a href="https://janiceto.github.io/programming-notes-blog/deploy-django.html#deploy-django">Deploy a Django app in an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
 				</h1>
-				<span class="post-date">Thu 26 July 2018</span>
+				<span class="post-date">Sun 14 May 2017</span>
 				<p>
-					<h3>Using&nbsp;nohup</h3>
-<div class="highlight"><pre><span></span>$ nohup long-running-process <span class="p">&amp;</span>
-$ <span class="nb">exit</span>
-</pre></div>
-
-
-<h3>Using <span class="caps">GNU</span>&nbsp;Screen</h3>
-<div class="highlight"><pre><span></span>$ screen             <span class="c1"># to start a screen session</span>
-$ run-a-process
-CTRL+a , d           <span class="c1"># to detatch from your screen session</span>
-$ <span class="nb">exit</span>               <span class="c1"># to disconnect from the server, while run-a-process continues</span>
-$ screen -r          <span class="c1"># to resume the screen session when you come back to your laptop</span>
-</pre></div>
-
-
-<h3>Using&nbsp;tmux</h3>
-<div class="highlight"><pre><span></span>$ <span class="n">tmux …</span></pre></div>
+					<p>This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …</p>
 				</p>
-				<a class="read-more" href="keep-ssh-running.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/deploy-django.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">
