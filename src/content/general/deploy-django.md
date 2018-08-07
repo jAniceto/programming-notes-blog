@@ -1,5 +1,5 @@
 Title: Deploy a Django app in an Ubuntu VPS (DigitalOcean)
-Date: 2017-05-14 18:13 
+Date: 2018-07-21 18:13 
 Authors: José Aniceto
 
 

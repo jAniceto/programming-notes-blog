@@ -1,364 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-07-21T23:00:00+01:00</updated><entry><title>Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html" rel="alternate"></link><published>2018-07-21T23:00:00+01:00</published><updated>2018-07-21T23:00:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-21:/programming-notes-blog/ubuntu-vps.html</id><summary type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
-&lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
-$ sudo apt-get upgrade
-$ sudo apt-get install apache2
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You can do a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
-&lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
-$ sudo apt-get upgrade
-$ sudo apt-get install apache2
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You can do a spot check right away to verify that everything went as planned by visiting your server&amp;#8217;s public &lt;span class="caps"&gt;IP&lt;/span&gt; address in your web browser. You will see the default Ubuntu 16.04 Apache web&amp;nbsp;page.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://your_server_IP_address
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;How To Find your Server&amp;#8217;s Public &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;Address&lt;/h3&gt;
-&lt;p&gt;Usually, this is the address you use to connect to your server through &lt;span class="caps"&gt;SSH&lt;/span&gt;. However you can find the &lt;span class="caps"&gt;IP&lt;/span&gt; address from the command line by typing&amp;nbsp;this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ip addr show eth0 &lt;span class="p"&gt;|&lt;/span&gt; grep inet &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{ print $2; }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/\/.*$//&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Alternatively you can use &lt;code&gt;curl&lt;/code&gt; to contact an outside party to tell you how it sees your server. You can do this by asking a specific server what your &lt;span class="caps"&gt;IP&lt;/span&gt; address&amp;nbsp;is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install curl
-$ curl http://icanhazip.com
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;2) Install&amp;nbsp;MySQL&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install mysql-server mysql-client
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;During the installation, your server will ask you to select and confirm a password for the MySQL &amp;#8220;root&amp;#8221; user. This is an administrative account in MySQL that has increased privileges. Think of it as being similar to the root account for the server itself (the one you are configuring now is a MySQL-specific account, however). Make sure this is a strong, unique password, and do not leave it&amp;nbsp;blank.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Optional:&lt;/strong&gt; Run a simple security script that will remove some dangerous defaults and lock down access to our database system a little bit. See more info on this on reference&amp;nbsp;[2].&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mysql_secure_installation
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;3) Install and enable&amp;nbsp;mod_wsgi&lt;/h2&gt;
-&lt;p&gt;&lt;span class="caps"&gt;WSGI&lt;/span&gt; (Web Server Gateway Interface) is an interface between web servers and web apps for python. Mod_wsgi is an Apache &lt;span class="caps"&gt;HTTP&lt;/span&gt; server mod that enables Apache to serve Flask&amp;nbsp;applications.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Copy in your Flask app directory struture. It should look like&amp;nbsp;this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;|----FlaskApp
-|---------FlaskApp
-|--------------static
-|--------------templates
-|--------------__init__.py
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;4) Install Flask and&amp;nbsp;virtualenv&lt;/h2&gt;
-&lt;p&gt;Install &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install python-pip 
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Install &lt;code&gt;virtualenv&lt;/code&gt; and create a new virtual environment names &lt;code&gt;venv&lt;/code&gt; for the Flask&amp;nbsp;app&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install virtualenv 
-$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/FlaskApp/FlaskApp
-$ sudo virtualenv venv
-$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate 
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Install &lt;code&gt;Flask&lt;/code&gt; and other necessary Flask plug-ins and&amp;nbsp;extensions&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install Flask 
-$ sudo pip install flask-mysqldb
-$ sudo pip install Flask-WTF
-$ sudo pip install passlib
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Test if the installation is successful and the app is&amp;nbsp;running:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python __init__.py 
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;It should display “Running on http://localhost:5000/” or &amp;#8220;Running on http://127.0.0.1:5000/&amp;#8221;. If you see this message, you have successfully configured the&amp;nbsp;app.&lt;/p&gt;
-&lt;p&gt;To deactivate the environment, give the following&amp;nbsp;command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ deactivate
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;5) Configure and Enable a New Virtual&amp;nbsp;Host&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/apache2/sites-available/FlaskApp.conf
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Add the following lines of code to the file to configure the virtual host. Be sure to change the ServerName to your domain or cloud server&amp;#8217;s &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-        ServerName mywebsite.com
-        ServerAlias www.mywebsite.com
-        ServerAdmin admin@mywebsite.com
-        WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
-        &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/FlaskApp/FlaskApp&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-            Order allow,deny
-            Allow from all
-        &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
-        Alias /static /var/www/FlaskApp/FlaskApp/static
-        &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/FlaskApp/FlaskApp/static&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-            Order allow,deny
-            Allow from all
-        &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
-        ErrorLog &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/error.log
-        LogLevel warn
-        CustomLog &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/access.log combined
-&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Enable the virtual host with the following&amp;nbsp;command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo a2ensite FlaskApp
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;6) Create the .wsgi&amp;nbsp;File&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/FlaskApp
-$ sudo nano flaskapp.wsgi 
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Add the following lines of code to the flaskapp.wsgi&amp;nbsp;file:&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/python&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
-&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basicConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/www/FlaskApp/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;FlaskApp&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;
-&lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;secret_key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Add your secret key&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;h2&gt;7) Restart&amp;nbsp;Apache&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo service apache2 restart 
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;To view your application, open your browser and navigate to the domain name or &lt;span class="caps"&gt;IP&lt;/span&gt; address that you entered in your virtual host&amp;nbsp;configuration.&lt;/p&gt;
-&lt;h2&gt;Final directory&amp;nbsp;structure&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;|--------FlaskApp
-|----------------FlaskApp
-|-----------------------static
-|-----------------------templates
-|-----------------------venv
-|-----------------------__init__.py
-|----------------flaskapp.wsgi
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Useful&amp;nbsp;references:&lt;/h2&gt;
-&lt;p&gt;1) &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps"&gt;How To Deploy a Flask Application on an Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/a&gt;
-2) &lt;a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04"&gt;How To Install Linux, Apache, MySQL, &lt;span class="caps"&gt;PHP&lt;/span&gt; (&lt;span class="caps"&gt;LAMP&lt;/span&gt;) stack on Ubuntu 16.04&lt;/a&gt;
-3) &lt;a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04"&gt;Initial Server Setup with Ubuntu 16.04&lt;/a&gt;
-4) &lt;a href="blob/master/python/flask.md"&gt;Building a Flask&amp;nbsp;site&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>Online Resources For Web Developers</title><link href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html" rel="alternate"></link><published>2018-06-23T23:30:00+01:00</published><updated>2018-06-23T23:30:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-06-23:/programming-notes-blog/web-dev-resources.html</id><summary type="html">&lt;h2&gt;&lt;span class="caps"&gt;GENERATORS&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Text Content Generator -&amp;nbsp;http://www.lipsum.com&lt;/li&gt;
-&lt;li&gt;Favicon Generator -&amp;nbsp;http://tools.dynamicdrive.com/favicon     &lt;/li&gt;
-&lt;li&gt;Data Generator -&amp;nbsp;https://mockaroo.com/                        &lt;/li&gt;
-&lt;li&gt;Mobile Mockup Generator -&amp;nbsp;https://mockuphone.com&lt;/li&gt;
-&lt;li&gt;Logo Generator -&amp;nbsp;https://www.logaster.com&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;UUID&lt;/span&gt; Generator -&amp;nbsp;https://www.uuidgenerator.net/&lt;/li&gt;
-&lt;li&gt;Hash Generator -&amp;nbsp;https://passwordsgenerator.net/sha256-hash-generator/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;RESOURCES&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Free Stock Images -&amp;nbsp;https …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;&lt;span class="caps"&gt;GENERATORS&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Text Content Generator -&amp;nbsp;http://www.lipsum.com&lt;/li&gt;
-&lt;li&gt;Favicon Generator -&amp;nbsp;http://tools.dynamicdrive.com/favicon     &lt;/li&gt;
-&lt;li&gt;Data Generator -&amp;nbsp;https://mockaroo.com/                        &lt;/li&gt;
-&lt;li&gt;Mobile Mockup Generator -&amp;nbsp;https://mockuphone.com&lt;/li&gt;
-&lt;li&gt;Logo Generator -&amp;nbsp;https://www.logaster.com&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;UUID&lt;/span&gt; Generator -&amp;nbsp;https://www.uuidgenerator.net/&lt;/li&gt;
-&lt;li&gt;Hash Generator -&amp;nbsp;https://passwordsgenerator.net/sha256-hash-generator/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;RESOURCES&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Free Stock Images -&amp;nbsp;https://www.pexels.com&lt;/li&gt;
-&lt;li&gt;Free Stock Images With Great &lt;span class="caps"&gt;API&lt;/span&gt; -&amp;nbsp;https://unsplash.com/&lt;/li&gt;
-&lt;li&gt;Free- Vectors, mockups -&amp;nbsp;https://www.freepik.com&lt;/li&gt;
-&lt;li&gt;Dummy Image Placeholders -&amp;nbsp;https://source.unsplash.com/&lt;/li&gt;
-&lt;li&gt;Dummy Image Placeholders -&amp;nbsp;https://placeholder.com&lt;/li&gt;
-&lt;li&gt;Free Icons -&amp;nbsp;https://www.iconfinder.com&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;COLOR&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;DESIGN&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Generate Color Palette from Image -&amp;nbsp;https://www.canva.com/color-palette/&lt;/li&gt;
-&lt;li&gt;Color Palette Generator -&amp;nbsp;https://coolors.co/app&lt;/li&gt;
-&lt;li&gt;Create Color Schemes -&amp;nbsp;https://color.hailpixel.com&lt;/li&gt;
-&lt;li&gt;Get Color Schemes of Websites -&amp;nbsp;http://stylifyme.com&lt;/li&gt;
-&lt;li&gt;Create Gradients -&amp;nbsp;https://uigradients.com&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Button Generator -&amp;nbsp;http://css3buttongenerator.com &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;COMPRESSION&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Compress All Images -&amp;nbsp;https://compressor.io/compress&lt;/li&gt;
-&lt;li&gt;Compress &lt;span class="caps"&gt;JPG&lt;/span&gt; -&amp;nbsp;http://jpeg-optimizer.com/&lt;/li&gt;
-&lt;li&gt;Compress &lt;span class="caps"&gt;PNG&lt;/span&gt; -&amp;nbsp;https://tinypng.com/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt; &lt;span class="caps"&gt;OPTIMIZATION&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Minify &lt;span class="caps"&gt;JS&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt; -&amp;nbsp;http://minifier.org&lt;/li&gt;
-&lt;li&gt;Code Optimization Tools -&amp;nbsp;https://codebeautify.org&lt;/li&gt;
-&lt;li&gt;Code Diff Checker -&amp;nbsp;https://www.diffchecker.com&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;CONVERTERS&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class="caps"&gt;ES6&lt;/span&gt;+ &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;JSX&lt;/span&gt; Compiler -&amp;nbsp;https://babeljs.io/repl&lt;/li&gt;
-&lt;li&gt;Sass Converter -&amp;nbsp;https://www.sassmeister.com/           &lt;/li&gt;
-&lt;li&gt;Less Converter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; More -&amp;nbsp;http://www.webtoolkitonline.com   &lt;/li&gt;
-&lt;li&gt;Markdown Editor -&amp;nbsp;https://stackedit.io&lt;/li&gt;
-&lt;li&gt;Jade Converter -&amp;nbsp;http://www.html2jade.org/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;VALIDATION&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;COMPATIBILITY&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Validate &lt;span class="caps"&gt;HTML&lt;/span&gt; -&amp;nbsp;https://validator.w3.org&lt;/li&gt;
-&lt;li&gt;Validate &lt;span class="caps"&gt;CSS&lt;/span&gt; -&amp;nbsp;https://jigsaw.w3.org/css-validator&lt;/li&gt;
-&lt;li&gt;Check Browser Compatibility -&amp;nbsp;https://caniuse.com/&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;ES6&lt;/span&gt;+ Compatibility Table -&amp;nbsp;https://kangax.github.io/compat-table/es6/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;IN&lt;/span&gt; &lt;span class="caps"&gt;BROWSER&lt;/span&gt; &lt;span class="caps"&gt;CODING&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Client Side Code -&amp;nbsp;https://codepen.io&lt;/li&gt;
-&lt;li&gt;Client Side Code -&amp;nbsp;https://jsfiddle.net&lt;/li&gt;
-&lt;li&gt;Client Side Code -&amp;nbsp;http://liveweave.com&lt;/li&gt;
-&lt;li&gt;Server Side Code -&amp;nbsp;https://repl.it&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;SNIPPET&lt;/span&gt; &lt;span class="caps"&gt;TOOLS&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Snippet Manager -&amp;nbsp;https://gist.github.com&lt;/li&gt;
-&lt;li&gt;Snippet Manager -&amp;nbsp;https://pastebin.com&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;WIREFRAME&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;In Browser Wireframing -&amp;nbsp;https://app.moqups.com&lt;/li&gt;
-&lt;li&gt;Very Basic In Browser Wireframing -&amp;nbsp;https://wireframe.cc&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;RESPONSIVENESS&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Device Testing -&amp;nbsp;http://www.responsinator.com&lt;/li&gt;
-&lt;li&gt;What&amp;#8217;s My Browser Size -&amp;nbsp;https://www.webpagefx.com/tools/whats-my-browser-size/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;SPEED&lt;/span&gt; &lt;span class="caps"&gt;TEST&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Speed &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Performance Testing -&amp;nbsp;https://tools.keycdn.com/speed&lt;/li&gt;
-&lt;li&gt;Pingdom Speed Test -&amp;nbsp;https://tools.pingdom.com/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;span class="caps"&gt;OTHER&lt;/span&gt;:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Public &lt;span class="caps"&gt;API&lt;/span&gt; Resources -&amp;nbsp;https://github.com/toddmotto/public-apis?utm_source=mybridge&amp;amp;utm_medium=blog&amp;amp;utm_campaign=read_more&lt;/li&gt;
-&lt;li&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; Entity Lookup -&amp;nbsp;http://entity-lookup.leftlogic.com/&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;References:&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;https://gist.github.com/bradtraversy/61171a9b81586f5bc4c0ca1e2beb59ab&lt;/li&gt;
-&lt;li&gt;https://www.youtube.com/watch?v=4JC8ahZneYU&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>Hiding Passwords and Secret Keys in Environment Variables</title><link href="https://janiceto.github.io/programming-notes-blog/os-env-vars.html" rel="alternate"></link><published>2018-05-14T01:41:00+01:00</published><updated>2018-05-14T01:41:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-05-14:/programming-notes-blog/os-env-vars.html</id><summary type="html">&lt;h3&gt;Adding a Environment Variable&amp;nbsp;(Windows)&lt;/h3&gt;
-&lt;p&gt;System Menu &amp;gt; &lt;code&gt;Advanced System Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Environment Variables...&lt;/code&gt; &amp;gt; in User Variables click &lt;code&gt;New...&lt;/code&gt; &amp;gt; insert variable name (VAR_NAME) and value&amp;nbsp;(VAR_VALUE)&lt;/p&gt;
-&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
-&lt;h3&gt;Adding a Environment Variable (Linux and&amp;nbsp;Mac)&lt;/h3&gt;
-&lt;p&gt;Open the&amp;nbsp;terminal:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; 
-$ nano .bash_profile …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3&gt;Adding a Environment Variable&amp;nbsp;(Windows)&lt;/h3&gt;
-&lt;p&gt;System Menu &amp;gt; &lt;code&gt;Advanced System Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Environment Variables...&lt;/code&gt; &amp;gt; in User Variables click &lt;code&gt;New...&lt;/code&gt; &amp;gt; insert variable name (VAR_NAME) and value&amp;nbsp;(VAR_VALUE)&lt;/p&gt;
-&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
-&lt;h3&gt;Adding a Environment Variable (Linux and&amp;nbsp;Mac)&lt;/h3&gt;
-&lt;p&gt;Open the&amp;nbsp;terminal:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; 
-$ nano .bash_profile
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;To the file add the line and&amp;nbsp;save:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export VAR_NAME=&amp;quot;VAR_VALUE&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
-&lt;h3&gt;Acessing your Environment Variables in&amp;nbsp;Python&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
-
-&lt;span class="n"&gt;var1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;VAR_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Initial Server Setup with Ubuntu 18.04</title><link href="https://janiceto.github.io/programming-notes-blog/server-setup.html" rel="alternate"></link><published>2018-03-05T23:52:00+00:00</published><updated>2018-03-05T23:52:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-03-05:/programming-notes-blog/server-setup.html</id><summary type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
-&lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
-&lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
-&lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
-&lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that we will use to log in from now&amp;nbsp;on.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;adduser synergix&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit &lt;span class="caps"&gt;ENTER&lt;/span&gt; in any field you wish to&amp;nbsp;skip.&lt;/p&gt;
-&lt;h2&gt;2) Granting Administrative&amp;nbsp;Privileges&lt;/h2&gt;
-&lt;p&gt;Set up what is known as &amp;#8220;superuser&amp;#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word &lt;code&gt;sudo&lt;/code&gt; before each command. As &lt;strong&gt;root&lt;/strong&gt;, run this command to add your new user to the sudo&amp;nbsp;group:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;usermod -aG sudo synergix&lt;/code&gt;&lt;/p&gt;
-&lt;h2&gt;3) Setting Up a Basic&amp;nbsp;Firewall&lt;/h2&gt;
-&lt;p&gt;Ubuntu 18.04 servers can use the &lt;span class="caps"&gt;UFW&lt;/span&gt; firewall to make sure only connections to certain services are allowed. We can set up a basic firewall very easily using this&amp;nbsp;application.&lt;/p&gt;
-&lt;p&gt;Different applications can register their profiles with &lt;span class="caps"&gt;UFW&lt;/span&gt; upon installation. These profiles allow &lt;span class="caps"&gt;UFW&lt;/span&gt; to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with &lt;span class="caps"&gt;UFW&lt;/span&gt;. You can see this by&amp;nbsp;typing:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ufw app list&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Afterwards, we can enable the firewall by&amp;nbsp;typing:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ufw enable&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Type &amp;#8220;y&amp;#8221; and press &lt;span class="caps"&gt;ENTER&lt;/span&gt; to proceed. You can see that &lt;span class="caps"&gt;SSH&lt;/span&gt; connections are still allowed by&amp;nbsp;typing:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ufw status&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;As the firewall is currently blocking all connections except for &lt;span class="caps"&gt;SSH&lt;/span&gt;, if you install and configure additional services, you will need to adjust the firewall settings to allow acceptable traffic in. More info here:&amp;nbsp;https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands&lt;/p&gt;
-&lt;h2&gt;4) Enabling External Access for Your Regular&amp;nbsp;User&lt;/h2&gt;
-&lt;p&gt;Now that we have a regular user for daily use, we need to make sure we can &lt;span class="caps"&gt;SSH&lt;/span&gt; into the account directly. The process for configuring &lt;span class="caps"&gt;SSH&lt;/span&gt; access for your new user depends on whether your server&amp;#8217;s root account uses a password or &lt;span class="caps"&gt;SSH&lt;/span&gt; keys for&amp;nbsp;authentication.&lt;/p&gt;
-&lt;h4&gt;If the Root Account Uses Password&amp;nbsp;Authentication&lt;/h4&gt;
-&lt;p&gt;If you logged in to your root account using a password, then password authentication is enabled for &lt;span class="caps"&gt;SSH&lt;/span&gt;. You can &lt;span class="caps"&gt;SSH&lt;/span&gt; to your new user account by opening up a new terminal session and using &lt;span class="caps"&gt;SSH&lt;/span&gt; with your new&amp;nbsp;username:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ssh synergix@your_server_ip&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;After entering your regular user&amp;#8217;s password, you will be logged in. You will be prompted for your regular user password when using sudo for the first time each session (and periodically&amp;nbsp;afterwards).&lt;/p&gt;
-&lt;p&gt;To enhance your server&amp;#8217;s security, it is recommended to set up &lt;span class="caps"&gt;SSH&lt;/span&gt; keys instead of using password authentication:&amp;nbsp;https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804&lt;/p&gt;
-&lt;h4&gt;If the Root Account Uses &lt;span class="caps"&gt;SSH&lt;/span&gt; Key&amp;nbsp;Authentication&lt;/h4&gt;
-&lt;p&gt;If you logged in to your root account using &lt;span class="caps"&gt;SSH&lt;/span&gt; keys, then password authentication is disabled for &lt;span class="caps"&gt;SSH&lt;/span&gt;. You will need to add a copy of your local public key to the new user&amp;#8217;s &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; file to log in&amp;nbsp;successfully.&lt;/p&gt;
-&lt;p&gt;Since your public key is already in the root account&amp;#8217;s &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; file on the server, we can copy that file and directory structure to our new user account in our existing&amp;nbsp;session.&lt;/p&gt;
-&lt;p&gt;The simplest way to copy the files with the correct ownership and permissions is with the &lt;code&gt;rsync&lt;/code&gt; command. This will copy the root user&amp;#8217;s .ssh directory, preserve the permissions, and modify the file owners, all in a single&amp;nbsp;command:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;rsync --archive --chown=synergix:synergix ~/.ssh /home/synergix&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Now, open up a new terminal session and using &lt;span class="caps"&gt;SSH&lt;/span&gt; with your new&amp;nbsp;username:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ssh synergix@your_server_ip&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;You should be logged in to the new user account without using a&amp;nbsp;password. &lt;/p&gt;
-&lt;h2&gt;5)&amp;nbsp;Other&lt;/h2&gt;
-&lt;p&gt;Chose the timezone by running: &lt;code&gt;sudo dpkg-reconfigure tzdata&lt;/code&gt;&lt;/p&gt;
-&lt;h2&gt;References:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>Create a Windows batch script</title><link href="https://janiceto.github.io/programming-notes-blog/batch-script.html" rel="alternate"></link><published>2017-11-17T10:30:00+00:00</published><updated>2017-11-17T10:30:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-11-17:/programming-notes-blog/batch-script.html</id><summary type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
-&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
-&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has&amp;nbsp;finished.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; - This will provide a title for your batch script in your Command Prompt&amp;nbsp;window.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;cls&lt;/strong&gt; - Clears your command prompt, best used when extraneous code can make what you’re accessing had to&amp;nbsp;find.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;rem&lt;/strong&gt; &lt;span class="caps"&gt;OR&lt;/span&gt; &lt;strong&gt;::&lt;/strong&gt; - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding the&amp;nbsp;code.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;%%a&lt;/strong&gt; - Each file in the&amp;nbsp;folder.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;(“.\”)&lt;/strong&gt; - The root folder. When using the command prompt, one must direct the prompt to a particular directory before changing a files name, deleting a file, and so on. With batch files, you only need to paste your .bat file into the directory of your&amp;nbsp;choosing.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;pause&lt;/strong&gt; - Allows a break in the logical chain of your .bat file. This allows for users to read over command lines before proceeding with the code. The phrase “Press any key to continue…” will denote a&amp;nbsp;pause.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;start “” [website]&lt;/strong&gt; - Will head to a website of your choice using your default web&amp;nbsp;browser.&lt;/p&gt;
-&lt;p&gt;A complete list can be found &lt;a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Useful batch&amp;nbsp;files:&lt;/h2&gt;
-&lt;h3&gt;Start Flask&amp;nbsp;server&lt;/h3&gt;
-&lt;p&gt;The following script starts a Flask development server provided the batch file is located in the project root&amp;nbsp;directory.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo off
-cd %localhost%
-call venv\Scripts\activate.bat
-start python dashboard\__init__.py
-pause
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django.html" rel="alternate"></link><published>2017-05-14T18:13:00+01:00</published><updated>2017-05-14T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-05-14:/programming-notes-blog/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-07-21T18:13:00+01:00</updated><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django.html" rel="alternate"></link><published>2018-07-21T18:13:00+01:00</published><updated>2018-07-21T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-21:/programming-notes-blog/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
 &lt;h2&gt;1) Initial Server&amp;nbsp;Setup&lt;/h2&gt;
 &lt;p&gt;Perform the initial server setup as detailed &lt;a href="server-setup.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;2) Install the Packages from the Ubuntu&amp;nbsp;Repositories&lt;/h2&gt;
@@ -642,43 +283,368 @@ $ sudo systemctl restart gunicorn
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04"&gt;DigitalOcean - Setup Django, Postgres, nginx and Gunicorn on&amp;nbsp;Ubuntu&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-16-04"&gt;DigitalOcean - Serve Django with uwsgi and ngix on&amp;nbsp;Ubuntu&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database"&gt;DigitalOcean - Create Django app and connect to&amp;nbsp;database&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>Keep SSH sessions running after disconnecting</title><link href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html" rel="alternate"></link><published>2017-04-21T20:38:00+01:00</published><updated>2017-04-21T20:38:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-04-21:/programming-notes-blog/keep-ssh-running.html</id><summary type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup long-running-process &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
-$ &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/ul&gt;</content></entry><entry><title>Online Resources For Web Developers</title><link href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html" rel="alternate"></link><published>2018-06-23T23:30:00+01:00</published><updated>2018-06-23T23:30:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-06-23:/programming-notes-blog/web-dev-resources.html</id><summary type="html">&lt;h2&gt;&lt;span class="caps"&gt;GENERATORS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Text Content Generator - &lt;a href="http://www.lipsum.com"&gt;http://www.lipsum.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Favicon Generator - &lt;a href="http://tools.dynamicdrive.com/favicon"&gt;http://tools.dynamicdrive.com/favicon&lt;/a&gt;        &lt;/li&gt;
+&lt;li&gt;Data Generator - &lt;a href="https://mockaroo.com/"&gt;https://mockaroo.com/&lt;/a&gt;                       &lt;/li&gt;
+&lt;li&gt;Mobile Mockup Generator - &lt;a href="https://mockuphone.com"&gt;https://mockuphone.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Logo Generator - &lt;a href="https://www.logaster.com"&gt;https://www.logaster.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;UUID&lt;/span&gt; Generator - &lt;a href="https://www.uuidgenerator.net/"&gt;https://www.uuidgenerator.net/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hash Generator - &lt;a href="https://passwordsgenerator.net/sha256-hash-generator/"&gt;https://passwordsgenerator.net/sha256-hash-generator/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;RESOURCES&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Free Stock Images - &lt;a href="https://www.pexels.com"&gt;https …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;&lt;span class="caps"&gt;GENERATORS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Text Content Generator - &lt;a href="http://www.lipsum.com"&gt;http://www.lipsum.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Favicon Generator - &lt;a href="http://tools.dynamicdrive.com/favicon"&gt;http://tools.dynamicdrive.com/favicon&lt;/a&gt;        &lt;/li&gt;
+&lt;li&gt;Data Generator - &lt;a href="https://mockaroo.com/"&gt;https://mockaroo.com/&lt;/a&gt;                       &lt;/li&gt;
+&lt;li&gt;Mobile Mockup Generator - &lt;a href="https://mockuphone.com"&gt;https://mockuphone.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Logo Generator - &lt;a href="https://www.logaster.com"&gt;https://www.logaster.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;UUID&lt;/span&gt; Generator - &lt;a href="https://www.uuidgenerator.net/"&gt;https://www.uuidgenerator.net/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hash Generator - &lt;a href="https://passwordsgenerator.net/sha256-hash-generator/"&gt;https://passwordsgenerator.net/sha256-hash-generator/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;RESOURCES&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Free Stock Images - &lt;a href="https://www.pexels.com"&gt;https://www.pexels.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Free Stock Images With Great &lt;span class="caps"&gt;API&lt;/span&gt; - &lt;a href="https://unsplash.com/"&gt;https://unsplash.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Free- Vectors, mockups - &lt;a href="https://www.freepik.com"&gt;https://www.freepik.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dummy Image Placeholders - &lt;a href="https://source.unsplash.com/"&gt;https://source.unsplash.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dummy Image Placeholders - &lt;a href="https://placeholder.com"&gt;https://placeholder.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Free Icons - &lt;a href="https://www.iconfinder.com"&gt;https://www.iconfinder.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;COLOR&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;DESIGN&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate Color Palette from Image - &lt;a href="https://www.canva.com/color-palette/"&gt;https://www.canva.com/color-palette/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Color Palette Generator - &lt;a href="https://coolors.co/app"&gt;https://coolors.co/app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create Color Schemes - &lt;a href="https://color.hailpixel.com"&gt;https://color.hailpixel.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Get Color Schemes of Websites - &lt;a href="http://stylifyme.com"&gt;http://stylifyme.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create Gradients - &lt;a href="https://uigradients.com"&gt;https://uigradients.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;CSS&lt;/span&gt; Button Generator - &lt;a href="http://css3buttongenerator.com"&gt;http://css3buttongenerator.com&lt;/a&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IMAGE&lt;/span&gt; &lt;span class="caps"&gt;COMPRESSION&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Compress All Images - &lt;a href="https://compressor.io/compress"&gt;https://compressor.io/compress&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Compress &lt;span class="caps"&gt;JPG&lt;/span&gt; - &lt;a href="http://jpeg-optimizer.com/"&gt;http://jpeg-optimizer.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Compress &lt;span class="caps"&gt;PNG&lt;/span&gt; - &lt;a href="https://tinypng.com/"&gt;https://tinypng.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;CODE&lt;/span&gt; &lt;span class="caps"&gt;OPTIMIZATION&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Minify &lt;span class="caps"&gt;JS&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt; - &lt;a href="http://minifier.org"&gt;http://minifier.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Code Optimization Tools - &lt;a href="https://codebeautify.org"&gt;https://codebeautify.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Code Diff Checker - &lt;a href="https://www.diffchecker.com"&gt;https://www.diffchecker.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;CONVERTERS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="caps"&gt;ES6&lt;/span&gt;+ &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;JSX&lt;/span&gt; Compiler - &lt;a href="https://babeljs.io/repl"&gt;https://babeljs.io/repl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Sass Converter - &lt;a href="https://www.sassmeister.com/"&gt;https://www.sassmeister.com/&lt;/a&gt;           &lt;/li&gt;
+&lt;li&gt;Less Converter &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; More - &lt;a href="http://www.webtoolkitonline.com"&gt;http://www.webtoolkitonline.com&lt;/a&gt;   &lt;/li&gt;
+&lt;li&gt;Markdown Editor - &lt;a href="https://stackedit.io"&gt;https://stackedit.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jade Converter - &lt;a href="http://www.html2jade.org/"&gt;http://www.html2jade.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;VALIDATION&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;COMPATIBILITY&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Validate &lt;span class="caps"&gt;HTML&lt;/span&gt; - &lt;a href="https://validator.w3.org"&gt;https://validator.w3.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Validate &lt;span class="caps"&gt;CSS&lt;/span&gt; - &lt;a href="https://jigsaw.w3.org/css-validator"&gt;https://jigsaw.w3.org/css-validator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Check Browser Compatibility - &lt;a href="https://caniuse.com/"&gt;https://caniuse.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;ES6&lt;/span&gt;+ Compatibility Table - &lt;a href="https://kangax.github.io/compat-table/es6/"&gt;https://kangax.github.io/compat-table/es6/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;IN&lt;/span&gt; &lt;span class="caps"&gt;BROWSER&lt;/span&gt; &lt;span class="caps"&gt;CODING&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Client Side Code - &lt;a href="https://codepen.io"&gt;https://codepen.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Client Side Code - &lt;a href="https://jsfiddle.net"&gt;https://jsfiddle.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Client Side Code - &lt;a href="http://liveweave.com"&gt;http://liveweave.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Server Side Code - &lt;a href="https://repl.it"&gt;https://repl.it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;SNIPPET&lt;/span&gt; &lt;span class="caps"&gt;TOOLS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Snippet Manager - &lt;a href="https://gist.github.com"&gt;https://gist.github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Snippet Manager - &lt;a href="https://pastebin.com"&gt;https://pastebin.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;WIREFRAME&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In Browser Wireframing - &lt;a href="https://app.moqups.com"&gt;https://app.moqups.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Very Basic In Browser Wireframing - &lt;a href="https://wireframe.cc"&gt;https://wireframe.cc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;RESPONSIVENESS&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Device Testing - &lt;a href="http://www.responsinator.com"&gt;http://www.responsinator.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;What&amp;#8217;s My Browser Size - &lt;a href="https://www.webpagefx.com/tools/whats-my-browser-size/"&gt;https://www.webpagefx.com/tools/whats-my-browser-size/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;SPEED&lt;/span&gt; &lt;span class="caps"&gt;TEST&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Speed &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Performance Testing - &lt;a href="https://tools.keycdn.com/speed"&gt;https://tools.keycdn.com/speed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pingdom Speed Test - &lt;a href="https://tools.pingdom.com/"&gt;https://tools.pingdom.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;OTHER&lt;/span&gt;:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Public &lt;span class="caps"&gt;API&lt;/span&gt; Resources - &lt;a href="https://github.com/toddmotto/public-apis?utm_source=mybridge&amp;amp;utm_medium=blog&amp;amp;utm_campaign=read_more"&gt;https://github.com/toddmotto/public-apis?utm_source=mybridge&amp;amp;utm_medium=blog&amp;amp;utm_campaign=read_more&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt; Entity Lookup - &lt;a href="http://entity-lookup.leftlogic.com/"&gt;http://entity-lookup.leftlogic.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/bradtraversy/61171a9b81586f5bc4c0ca1e2beb59ab"&gt;https://gist.github.com/bradtraversy/61171a9b81586f5bc4c0ca1e2beb59ab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=4JC8ahZneYU"&gt;https://www.youtube.com/watch?v=4JC8ahZneYU&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Hiding Passwords and Secret Keys in Environment Variables</title><link href="https://janiceto.github.io/programming-notes-blog/os-env-vars.html" rel="alternate"></link><published>2018-05-14T01:41:00+01:00</published><updated>2018-05-14T01:41:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-05-14:/programming-notes-blog/os-env-vars.html</id><summary type="html">&lt;h3&gt;Adding a Environment Variable&amp;nbsp;(Windows)&lt;/h3&gt;
+&lt;p&gt;System Menu &amp;gt; &lt;code&gt;Advanced System Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Environment Variables...&lt;/code&gt; &amp;gt; in User Variables click &lt;code&gt;New...&lt;/code&gt; &amp;gt; insert variable name (VAR_NAME) and value&amp;nbsp;(VAR_VALUE)&lt;/p&gt;
+&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
+&lt;h3&gt;Adding a Environment Variable (Linux and&amp;nbsp;Mac)&lt;/h3&gt;
+&lt;p&gt;Open the&amp;nbsp;terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; 
+$ nano .bash_profile …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3&gt;Adding a Environment Variable&amp;nbsp;(Windows)&lt;/h3&gt;
+&lt;p&gt;System Menu &amp;gt; &lt;code&gt;Advanced System Settings&lt;/code&gt; &amp;gt; &lt;code&gt;Environment Variables...&lt;/code&gt; &amp;gt; in User Variables click &lt;code&gt;New...&lt;/code&gt; &amp;gt; insert variable name (VAR_NAME) and value&amp;nbsp;(VAR_VALUE)&lt;/p&gt;
+&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
+&lt;h3&gt;Adding a Environment Variable (Linux and&amp;nbsp;Mac)&lt;/h3&gt;
+&lt;p&gt;Open the&amp;nbsp;terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; 
+$ nano .bash_profile
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Using &lt;span class="caps"&gt;GNU&lt;/span&gt;&amp;nbsp;Screen&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen             &lt;span class="c1"&gt;# to start a screen session&lt;/span&gt;
-$ run-a-process
-CTRL+a , d           &lt;span class="c1"&gt;# to detatch from your screen session&lt;/span&gt;
-$ &lt;span class="nb"&gt;exit&lt;/span&gt;               &lt;span class="c1"&gt;# to disconnect from the server, while run-a-process continues&lt;/span&gt;
-$ screen -r          &lt;span class="c1"&gt;# to resume the screen session when you come back to your laptop&lt;/span&gt;
+&lt;p&gt;To the file add the line and&amp;nbsp;save:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;export VAR_NAME=&amp;quot;VAR_VALUE&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Using&amp;nbsp;tmux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="n"&gt;tmux …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup long-running-process &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
-$ &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;p&gt;When coding it may be necessary to restart your &lt;span class="caps"&gt;IDE&lt;/span&gt; or text&amp;nbsp;editor.&lt;/p&gt;
+&lt;h3&gt;Acessing your Environment Variables in&amp;nbsp;Python&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="n"&gt;var1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;VAR_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html" rel="alternate"></link><published>2018-03-05T23:00:00+00:00</published><updated>2018-03-05T23:00:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-03-05:/programming-notes-blog/ubuntu-vps.html</id><summary type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
+&lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Using &lt;span class="caps"&gt;GNU&lt;/span&gt;&amp;nbsp;Screen&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen             &lt;span class="c1"&gt;# to start a screen session&lt;/span&gt;
-$ run-a-process
-CTRL+a , d           &lt;span class="c1"&gt;# to detatch from your screen session&lt;/span&gt;
-$ &lt;span class="nb"&gt;exit&lt;/span&gt;               &lt;span class="c1"&gt;# to disconnect from the server, while run-a-process continues&lt;/span&gt;
-$ screen -r          &lt;span class="c1"&gt;# to resume the screen session when you come back to your laptop&lt;/span&gt;
+&lt;p&gt;You can do a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
+&lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install apache2
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Using&amp;nbsp;tmux&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="n"&gt;tmux&lt;/span&gt;               &lt;span class="c c-Singleline"&gt;# to start a screen session&lt;/span&gt;
-$ &lt;span class="n"&gt;run-a-process&lt;/span&gt;
-&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;        &lt;span class="c c-Singleline"&gt;# to detatch from your session&lt;/span&gt;
-$ &lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;attach&lt;/span&gt;        &lt;span class="c c-Singleline"&gt;# to resume the session when you come back to your laptop&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes-blog/crontab.html" rel="alternate"></link><published>2017-01-17T15:23:00+00:00</published><updated>2017-01-17T15:23:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-17:/programming-notes-blog/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can do a spot check right away to verify that everything went as planned by visiting your server&amp;#8217;s public &lt;span class="caps"&gt;IP&lt;/span&gt; address in your web browser. You will see the default Ubuntu 16.04 Apache web&amp;nbsp;page.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://your_server_IP_address
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;How To Find your Server&amp;#8217;s Public &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;Address&lt;/h3&gt;
+&lt;p&gt;Usually, this is the address you use to connect to your server through &lt;span class="caps"&gt;SSH&lt;/span&gt;. However you can find the &lt;span class="caps"&gt;IP&lt;/span&gt; address from the command line by typing&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ip addr show eth0 &lt;span class="p"&gt;|&lt;/span&gt; grep inet &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{ print $2; }&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/\/.*$//&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Alternatively you can use &lt;code&gt;curl&lt;/code&gt; to contact an outside party to tell you how it sees your server. You can do this by asking a specific server what your &lt;span class="caps"&gt;IP&lt;/span&gt; address&amp;nbsp;is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install curl
+$ curl http://icanhazip.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2) Install&amp;nbsp;MySQL&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install mysql-server mysql-client
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;During the installation, your server will ask you to select and confirm a password for the MySQL &amp;#8220;root&amp;#8221; user. This is an administrative account in MySQL that has increased privileges. Think of it as being similar to the root account for the server itself (the one you are configuring now is a MySQL-specific account, however). Make sure this is a strong, unique password, and do not leave it&amp;nbsp;blank.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Optional:&lt;/strong&gt; Run a simple security script that will remove some dangerous defaults and lock down access to our database system a little bit. See more info on this on reference&amp;nbsp;[2].&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mysql_secure_installation
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3) Install and enable&amp;nbsp;mod_wsgi&lt;/h2&gt;
+&lt;p&gt;&lt;span class="caps"&gt;WSGI&lt;/span&gt; (Web Server Gateway Interface) is an interface between web servers and web apps for python. Mod_wsgi is an Apache &lt;span class="caps"&gt;HTTP&lt;/span&gt; server mod that enables Apache to serve Flask&amp;nbsp;applications.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copy in your Flask app directory struture. It should look like&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;|----FlaskApp
+|---------FlaskApp
+|--------------static
+|--------------templates
+|--------------__init__.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4) Install Flask and&amp;nbsp;virtualenv&lt;/h2&gt;
+&lt;p&gt;Install &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install python-pip 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;virtualenv&lt;/code&gt; and create a new virtual environment names &lt;code&gt;venv&lt;/code&gt; for the Flask&amp;nbsp;app&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install virtualenv 
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/FlaskApp/FlaskApp
+$ sudo virtualenv venv
+$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;Flask&lt;/code&gt; and other necessary Flask plug-ins and&amp;nbsp;extensions&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install Flask 
+$ sudo pip install flask-mysqldb
+$ sudo pip install Flask-WTF
+$ sudo pip install passlib
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Test if the installation is successful and the app is&amp;nbsp;running:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python __init__.py 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It should display “Running on http://localhost:5000/” or &amp;#8220;Running on http://127.0.0.1:5000/&amp;#8221;. If you see this message, you have successfully configured the&amp;nbsp;app.&lt;/p&gt;
+&lt;p&gt;To deactivate the environment, give the following&amp;nbsp;command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;5) Configure and Enable a New Virtual&amp;nbsp;Host&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo nano /etc/apache2/sites-available/FlaskApp.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following lines of code to the file to configure the virtual host. Be sure to change the ServerName to your domain or cloud server&amp;#8217;s &lt;span class="caps"&gt;IP&lt;/span&gt;&amp;nbsp;address:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        ServerName mywebsite.com
+        ServerAlias www.mywebsite.com
+        ServerAdmin admin@mywebsite.com
+        WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+        &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/FlaskApp/FlaskApp&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            Order allow,deny
+            Allow from all
+        &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+        Alias /static /var/www/FlaskApp/FlaskApp/static
+        &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;/var/www/FlaskApp/FlaskApp/static&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            Order allow,deny
+            Allow from all
+        &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+        ErrorLog &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/error.log
+        LogLevel warn
+        CustomLog &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;APACHE_LOG_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/access.log combined
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Enable the virtual host with the following&amp;nbsp;command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo a2ensite FlaskApp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;6) Create the .wsgi&amp;nbsp;File&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/www/FlaskApp
+$ sudo nano flaskapp.wsgi 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following lines of code to the flaskapp.wsgi&amp;nbsp;file:&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/python&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logging&lt;/span&gt;
+&lt;span class="n"&gt;logging&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basicConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stream&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stderr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/www/FlaskApp/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;FlaskApp&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;
+&lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;secret_key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Add your secret key&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;h2&gt;7) Restart&amp;nbsp;Apache&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo service apache2 restart 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To view your application, open your browser and navigate to the domain name or &lt;span class="caps"&gt;IP&lt;/span&gt; address that you entered in your virtual host&amp;nbsp;configuration.&lt;/p&gt;
+&lt;h2&gt;Final directory&amp;nbsp;structure&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;|--------FlaskApp
+|----------------FlaskApp
+|-----------------------static
+|-----------------------templates
+|-----------------------venv
+|-----------------------__init__.py
+|----------------flaskapp.wsgi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Useful&amp;nbsp;references:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps"&gt;How To Deploy a Flask Application on an Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04"&gt;How To Install Linux, Apache, MySQL, &lt;span class="caps"&gt;PHP&lt;/span&gt; (&lt;span class="caps"&gt;LAMP&lt;/span&gt;) stack on Ubuntu&amp;nbsp;16.04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04"&gt;Initial Server Setup with Ubuntu&amp;nbsp;16.04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="flask.html"&gt;Building a Flask&amp;nbsp;site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Create a Windows batch script</title><link href="https://janiceto.github.io/programming-notes-blog/batch-script.html" rel="alternate"></link><published>2017-11-17T10:30:00+00:00</published><updated>2017-11-17T10:30:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-11-17:/programming-notes-blog/batch-script.html</id><summary type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
+&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A batch file is a text file with the extension &lt;strong&gt;.bat&lt;/strong&gt; that contains one or more command line commands to be run&amp;nbsp;consecutively. &lt;/p&gt;
+&lt;h2&gt;Some usefull&amp;nbsp;commands:&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;@echo&lt;/strong&gt; - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code. If any issues arise from the batch file, you will be able to view the issues associated with your script using the echo function. Adding a following off to this parameter will allow you to quickly close your script after it has&amp;nbsp;finished.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; - This will provide a title for your batch script in your Command Prompt&amp;nbsp;window.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cls&lt;/strong&gt; - Clears your command prompt, best used when extraneous code can make what you’re accessing had to&amp;nbsp;find.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;rem&lt;/strong&gt; &lt;span class="caps"&gt;OR&lt;/span&gt; &lt;strong&gt;::&lt;/strong&gt; - Shorthand for remark. Rem statements are not entered into your code. Instead, they are used to explain and give information regarding the&amp;nbsp;code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;%%a&lt;/strong&gt; - Each file in the&amp;nbsp;folder.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(“.\”)&lt;/strong&gt; - The root folder. When using the command prompt, one must direct the prompt to a particular directory before changing a files name, deleting a file, and so on. With batch files, you only need to paste your .bat file into the directory of your&amp;nbsp;choosing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;pause&lt;/strong&gt; - Allows a break in the logical chain of your .bat file. This allows for users to read over command lines before proceeding with the code. The phrase “Press any key to continue…” will denote a&amp;nbsp;pause.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;start “” [website]&lt;/strong&gt; - Will head to a website of your choice using your default web&amp;nbsp;browser.&lt;/p&gt;
+&lt;p&gt;A complete list can be found &lt;a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Useful batch&amp;nbsp;files:&lt;/h2&gt;
+&lt;h3&gt;Start Flask&amp;nbsp;server&lt;/h3&gt;
+&lt;p&gt;The following script starts a Flask development server provided the batch file is located in the project root&amp;nbsp;directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;echo off
+cd %localhost%
+call venv\Scripts\activate.bat
+start python dashboard\__init__.py
+pause
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Initial Server Setup with Ubuntu 18.04</title><link href="https://janiceto.github.io/programming-notes-blog/server-setup.html" rel="alternate"></link><published>2017-05-14T23:52:00+01:00</published><updated>2017-05-14T23:52:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-05-14:/programming-notes-blog/server-setup.html</id><summary type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
+&lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
+&lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
+&lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
+&lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that we will use to log in from now&amp;nbsp;on.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;adduser synergix&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enter a strong password and, optionally, fill in any of the additional information if you would like. This is not required and you can just hit &lt;span class="caps"&gt;ENTER&lt;/span&gt; in any field you wish to&amp;nbsp;skip.&lt;/p&gt;
+&lt;h2&gt;2) Granting Administrative&amp;nbsp;Privileges&lt;/h2&gt;
+&lt;p&gt;Set up what is known as &amp;#8220;superuser&amp;#8221; or root privileges for our normal account. This will allow our normal user to run commands with administrative privileges by putting the word &lt;code&gt;sudo&lt;/code&gt; before each command. As &lt;strong&gt;root&lt;/strong&gt;, run this command to add your new user to the sudo&amp;nbsp;group:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;usermod -aG sudo synergix&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;3) Setting Up a Basic&amp;nbsp;Firewall&lt;/h2&gt;
+&lt;p&gt;Ubuntu 18.04 servers can use the &lt;span class="caps"&gt;UFW&lt;/span&gt; firewall to make sure only connections to certain services are allowed. We can set up a basic firewall very easily using this&amp;nbsp;application.&lt;/p&gt;
+&lt;p&gt;Different applications can register their profiles with &lt;span class="caps"&gt;UFW&lt;/span&gt; upon installation. These profiles allow &lt;span class="caps"&gt;UFW&lt;/span&gt; to manage these applications by name. OpenSSH, the service allowing us to connect to our server now, has a profile registered with &lt;span class="caps"&gt;UFW&lt;/span&gt;. You can see this by&amp;nbsp;typing:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ufw app list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Afterwards, we can enable the firewall by&amp;nbsp;typing:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ufw enable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Type &amp;#8220;y&amp;#8221; and press &lt;span class="caps"&gt;ENTER&lt;/span&gt; to proceed. You can see that &lt;span class="caps"&gt;SSH&lt;/span&gt; connections are still allowed by&amp;nbsp;typing:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ufw status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;As the firewall is currently blocking all connections except for &lt;span class="caps"&gt;SSH&lt;/span&gt;, if you install and configure additional services, you will need to adjust the firewall settings to allow acceptable traffic in. More info here:&amp;nbsp;https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands&lt;/p&gt;
+&lt;h2&gt;4) Enabling External Access for Your Regular&amp;nbsp;User&lt;/h2&gt;
+&lt;p&gt;Now that we have a regular user for daily use, we need to make sure we can &lt;span class="caps"&gt;SSH&lt;/span&gt; into the account directly. The process for configuring &lt;span class="caps"&gt;SSH&lt;/span&gt; access for your new user depends on whether your server&amp;#8217;s root account uses a password or &lt;span class="caps"&gt;SSH&lt;/span&gt; keys for&amp;nbsp;authentication.&lt;/p&gt;
+&lt;h4&gt;If the Root Account Uses Password&amp;nbsp;Authentication&lt;/h4&gt;
+&lt;p&gt;If you logged in to your root account using a password, then password authentication is enabled for &lt;span class="caps"&gt;SSH&lt;/span&gt;. You can &lt;span class="caps"&gt;SSH&lt;/span&gt; to your new user account by opening up a new terminal session and using &lt;span class="caps"&gt;SSH&lt;/span&gt; with your new&amp;nbsp;username:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh synergix@your_server_ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After entering your regular user&amp;#8217;s password, you will be logged in. You will be prompted for your regular user password when using sudo for the first time each session (and periodically&amp;nbsp;afterwards).&lt;/p&gt;
+&lt;p&gt;To enhance your server&amp;#8217;s security, it is recommended to set up &lt;span class="caps"&gt;SSH&lt;/span&gt; keys instead of using password authentication:&amp;nbsp;https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804&lt;/p&gt;
+&lt;h4&gt;If the Root Account Uses &lt;span class="caps"&gt;SSH&lt;/span&gt; Key&amp;nbsp;Authentication&lt;/h4&gt;
+&lt;p&gt;If you logged in to your root account using &lt;span class="caps"&gt;SSH&lt;/span&gt; keys, then password authentication is disabled for &lt;span class="caps"&gt;SSH&lt;/span&gt;. You will need to add a copy of your local public key to the new user&amp;#8217;s &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; file to log in&amp;nbsp;successfully.&lt;/p&gt;
+&lt;p&gt;Since your public key is already in the root account&amp;#8217;s &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; file on the server, we can copy that file and directory structure to our new user account in our existing&amp;nbsp;session.&lt;/p&gt;
+&lt;p&gt;The simplest way to copy the files with the correct ownership and permissions is with the &lt;code&gt;rsync&lt;/code&gt; command. This will copy the root user&amp;#8217;s .ssh directory, preserve the permissions, and modify the file owners, all in a single&amp;nbsp;command:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rsync --archive --chown=synergix:synergix ~/.ssh /home/synergix&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now, open up a new terminal session and using &lt;span class="caps"&gt;SSH&lt;/span&gt; with your new&amp;nbsp;username:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh synergix@your_server_ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You should be logged in to the new user account without using a&amp;nbsp;password. &lt;/p&gt;
+&lt;h2&gt;5)&amp;nbsp;Other&lt;/h2&gt;
+&lt;p&gt;Chose the timezone by running: &lt;code&gt;sudo dpkg-reconfigure tzdata&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;References:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04"&gt;https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes-blog/crontab.html" rel="alternate"></link><published>2017-01-17T15:23:00+00:00</published><updated>2017-01-17T15:23:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-17:/programming-notes-blog/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then …&lt;/p&gt;</summary><content type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
@@ -743,46 +709,8 @@ $ &lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;attach&lt;/span&
 
 
 &lt;h3&gt;Helpfull&amp;nbsp;links:&lt;/h3&gt;
-&lt;p&gt;https://crontab.guru&lt;/p&gt;</content></entry><entry><title>Development environments</title><link href="https://janiceto.github.io/programming-notes-blog/dev-environments.html" rel="alternate"></link><published>2017-01-01T19:07:00+00:00</published><updated>2017-01-01T19:07:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-01:/programming-notes-blog/dev-environments.html</id><summary type="html">&lt;p&gt;My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&amp;nbsp;Pycharm.&lt;/p&gt;
-&lt;h2&gt;Atom&lt;/h2&gt;
-&lt;h4&gt;Essentials&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Visual Studio&amp;nbsp;Code&lt;/h2&gt;
-&lt;h4&gt;Essentials&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python"&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner"&gt;Code Runner&lt;/a&gt; for Python and&amp;nbsp;more&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"&gt;Live Server&lt;/a&gt; for web&amp;nbsp;dev&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;Other&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"&gt;OneDark-Pro&amp;nbsp;theme&lt;/a&gt; &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython"&gt;Magic&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer"&gt;Bracket Pair&amp;nbsp;Colorizer&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><content type="html">&lt;p&gt;My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&amp;nbsp;Pycharm.&lt;/p&gt;
-&lt;h2&gt;Atom&lt;/h2&gt;
-&lt;h4&gt;Essentials&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Visual Studio&amp;nbsp;Code&lt;/h2&gt;
-&lt;h4&gt;Essentials&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python"&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner"&gt;Code Runner&lt;/a&gt; for Python and&amp;nbsp;more&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"&gt;Live Server&lt;/a&gt; for web&amp;nbsp;dev&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;Other&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"&gt;OneDark-Pro&amp;nbsp;theme&lt;/a&gt; &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython"&gt;Magic&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer"&gt;Bracket Pair&amp;nbsp;Colorizer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://crontab.guru"&gt;https://crontab.guru&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content></entry><entry><title>Git Version Control System</title><link href="https://janiceto.github.io/programming-notes-blog/git.html" rel="alternate"></link><published>2016-08-25T20:19:00+01:00</published><updated>2016-08-25T20:19:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-08-25:/programming-notes-blog/git.html</id><summary type="html">&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
 &lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
 &lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
@@ -812,4 +740,66 @@ git commit -m &amp;quot;remove file1.txt&amp;quot;
 
 &lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin branch_name  
-&lt;/pre&gt;&lt;/div&gt;</content></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Keep SSH sessions running after disconnecting</title><link href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html" rel="alternate"></link><published>2016-04-21T20:38:00+01:00</published><updated>2016-04-21T20:38:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-04-21:/programming-notes-blog/keep-ssh-running.html</id><summary type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup long-running-process &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+$ &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using &lt;span class="caps"&gt;GNU&lt;/span&gt;&amp;nbsp;Screen&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen             &lt;span class="c1"&gt;# to start a screen session&lt;/span&gt;
+$ run-a-process
+CTRL+a , d           &lt;span class="c1"&gt;# to detatch from your screen session&lt;/span&gt;
+$ &lt;span class="nb"&gt;exit&lt;/span&gt;               &lt;span class="c1"&gt;# to disconnect from the server, while run-a-process continues&lt;/span&gt;
+$ screen -r          &lt;span class="c1"&gt;# to resume the screen session when you come back to your laptop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using&amp;nbsp;tmux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="n"&gt;tmux …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup long-running-process &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+$ &lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using &lt;span class="caps"&gt;GNU&lt;/span&gt;&amp;nbsp;Screen&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen             &lt;span class="c1"&gt;# to start a screen session&lt;/span&gt;
+$ run-a-process
+CTRL+a , d           &lt;span class="c1"&gt;# to detatch from your screen session&lt;/span&gt;
+$ &lt;span class="nb"&gt;exit&lt;/span&gt;               &lt;span class="c1"&gt;# to disconnect from the server, while run-a-process continues&lt;/span&gt;
+$ screen -r          &lt;span class="c1"&gt;# to resume the screen session when you come back to your laptop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Using&amp;nbsp;tmux&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="n"&gt;tmux&lt;/span&gt;               &lt;span class="c c-Singleline"&gt;# to start a screen session&lt;/span&gt;
+$ &lt;span class="n"&gt;run-a-process&lt;/span&gt;
+&lt;span class="n"&gt;Ctrl&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;        &lt;span class="c c-Singleline"&gt;# to detatch from your session&lt;/span&gt;
+$ &lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;attach&lt;/span&gt;        &lt;span class="c c-Singleline"&gt;# to resume the session when you come back to your laptop&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Development environments</title><link href="https://janiceto.github.io/programming-notes-blog/dev-environments.html" rel="alternate"></link><published>2016-01-09T19:07:00+00:00</published><updated>2016-01-09T19:07:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-01-09:/programming-notes-blog/dev-environments.html</id><summary type="html">&lt;p&gt;My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&amp;nbsp;Pycharm.&lt;/p&gt;
+&lt;h2&gt;Visual Studio&amp;nbsp;Code&lt;/h2&gt;
+&lt;h4&gt;Essentials&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python"&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner"&gt;Code Runner&lt;/a&gt; for Python and&amp;nbsp;more&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"&gt;Live Server&lt;/a&gt; for web&amp;nbsp;dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Other&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"&gt;OneDark-Pro&amp;nbsp;theme&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython"&gt;Magic&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer"&gt;Bracket Pair&amp;nbsp;Colorizer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><content type="html">&lt;p&gt;My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&amp;nbsp;Pycharm.&lt;/p&gt;
+&lt;h2&gt;Visual Studio&amp;nbsp;Code&lt;/h2&gt;
+&lt;h4&gt;Essentials&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python"&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner"&gt;Code Runner&lt;/a&gt; for Python and&amp;nbsp;more&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"&gt;Live Server&lt;/a&gt; for web&amp;nbsp;dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Other&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme"&gt;OneDark-Pro&amp;nbsp;theme&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython"&gt;Magic&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer"&gt;Bracket Pair&amp;nbsp;Colorizer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry></feed>

@@ -1,5 +1,5 @@
 Title: Useful Python code snippets
-Date: 2018-06-19 23:33 
+Date: 2018-03-19 23:33 
 Authors: José Aniceto
 
 

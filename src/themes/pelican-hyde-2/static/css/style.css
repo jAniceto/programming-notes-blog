@@ -1,3 +1,11 @@
+/* 
+CONTENT 
+- Sidebar styles
+- Category pages styles
+*/
+
+
+/* Sidebar styles */
 .sidebar {
   text-align: left;
 }
@@ -14,4 +22,14 @@
 
 .sidebar-about .lead {
   font-size: 1.2rem;
+}
+
+/* Category pages styles */
+.category-list > div {
+  margin-bottom: 0.4em
+}
+
+.date-category {
+  color: #9a9a9a;
+  font-size: 0.7em;
 }

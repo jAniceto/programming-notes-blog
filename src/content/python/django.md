@@ -1,5 +1,5 @@
 Title: Building a Django site
-Date: 2016-08-15 22:47 
+Date: 2018-07-15 22:47 
 Authors: José Aniceto
 
 

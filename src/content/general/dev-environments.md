@@ -1,16 +1,9 @@
 Title: Development environments
-Date: 2017-01-01 19:07 
+Date: 2016-01-09 19:07 
 Authors: José Aniceto
 
 
 My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use Pycharm.
-
-## Atom
-
-#### Essentials
-- []()
-- []()
-- []()
 
 
 ## Visual Studio Code

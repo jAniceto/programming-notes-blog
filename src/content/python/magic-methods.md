@@ -1,7 +1,9 @@
-Title: Introduction
+Title: Python Magix Methods
 Date: 2017-04-29 16:10 
 Authors: José Aniceto
 
+
+## Introduction
 
 This guide is the culmination of a few months' worth of blog posts. The subject is **magic methods**.
 

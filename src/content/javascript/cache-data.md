@@ -5,8 +5,8 @@ Authors: José Aniceto
 
 You have three options:
 
-1. Cookies: https://developer.mozilla.org/en-US/docs/DOM/document.cookie
-2. DOMStorage (sessionStorage or localStorage): https://developer.mozilla.org/en-US/docs/DOM/Storage
+1. Cookies: [https://developer.mozilla.org/en-US/docs/DOM/document.cookie](https://developer.mozilla.org/en-US/docs/DOM/document.cookie)
+2. DOMStorage (sessionStorage or localStorage): [https://developer.mozilla.org/en-US/docs/DOM/Storage](https://developer.mozilla.org/en-US/docs/DOM/Storage)
 3. If your users are logged in, you could persist data in your server's DB that is keyed to a user (or group)
 
 
@@ -42,4 +42,4 @@ Unless you want to be compatible with IE7, you have no reason to use the obsolet
 
 
 ### References
-https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable
+[https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable](https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable)

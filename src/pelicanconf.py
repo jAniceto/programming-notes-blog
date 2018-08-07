@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'José Aniceto'
 SITENAME = 'Annotatio'
-BIO = 'A collection of codding notes and snippets from my journey of self taught programming.'
+BIO = 'A collection of codding notes and snippets from my journey to self taught programming.'
 # PROFILE_IMAGE = 'photoB&W2_square.jpg'
 
 PATH = 'content'
@@ -37,8 +37,8 @@ RELATIVE_URLS = True
 TYPOGRIFY = True
 THEME = 'themes/pelican-hyde-2'
 HYDE_THEME = 'theme-flat'
-STATIC_PATHS = ['images', 'extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+STATIC_PATHS = ['images']
+# EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 USE_FOLDER_AS_CATEGORY = True
 # ARTICLE_PATHS = ['']
 SLUGIFY_SOURCE = 'basename'
