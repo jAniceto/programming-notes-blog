@@ -154,25 +154,6 @@ $ nano .bash_profile …</pre></div>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/os-env-vars.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/store-dicts.html#store-dicts">
-					<a href="https://janiceto.github.io/programming-notes-blog/store-dicts.html#store-dicts">Storing dictionaries for later use: <span class="caps">JSON</span> and&nbsp;Pickle</a>
-				</h1>
-				<span class="post-date">Thu 10 May 2018</span>
-				<p>
-					<h2><span class="caps">JSON</span></h2>
-<p><strong>Saving:</strong></p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&nbsp;spaces.</p>
-<div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fp …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/store-dicts.html">Continue reading »</a>
-			</div>
-			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/slice-notation.html#slice-notation">
 					<a href="https://janiceto.github.io/programming-notes-blog/slice-notation.html#slice-notation">Slice&nbsp;notation</a>
 				</h1>
@@ -220,6 +201,30 @@ $ sudo apt-get install apache2
 <p>You can do a …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">
+					<a href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</a>
+				</h1>
+				<span class="post-date">Mon 22 January 2018</span>
+				<p>
+					<p>Let&#8217;s start with a simple example and some importante&nbsp;definitions:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>  <span class="c1"># &lt;-- instance variable</span>
+
+    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;- instance method</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># &lt;-- class method</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+
+<span class="k">def …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/classes.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

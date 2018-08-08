@@ -102,6 +102,6 @@ where `mcr_root` represents the name of your top-level MATLAB installation folde
 
 ## References
 
-* https://www.mathworks.com/help/compiler_sdk/gs/create-a-python-application-with-matlab-code.html
-* https://www.mathworks.com/help/matlab/matlab-engine-for-python.html
-* https://www.mathworks.com/help/compiler/deployment-process.html
+* [https://www.mathworks.com/help/compiler_sdk/gs/create-a-python-application-with-matlab-code.html](https://www.mathworks.com/help/compiler_sdk/gs/create-a-python-application-with-matlab-code.html)
+* [https://www.mathworks.com/help/matlab/matlab-engine-for-python.html](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html)
+* [https://www.mathworks.com/help/compiler/deployment-process.html](https://www.mathworks.com/help/compiler/deployment-process.html)

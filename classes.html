@@ -61,7 +61,8 @@
 <div class="post">
 	<h1 class="post-title">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</h1>
 	<span class="post-date">Mon 22 January 2018</span>
-	<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+	<p>Let&#8217;s start with a simple example and some importante&nbsp;definitions:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -120,7 +121,7 @@
 
 
 <p>So if you wanted to call this method you&#8217;d do something like this: <code>airplane1.fly()</code>. Actually this is the same thing as this: <code>Airplane.fly(airplane1)</code>. Both of these would do the same thing, i.e. print out &#8220;I&#8217;m flying!&#8221;. So <code>airplane1</code> is the instance that we used to call our <code>fly</code> method. This instance is what gets passed to <code>self</code>. </p>
-<h3>Classes</h3>
+<h3>Another&nbsp;example</h3>
 <div class="highlight"><pre><span></span><span class="c1"># Function, this lives outside a class</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>

@@ -61,7 +61,9 @@
 <div class="post">
 	<h1 class="post-title">*args and&nbsp;**kwargs</h1>
 	<span class="post-date">Fri 27 January 2017</span>
-	<h3>A normal&nbsp;function:</h3>
+	<p><em>args and </em>*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&nbsp;keywords.</p>
+<p>Note that it is not necessary to write <em>args or <strong>kwargs. Only the * (aesteric) is necessary. You can also write *var and </strong>vars. Writing </em>args and **kwargs is just a&nbsp;convention.</p>
+<h3>A normal&nbsp;function:</h3>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
   <span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
   <span class="k">print</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
@@ -72,7 +74,8 @@
 </pre></div>
 
 
-<h3>*args&nbsp;usage:</h3>
+<h3>*args&nbsp;usage</h3>
+<p>*args is used to send a non-keyworded variable length argument list to the function. Here’s an&nbsp;example:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span>
@@ -97,6 +100,7 @@
 
 
 <h3>**kwargs&nbsp;usage:</h3>
+<p><strong>kwargs allows you to pass keyworded variable length of arguments to a function. You should use </strong>kwargs if you want to handle named arguments in a function. Here is an&nbsp;example:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func4</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -106,6 +110,12 @@
 
 <span class="n">func4</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Correct</span>
 <span class="n">func4</span><span class="p">(</span><span class="n">key1</span> <span class="o">=</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="n">key2</span> <span class="o">=</span> <span class="s1">&#39;value2&#39;</span><span class="p">,</span> <span class="n">key3</span> <span class="o">=</span> <span class="s1">&#39;value3&#39;</span><span class="p">)</span>  <span class="c1"># Correct</span>
+</pre></div>
+
+
+<h3>Order of using <em>args </em>*kwargs and formal&nbsp;args</h3>
+<p>If you want to use all three of these in functions then the order&nbsp;is:</p>
+<div class="highlight"><pre><span></span><span class="n">some_func</span><span class="p">(</span><span class="n">fargs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 	<br><br><br>
 	<div id="disqus_thread"></div>

@@ -23,4 +23,4 @@ soup = BeautifulSoup(source, 'lxml')
 
 ## References
 
-https://www.youtube.com/watch?v=ng2o98k983k
+* [https://www.youtube.com/watch?v=ng2o98k983k](https://www.youtube.com/watch?v=ng2o98k983k)

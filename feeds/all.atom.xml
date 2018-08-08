@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-08-02T19:08:00+01:00</updated><entry><title>Run Matlab programs in Python</title><link href="https://janiceto.github.io/programming-notes-blog/matlab.html" rel="alternate"></link><published>2018-08-02T19:08:00+01:00</published><updated>2018-08-02T19:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-02:/programming-notes-blog/matlab.html</id><summary type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-08-08T13:33:00+01:00</updated><entry><title>Run Matlab programs in Python</title><link href="https://janiceto.github.io/programming-notes-blog/matlab.html" rel="alternate"></link><published>2018-08-02T19:08:00+01:00</published><updated>2018-08-02T19:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-02:/programming-notes-blog/matlab.html</id><summary type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
 &lt;h2&gt;Requirements&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;A Matlab version with a license …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
@@ -87,9 +87,9 @@ Extract the contents of the &lt;span class="caps"&gt;MATLAB&lt;/span&gt; Runtime
 &lt;p&gt;where &lt;code&gt;mcr_root&lt;/code&gt; represents the name of your top-level &lt;span class="caps"&gt;MATLAB&lt;/span&gt; installation&amp;nbsp;folder.&lt;/p&gt;
 &lt;h2&gt;References&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;https://www.mathworks.com/help/compiler_sdk/gs/create-a-python-application-with-matlab-code.html&lt;/li&gt;
-&lt;li&gt;https://www.mathworks.com/help/matlab/matlab-engine-for-python.html&lt;/li&gt;
-&lt;li&gt;https://www.mathworks.com/help/compiler/deployment-process.html&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mathworks.com/help/compiler_sdk/gs/create-a-python-application-with-matlab-code.html"&gt;https://www.mathworks.com/help/compiler_sdk/gs/create-a-python-application-with-matlab-code.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mathworks.com/help/matlab/matlab-engine-for-python.html"&gt;https://www.mathworks.com/help/matlab/matlab-engine-for-python.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.mathworks.com/help/compiler/deployment-process.html"&gt;https://www.mathworks.com/help/compiler/deployment-process.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content></entry><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django.html" rel="alternate"></link><published>2018-07-21T18:13:00+01:00</published><updated>2018-07-21T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-21:/programming-notes-blog/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
 &lt;h2&gt;1) Initial Server&amp;nbsp;Setup&lt;/h2&gt;
 &lt;p&gt;Perform the initial server setup as detailed &lt;a href="server-setup.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -798,48 +798,6 @@ $ nano .bash_profile
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
 &lt;span class="n"&gt;var1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;VAR_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Storing dictionaries for later use: JSON and Pickle</title><link href="https://janiceto.github.io/programming-notes-blog/store-dicts.html" rel="alternate"></link><published>2018-05-10T10:58:00+01:00</published><updated>2018-05-10T10:58:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-05-10:/programming-notes-blog/store-dicts.html</id><summary type="html">&lt;h2&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
-&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&amp;nbsp;spaces.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
-&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&amp;nbsp;spaces.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sort_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;indent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Loading:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;json.dump() vs json.dumps(), json.load() vs&amp;nbsp;json.loads()&lt;/h4&gt;
-&lt;p&gt;If you want to dump the &lt;span class="caps"&gt;JSON&lt;/span&gt; into a file/socket or whatever, then you should go for &lt;code&gt;dump()&lt;/code&gt;. If you only need it as a string (for printing, parsing or whatever) then use &lt;code&gt;dumps()&lt;/code&gt; (dump string). The functions with an &lt;code&gt;s&lt;/code&gt; take string parameters. The others take file&amp;nbsp;streams.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2&gt;Pickle&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cPickle&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;
-&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.p&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Loading:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.p&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Slice notation</title><link href="https://janiceto.github.io/programming-notes-blog/slice-notation.html" rel="alternate"></link><published>2018-03-30T03:19:00+01:00</published><updated>2018-03-30T03:19:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-03-30:/programming-notes-blog/slice-notation.html</id><summary type="html">&lt;p&gt;The &lt;span class="caps"&gt;ASCII&lt;/span&gt; art diagram is helpful too for remembering how slices&amp;nbsp;work:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; +---+---+---+---+---+---+
  | P | y | t | h | o | n |
@@ -933,7 +891,6 @@ $ nano .bash_profile
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;a href="http://www.youtube.com/watch?v=cKlnR-CB3tk" title="Python: Lambda, Map, Filter, Reduce Functions"&gt;&lt;img alt="IMAGE ALT TEXT" src="http://img.youtube.com/vi/cKlnR-CB3tk/0.jpg"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Arange and&amp;nbsp;Linspace&lt;/h2&gt;
 &lt;p&gt;For creating quick and easy Numpy arrays, look no further than the arange and linspace functions. Each one has their specific purpose, but the appeal here (instead of using range), is that they output NumPy arrays, which are typically easier to work with for data&amp;nbsp;science.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Arange&lt;/strong&gt; returns evenly spaced values within a given interval. Along with a starting and stopping point, you can also define a step size or data type if necessary. Note that the stopping point is a ‘cut-off’ value, so it will not be included in the array&amp;nbsp;output.&lt;/p&gt;
@@ -947,7 +904,13 @@ $ nano .bash_profile
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# np.linspace(start, stop, num)&lt;/span&gt;
 &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;3.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;# array([ 2.0,  2.25,  2.5,  2.75, 3.0])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html" rel="alternate"></link><published>2018-03-05T23:00:00+00:00</published><updated>2018-03-05T23:00:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-03-05:/programming-notes-blog/ubuntu-vps.html</id><summary type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=cKlnR-CB3tk"&gt;https://www.youtube.com/watch?v=cKlnR-CB3tk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html" rel="alternate"></link><published>2018-03-05T23:00:00+00:00</published><updated>2018-03-05T23:00:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-03-05:/programming-notes-blog/ubuntu-vps.html</id><summary type="html">&lt;p&gt;This page details the process of seting up a Ubuntu &lt;span class="caps"&gt;VPS&lt;/span&gt; (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&amp;nbsp;used.&lt;/p&gt;
 &lt;h2&gt;1) Install&amp;nbsp;Apache&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
 $ sudo apt-get upgrade
@@ -1119,7 +1082,8 @@ $ sudo nano flaskapp.wsgi
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04"&gt;How To Install Linux, Apache, MySQL, &lt;span class="caps"&gt;PHP&lt;/span&gt; (&lt;span class="caps"&gt;LAMP&lt;/span&gt;) stack on Ubuntu&amp;nbsp;16.04&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04"&gt;Initial Server Setup with Ubuntu&amp;nbsp;16.04&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="flask.html"&gt;Building a Flask&amp;nbsp;site&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>Classes and OOP (Object Oriented Programming)</title><link href="https://janiceto.github.io/programming-notes-blog/classes.html" rel="alternate"></link><published>2018-01-22T19:14:00+00:00</published><updated>2018-01-22T19:14:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-01-22:/programming-notes-blog/classes.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/ul&gt;</content></entry><entry><title>Classes and OOP (Object Oriented Programming)</title><link href="https://janiceto.github.io/programming-notes-blog/classes.html" rel="alternate"></link><published>2018-01-22T19:14:00+00:00</published><updated>2018-01-22T19:14:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-01-22:/programming-notes-blog/classes.html</id><summary type="html">&lt;p&gt;Let&amp;#8217;s start with a simple example and some importante&amp;nbsp;definitions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="c1"&gt;# &amp;lt;-- class variable&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1132,12 +1096,8 @@ $ sudo nano flaskapp.wsgi
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="c1"&gt;# &amp;lt;-- class method&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;cls&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bar&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;foobar&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;   &lt;span class="c1"&gt;# &amp;lt;-- function&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;A function and a method are …&lt;/p&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;def …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Let&amp;#8217;s start with a simple example and some importante&amp;nbsp;definitions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Foo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="c1"&gt;# &amp;lt;-- class variable&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1196,7 +1156,7 @@ $ sudo nano flaskapp.wsgi
 
 
 &lt;p&gt;So if you wanted to call this method you&amp;#8217;d do something like this: &lt;code&gt;airplane1.fly()&lt;/code&gt;. Actually this is the same thing as this: &lt;code&gt;Airplane.fly(airplane1)&lt;/code&gt;. Both of these would do the same thing, i.e. print out &amp;#8220;I&amp;#8217;m flying!&amp;#8221;. So &lt;code&gt;airplane1&lt;/code&gt; is the instance that we used to call our &lt;code&gt;fly&lt;/code&gt; method. This instance is what gets passed to &lt;code&gt;self&lt;/code&gt;. &lt;/p&gt;
-&lt;h3&gt;Classes&lt;/h3&gt;
+&lt;h3&gt;Another&amp;nbsp;example&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Function, this lives outside a class&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
@@ -1329,79 +1289,79 @@ $ git clone &amp;lt;git url&amp;gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;3.1415926&lt;/td&gt;
-&lt;td class="2f"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:.2f}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;3.14&lt;/td&gt;
 &lt;td&gt;2 decimal places&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;3.1415926&lt;/td&gt;
-&lt;td _.2f="+.2f"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:+.2f}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;+3.14&lt;/td&gt;
 &lt;td&gt;2 decimal places with sign&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;-1&lt;/td&gt;
-&lt;td _.2f="+.2f"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:+.2f}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;-1.00&lt;/td&gt;
 &lt;td&gt;2 decimal places with sign&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;2.71828&lt;/td&gt;
-&lt;td class="0f"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:.0f}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;3&lt;/td&gt;
 &lt;td&gt;No decimal places&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;5&lt;/td&gt;
-&lt;td 0_2d="0&amp;gt;2d"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:0&amp;gt;2d}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;05&lt;/td&gt;
 &lt;td&gt;Pad number with zeros (left padding, width 2)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;5&lt;/td&gt;
-&lt;td x_4d="x&amp;lt;4d"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:x&amp;lt;4d}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;5xxx&lt;/td&gt;
 &lt;td&gt;Pad number with x’s (right padding, width 4)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;10&lt;/td&gt;
-&lt;td x_4d="x&amp;lt;4d"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:x&amp;lt;4d}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;10xx&lt;/td&gt;
 &lt;td&gt;Pad number with x’s (right padding, width 4)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;1000000&lt;/td&gt;
-&lt;td _=","&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:,}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1,000,000&lt;/td&gt;
 &lt;td&gt;Number format with comma separator&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;0.25&lt;/td&gt;
-&lt;td class="2%"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:.2%}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;25.00%&lt;/td&gt;
 &lt;td&gt;Format percentage&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;1000000000&lt;/td&gt;
-&lt;td class="2e"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:.2e}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1.00e+09&lt;/td&gt;
 &lt;td&gt;Exponent notation&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;13&lt;/td&gt;
-&lt;td 10d&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:10d}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;13&lt;/td&gt;
 &lt;td&gt;Right aligned (default, width 10)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;13&lt;/td&gt;
-&lt;td _10d="&amp;lt;10d"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:&amp;lt;10d}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;13&lt;/td&gt;
 &lt;td&gt;Left aligned (width 10)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;13&lt;/td&gt;
-&lt;td _10d="^10d"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;{:^10d}&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;13&lt;/td&gt;
 &lt;td&gt;Center aligned (width 10)&lt;/td&gt;
 &lt;/tr&gt;
@@ -1529,6 +1489,48 @@ Prerequisites are installed on Ubuntu 12.04 &lt;span class="caps"&gt;LTS&lt;/spa
 &lt;span class="c1"&gt;#Viewing EXIF data embedded in image&lt;/span&gt;
 &lt;span class="n"&gt;exif_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_getexif&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;exif_data&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Storing dictionaries for later use: JSON and Pickle</title><link href="https://janiceto.github.io/programming-notes-blog/store-dicts.html" rel="alternate"></link><published>2017-08-10T10:58:00+01:00</published><updated>2017-08-10T10:58:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-08-10:/programming-notes-blog/store-dicts.html</id><summary type="html">&lt;h2&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&amp;nbsp;spaces.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Supply extra arguments like sort_keys or indent to get a pretty result. The argument sort_keys will sort the keys alphabetically and indent will indent your data structure with indent=N&amp;nbsp;spaces.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sort_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;indent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Loading:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;json.dump() vs json.dumps(), json.load() vs&amp;nbsp;json.loads()&lt;/h4&gt;
+&lt;p&gt;If you want to dump the &lt;span class="caps"&gt;JSON&lt;/span&gt; into a file/socket or whatever, then you should go for &lt;code&gt;dump()&lt;/code&gt;. If you only need it as a string (for printing, parsing or whatever) then use &lt;code&gt;dumps()&lt;/code&gt; (dump string). The functions with an &lt;code&gt;s&lt;/code&gt; take string parameters. The others take file&amp;nbsp;streams.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Pickle&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cPickle&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.p&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Loading:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data.p&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Caching data</title><link href="https://janiceto.github.io/programming-notes-blog/cache-data.html" rel="alternate"></link><published>2017-07-14T05:36:00+01:00</published><updated>2017-07-14T05:36:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-07-14:/programming-notes-blog/cache-data.html</id><summary type="html">&lt;p&gt;You have three&amp;nbsp;options:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Cookies: &lt;a href="https://developer.mozilla.org/en-US/docs/DOM/document.cookie"&gt;https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/document.cookie&lt;/a&gt;&lt;/li&gt;
@@ -1584,7 +1586,9 @@ pip install requests
 
 
 &lt;h2&gt;References&lt;/h2&gt;
-&lt;p&gt;https://www.youtube.com/watch?v=ng2o98k983k&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Required&amp;nbsp;modules&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=ng2o98k983k"&gt;https://www.youtube.com/watch?v=ng2o98k983k&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;Required&amp;nbsp;modules&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install beautifulsoup4
 pip install lxml
 pip instal html5lib
@@ -1602,7 +1606,9 @@ pip install requests
 
 
 &lt;h2&gt;References&lt;/h2&gt;
-&lt;p&gt;https://www.youtube.com/watch?v=ng2o98k983k&lt;/p&gt;</content></entry><entry><title>Initial Server Setup with Ubuntu 18.04</title><link href="https://janiceto.github.io/programming-notes-blog/server-setup.html" rel="alternate"></link><published>2017-05-14T23:52:00+01:00</published><updated>2017-05-14T23:52:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-05-14:/programming-notes-blog/server-setup.html</id><summary type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=ng2o98k983k"&gt;https://www.youtube.com/watch?v=ng2o98k983k&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Initial Server Setup with Ubuntu 18.04</title><link href="https://janiceto.github.io/programming-notes-blog/server-setup.html" rel="alternate"></link><published>2017-05-14T23:52:00+01:00</published><updated>2017-05-14T23:52:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-05-14:/programming-notes-blog/server-setup.html</id><summary type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
 &lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
 &lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
 &lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
@@ -1694,7 +1700,7 @@ pip install requests
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://strava.github.io/api/"&gt;Strava &lt;span class="caps"&gt;API&lt;/span&gt;&amp;nbsp;Docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pythonhosted.org/stravalib/index.html"&gt;stravalib&amp;nbsp;Docs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>Python Magix Methods</title><link href="https://janiceto.github.io/programming-notes-blog/magic-methods.html" rel="alternate"></link><published>2017-04-29T16:10:00+01:00</published><updated>2017-04-29T16:10:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-04-29:/programming-notes-blog/magic-methods.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;/ul&gt;</content></entry><entry><title>Python Magic Methods</title><link href="https://janiceto.github.io/programming-notes-blog/magic-methods.html" rel="alternate"></link><published>2017-04-29T16:10:00+01:00</published><updated>2017-04-29T16:10:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-04-29:/programming-notes-blog/magic-methods.html</id><summary type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;This guide is the culmination of a few months&amp;#8217; worth of blog posts. The subject is &lt;strong&gt;magic methods&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;What are magic methods? They&amp;#8217;re everything in object-oriented Python. They&amp;#8217;re special methods that you can define to add &amp;#8220;magic&amp;#8221; to your classes. They&amp;#8217;re always surrounded by double underscores …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;This guide is the culmination of a few months&amp;#8217; worth of blog posts. The subject is &lt;strong&gt;magic methods&lt;/strong&gt;.&lt;/p&gt;
@@ -2306,7 +2312,9 @@ pip install requests
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;The goal of this guide is to bring something to anyone that reads it, regardless of their experience with Python or object-oriented programming. If you&amp;#8217;re just getting started with Python, you&amp;#8217;ve gained valuable knowledge of the basics of writing feature-rich, elegant, and easy-to-use classes. If you&amp;#8217;re an intermediate Python programmer, you&amp;#8217;ve probably picked up some slick new concepts and strategies and some good ways to reduce the amount of code written by you and clients. If you&amp;#8217;re an expert Pythonista, you&amp;#8217;ve been refreshed on some of the stuff you might have forgotten about and maybe picked up a few new tricks along the way. Whatever your experience level, I hope that this trip through Python&amp;#8217;s special methods has been truly magical. (I couldn&amp;#8217;t resist the final&amp;nbsp;pun!)&lt;/p&gt;
 &lt;h2&gt;References&lt;/h2&gt;
-&lt;p&gt;https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown&lt;/p&gt;</content></entry><entry><title>Imports in Python</title><link href="https://janiceto.github.io/programming-notes-blog/imports.html" rel="alternate"></link><published>2017-04-27T17:17:00+01:00</published><updated>2017-04-27T17:17:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-04-27:/programming-notes-blog/imports.html</id><summary type="html">&lt;h3&gt;Namespace&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown"&gt;https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Imports in Python</title><link href="https://janiceto.github.io/programming-notes-blog/imports.html" rel="alternate"></link><published>2017-04-27T17:17:00+01:00</published><updated>2017-04-27T17:17:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-04-27:/programming-notes-blog/imports.html</id><summary type="html">&lt;h3&gt;Namespace&lt;/h3&gt;
 &lt;p&gt;For example, you might be writing some code that has a function called &lt;code&gt;fun()&lt;/code&gt; and there is another module available, which also has a function with the name &lt;code&gt;fun()&lt;/code&gt;. Now the interpreter has no way of knowing which version of &lt;code&gt;fun()&lt;/code&gt; function you are referring within your&amp;nbsp;code.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Namespace …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Namespace&lt;/h3&gt;
 &lt;p&gt;For example, you might be writing some code that has a function called &lt;code&gt;fun()&lt;/code&gt; and there is another module available, which also has a function with the name &lt;code&gt;fun()&lt;/code&gt;. Now the interpreter has no way of knowing which version of &lt;code&gt;fun()&lt;/code&gt; function you are referring within your&amp;nbsp;code.&lt;/p&gt;
@@ -2930,7 +2938,9 @@ Happened 10 times.
 
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;thing&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;tqdm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;alist&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# or whatever you do...&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>*args and **kwargs</title><link href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html" rel="alternate"></link><published>2017-01-27T03:35:00+00:00</published><updated>2017-01-27T03:35:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-27:/programming-notes-blog/args-kwargs.html</id><summary type="html">&lt;h3&gt;A normal&amp;nbsp;function:&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>*args and **kwargs</title><link href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html" rel="alternate"></link><published>2017-01-27T03:35:00+00:00</published><updated>2018-08-08T13:33:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-27:/programming-notes-blog/args-kwargs.html</id><summary type="html">&lt;p&gt;&lt;em&gt;args and &lt;/em&gt;*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&amp;nbsp;keywords …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;args and &lt;/em&gt;*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&amp;nbsp;keywords.&lt;/p&gt;
+&lt;p&gt;Note that it is not necessary to write &lt;em&gt;args or &lt;strong&gt;kwargs. Only the * (aesteric) is necessary. You can also write *var and &lt;/strong&gt;vars. Writing &lt;/em&gt;args and **kwargs is just a&amp;nbsp;convention.&lt;/p&gt;
+&lt;h3&gt;A normal&amp;nbsp;function:&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2941,26 +2951,8 @@ Happened 10 times.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;*args&amp;nbsp;usage:&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;stuff&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stuff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;my_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;green&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;yellow&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;red&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-
-&lt;span class="n"&gt;func2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;my_list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Correct&lt;/span&gt;
-&lt;span class="n"&gt;func2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;green …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h3&gt;A normal&amp;nbsp;function:&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;arg one&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;arg two&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Correct&lt;/span&gt;
-&lt;span class="n"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;arg one&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Error&lt;/span&gt;
-&lt;span class="n"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;arg one&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;arg two&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;arg three&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Error&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;*args&amp;nbsp;usage:&lt;/h3&gt;
+&lt;h3&gt;*args&amp;nbsp;usage&lt;/h3&gt;
+&lt;p&gt;*args is used to send a non-keyworded variable length argument list to the function. Here’s an&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;stuff&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stuff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2985,6 +2977,7 @@ Happened 10 times.
 
 
 &lt;h3&gt;**kwargs&amp;nbsp;usage:&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;kwargs allows you to pass keyworded variable length of arguments to a function. You should use &lt;/strong&gt;kwargs if you want to handle named arguments in a function. Here is an&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2994,6 +2987,12 @@ Happened 10 times.
 
 &lt;span class="n"&gt;func4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Correct&lt;/span&gt;
 &lt;span class="n"&gt;func4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;value1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;value2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;value3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# Correct&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Order of using &lt;em&gt;args &lt;/em&gt;*kwargs and formal&amp;nbsp;args&lt;/h3&gt;
+&lt;p&gt;If you want to use all three of these in functions then the order&amp;nbsp;is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;some_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fargs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Sorting lists</title><link href="https://janiceto.github.io/programming-notes-blog/builtin-functions.html" rel="alternate"></link><published>2017-01-20T03:00:00+00:00</published><updated>2017-01-20T03:00:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-20:/programming-notes-blog/builtin-functions.html</id><summary type="html">&lt;p&gt;&lt;code&gt;sorted()&lt;/code&gt; returns a &lt;strong&gt;new&lt;/strong&gt; sorted list, leaving the original list unaffected. &lt;code&gt;list.sort()&lt;/code&gt; sorts the list &lt;strong&gt;in-place&lt;/strong&gt;, mutating the list indices, and returns None (like all in-place&amp;nbsp;operations).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sorted()&lt;/code&gt; works on any iterable, not just lists. Strings, tuples, dictionaries (you&amp;#8217;ll get the keys), generators, etc., returning a list containing …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;code&gt;sorted()&lt;/code&gt; returns a &lt;strong&gt;new&lt;/strong&gt; sorted list, leaving the original list unaffected. &lt;code&gt;list.sort()&lt;/code&gt; sorts the list &lt;strong&gt;in-place&lt;/strong&gt;, mutating the list indices, and returns None (like all in-place&amp;nbsp;operations).&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sorted()&lt;/code&gt; works on any iterable, not just lists. Strings, tuples, dictionaries (you&amp;#8217;ll get the keys), generators, etc., returning a list containing all elements,&amp;nbsp;sorted.&lt;/p&gt;
@@ -3003,8 +3002,17 @@ Happened 10 times.
 &lt;li&gt;No, you cannot retrieve the original positions. Once you called &lt;code&gt;list.sort()&lt;/code&gt; the original order is&amp;nbsp;gone.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Useful&amp;nbsp;links:&lt;/h4&gt;
-&lt;p&gt;https://stackoverflow.com/questions/22442378/what-is-the-difference-between-sortedlist-vs-list-sort-python
-https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multiple-keys-with-different-ordering&amp;nbsp;https://stackoverflow.com/questions/16082954/python-how-to-sort-a-list-of-dictionaries-by-several-values&lt;/p&gt;</content></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes-blog/crontab.html" rel="alternate"></link><published>2017-01-17T15:23:00+00:00</published><updated>2017-01-17T15:23:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-17:/programming-notes-blog/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/22442378/what-is-the-difference-between-sortedlist-vs-list-sort-python"&gt;https://stackoverflow.com/questions/22442378/what-is-the-difference-between-sortedlist-vs-list-sort-python&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multiple-keys-with-different-ordering"&gt;https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multiple-keys-with-different-ordering&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/16082954/python-how-to-sort-a-list-of-dictionaries-by-several-values"&gt;https://stackoverflow.com/questions/16082954/python-how-to-sort-a-list-of-dictionaries-by-several-values&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Linux Crontab</title><link href="https://janiceto.github.io/programming-notes-blog/crontab.html" rel="alternate"></link><published>2017-01-17T15:23:00+00:00</published><updated>2017-01-17T15:23:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-17:/programming-notes-blog/crontab.html</id><summary type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Don&amp;#8217;t use &lt;code&gt;sudo&lt;/code&gt; in a cron job. Instead edit root&amp;#8217;s crontab instead of your own, e.g. &lt;code&gt;sudo crontab -e&lt;/code&gt; and then …&lt;/p&gt;</summary><content type="html">&lt;p&gt;To view currently active crontab entries: &lt;code&gt;$ sudo crontab -l&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;To enter the edit the crontab enter the following command in the terminal: &lt;code&gt;$ sudo crontab -e&lt;/code&gt;&lt;/p&gt;

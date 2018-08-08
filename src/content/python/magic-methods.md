@@ -1,4 +1,4 @@
-Title: Python Magix Methods
+Title: Python Magic Methods
 Date: 2017-04-29 16:10 
 Authors: José Aniceto
 
@@ -782,4 +782,4 @@ The goal of this guide is to bring something to anyone that reads it, regardless
 
 ## References
 
-https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown
+* [https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown](https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown)

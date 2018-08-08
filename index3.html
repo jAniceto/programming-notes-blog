@@ -61,7 +61,7 @@
 	<div class="posts">
 			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">
-					<a href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">Python Magix&nbsp;Methods</a>
+					<a href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">Python Magic&nbsp;Methods</a>
 				</h1>
 				<span class="post-date">Sat 29 April 2017</span>
 				<p>
@@ -125,26 +125,7 @@
 				</h1>
 				<span class="post-date">Fri 27 January 2017</span>
 				<p>
-					<h3>A normal&nbsp;function:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
-
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">,</span> <span class="s1">&#39;arg two&#39;</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">)</span>  <span class="c1"># Error</span>
-<span class="n">func1</span><span class="p">(</span><span class="s1">&#39;arg one&#39;</span><span class="p">,</span> <span class="s1">&#39;arg two&#39;</span><span class="p">,</span> <span class="s1">&#39;arg three&#39;</span><span class="p">)</span>  <span class="c1"># Error</span>
-</pre></div>
-
-
-<h3>*args&nbsp;usage:</h3>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span>
-
-<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
-
-<span class="n">func2</span><span class="p">(</span><span class="o">*</span><span class="n">my_list</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="n">func2</span><span class="p">(</span><span class="s1">&#39;green …</span></pre></div>
+					<p><em>args and </em>*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&nbsp;keywords …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html">Continue reading »</a>
 			</div>
