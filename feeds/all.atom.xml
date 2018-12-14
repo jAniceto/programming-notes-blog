@@ -1,5 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-08-08T13:33:00+01:00</updated><entry><title>Run Matlab programs in Python</title><link href="https://janiceto.github.io/programming-notes-blog/matlab.html" rel="alternate"></link><published>2018-08-02T19:08:00+01:00</published><updated>2018-08-02T19:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-02:/programming-notes-blog/matlab.html</id><summary type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-12-13T14:42:00+00:00</updated><entry><title>Edit photo metadata</title><link href="https://janiceto.github.io/programming-notes-blog/image-metadata.html" rel="alternate"></link><published>2018-12-13T14:42:00+00:00</published><updated>2018-12-13T14:42:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-13:/programming-notes-blog/image-metadata.html</id><summary type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -ta+1:00 *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -ta+1:00 *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes-blog/vps-providers.html" rel="alternate"></link><published>2018-08-28T21:51:00+01:00</published><updated>2018-08-28T21:51:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/vps-providers.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Filter a table or list by typing in search box</title><link href="https://janiceto.github.io/programming-notes-blog/filter-search.html" rel="alternate"></link><published>2018-08-28T20:49:00+01:00</published><updated>2018-08-28T20:49:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/filter-search.html</id><summary type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://listjs.com/"&gt;listjs.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;From&amp;nbsp;scratch:&lt;/h2&gt;
+&lt;h3&gt;For a&amp;nbsp;table&lt;/h3&gt;
+&lt;p&gt;1) &lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myInput&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;onkeyup&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myFunction()&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search for names..&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myTable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width:60%;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Name&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width:40%;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Country&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Alfreds Futterkiste&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Germany …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://listjs.com/"&gt;listjs.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;From&amp;nbsp;scratch:&lt;/h2&gt;
+&lt;h3&gt;For a&amp;nbsp;table&lt;/h3&gt;
+&lt;p&gt;1) &lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myInput&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;onkeyup&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myFunction()&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search for names..&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myTable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width:60%;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Name&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width:40%;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Country&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;th&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Alfreds Futterkiste&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Germany&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Berglunds snabbkop&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Sweden&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Island Trading&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;UK&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Koniglich Essen&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Germany&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2) &lt;span class="caps"&gt;CSS&lt;/span&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myInput&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;background-image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/css/searchicon.png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c"&gt;/* Add a search icon to input */&lt;/span&gt;
+    &lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Position the search icon */&lt;/span&gt;
+    &lt;span class="k"&gt;background-repeat&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;no-repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Do not repeat the icon image */&lt;/span&gt;
+    &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Full-width */&lt;/span&gt;
+    &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Increase font-size */&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some padding */&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#ddd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a grey border */&lt;/span&gt;
+    &lt;span class="k"&gt;margin-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some space below the input */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;border-collapse&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;collapse&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Collapse borders */&lt;/span&gt;
+    &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Full-width */&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#ddd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a grey border */&lt;/span&gt;
+    &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Increase font-size */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable&lt;/span&gt; &lt;span class="nt"&gt;th&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable&lt;/span&gt; &lt;span class="nt"&gt;td&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Left-align text */&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add padding */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable&lt;/span&gt; &lt;span class="nt"&gt;tr&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c"&gt;/* Add a bottom border to all table rows */&lt;/span&gt;
+    &lt;span class="k"&gt;border-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#ddd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable&lt;/span&gt; &lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;header&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myTable&lt;/span&gt; &lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c"&gt;/* Add a grey background color to the table header and on hover */&lt;/span&gt;
+    &lt;span class="k"&gt;background-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#f1f1f1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3)&amp;nbsp;Javascript &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;myFunction&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// Declare variables &lt;/span&gt;
+  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;table&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;td&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nx"&gt;input&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;myInput&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;filter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;input&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toUpperCase&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="nx"&gt;table&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;myTable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;tr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;table&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// Loop through all table rows, and hide those who don&amp;#39;t match the search query&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;td&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;td&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;td&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;td&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;innerHTML&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toUpperCase&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;none&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt; 
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Remove &lt;code&gt;toUpperCase()&lt;/code&gt; if you want to perform a case-sensitive&amp;nbsp;search.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change &lt;code&gt;tr[i].getElementsByTagName('td')[0]&lt;/code&gt; to &lt;code&gt;[1]&lt;/code&gt; if you want to search for &amp;#8220;Country&amp;#8221; (index 1) instead of &amp;#8220;Name&amp;#8221; (index&amp;nbsp;0).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;For a&amp;nbsp;list&lt;/h3&gt;
+&lt;p&gt;1) &lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;input&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myInput&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;onkeyup&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myFunction()&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search for names..&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;myUL&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Adele&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Agnes&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Billy&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Bob&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Calvin&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Christina&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Cindy&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2) &lt;span class="caps"&gt;CSS&lt;/span&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myInput&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;background-image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/css/searchicon.png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c"&gt;/* Add a search icon to input */&lt;/span&gt;
+    &lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Position the search icon */&lt;/span&gt;
+    &lt;span class="k"&gt;background-repeat&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;no-repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Do not repeat the icon image */&lt;/span&gt;
+    &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="kt"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Full-width */&lt;/span&gt;
+    &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Increase font-size */&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some padding */&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#ddd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a grey border */&lt;/span&gt;
+    &lt;span class="k"&gt;margin-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some space below the input */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myUL&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c"&gt;/* Remove default list styling */&lt;/span&gt;
+    &lt;span class="k"&gt;list-style-type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myUL&lt;/span&gt; &lt;span class="nt"&gt;li&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mh"&gt;#ddd&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a border to all links */&lt;/span&gt;
+    &lt;span class="k"&gt;margin-top&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;-1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Prevent double borders */&lt;/span&gt;
+    &lt;span class="k"&gt;background-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#f6f6f6&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Grey background color */&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add some padding */&lt;/span&gt;
+    &lt;span class="k"&gt;text-decoration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Remove default text underline */&lt;/span&gt;
+    &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Increase the font-size */&lt;/span&gt;
+    &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;black&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a black text color */&lt;/span&gt;
+    &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Make it into a block element to fill the whole list */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;myUL&lt;/span&gt; &lt;span class="nt"&gt;li&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;not&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;header&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;background-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#eee&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c"&gt;/* Add a hover effect to all links, except for headers */&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3)&amp;nbsp;Javascript &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;myFunction&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// Declare variables&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;input&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;input&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myInput&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;filter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;input&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toUpperCase&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="nx"&gt;ul&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;myUL&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;li&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;li&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Loop through all list items, and hide those who don&amp;#39;t match the search query&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;getElementsByTagName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;innerHTML&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toUpperCase&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;none&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Create .exe exacutables</title><link href="https://janiceto.github.io/programming-notes-blog/create-exe.html" rel="alternate"></link><published>2018-08-27T18:13:00+01:00</published><updated>2018-08-27T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes-blog/create-exe.html</id><summary type="html">&lt;h1&gt;Create a standalone exacutable from a Python&amp;nbsp;scripy&lt;/h1&gt;
+&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
+&lt;p&gt;To install pyinstaller on your pc (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip install pyinstaller&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use cmd to go to your program directory and to turn it into a exe&amp;nbsp;folder&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pyinstaller yourprogram.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;What I …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Create a standalone exacutable from a Python&amp;nbsp;scripy&lt;/h1&gt;
+&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
+&lt;p&gt;To install pyinstaller on your pc (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip install pyinstaller&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use cmd to go to your program directory and to turn it into a exe&amp;nbsp;folder&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pyinstaller yourprogram.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;What I&amp;nbsp;run:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pyinstaller -F --windowed --icon=myapp.ico SumExcel.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This makes it a single exe (without the folders with all dependables) but is slightly slower, minimizes the console window sine I have a &lt;span class="caps"&gt;GUI&lt;/span&gt;, and gives it a snazzy icon that I had saved (you have to copy over the icon, or have an exception incase it isn&amp;#8217;t&amp;nbsp;found)&lt;/p&gt;</content></entry><entry><title>Installing Python 3.7 on Raspbian</title><link href="https://janiceto.github.io/programming-notes-blog/python-raspbian.html" rel="alternate"></link><published>2018-08-27T14:30:00+01:00</published><updated>2018-08-27T14:30:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes-blog/python-raspbian.html</id><summary type="html">&lt;p&gt;As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;1) Install the required build-tools …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;1) Install the required build-tools (some might already be installed on your&amp;nbsp;system).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If one of the packages cannot be found, try a newer version number (e.g. &lt;code&gt;libdb5.4-dev&lt;/code&gt; instead of &lt;code&gt;libdb5.3-dev&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the &lt;a href="https://www.python.org/downloads/source/"&gt;official site&lt;/a&gt;. Adjust the file names&amp;nbsp;accordingly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0.tar.xz
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; Python-3.7.0
+$ ./configure
+$ make
+$ sudo make altinstall
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3) Optionally: Delete the source code and uninstall the previously installed packages. When uninstalling the packages, make sure you only remove those that were not previously installed on your system. Also, remember to adjust version numbers if&amp;nbsp;necesarry.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo rm -r Python-3.7.0
+$ rm Python-3.7.0.tar.xz
+$ sudo apt-get --purge remove build-essential tk-dev
+$ sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+$ sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+$ sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+$ sudo apt-get autoremove
+$ sudo apt-get clean
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;https://liudr.wordpress.com/2016/02/04/install-python-on-raspberry-pi-or-debian/&lt;/li&gt;
+&lt;li&gt;https://gist.github.com/BMeu/af107b1f3d7cf1a2507c9c6429367a3b&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Regular expressions</title><link href="https://janiceto.github.io/programming-notes-blog/regex.html" rel="alternate"></link><published>2018-08-08T21:51:00+01:00</published><updated>2018-08-08T21:51:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-08:/programming-notes-blog/regex.html</id><summary type="html">&lt;h2&gt;Regex for finding&amp;nbsp;URLs&lt;/h2&gt;
+&lt;p&gt;Regex if you want to ensure &lt;span class="caps"&gt;URL&lt;/span&gt; starts with &lt;span class="caps"&gt;HTTP&lt;/span&gt;/&lt;span class="caps"&gt;HTTPS&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you do not require &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;protocol:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Exemple usage in VSCode to find …&lt;/h4&gt;</summary><content type="html">&lt;h2&gt;Regex for finding&amp;nbsp;URLs&lt;/h2&gt;
+&lt;p&gt;Regex if you want to ensure &lt;span class="caps"&gt;URL&lt;/span&gt; starts with &lt;span class="caps"&gt;HTTP&lt;/span&gt;/&lt;span class="caps"&gt;HTTPS&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you do not require &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;protocol:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Exemple usage in VSCode to find a &lt;span class="caps"&gt;URL&lt;/span&gt; and convert to Markdown link like, &lt;code&gt;[link](link)&lt;/code&gt;:&lt;/h4&gt;
+&lt;p&gt;Find: &lt;code&gt;(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*))&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Replace: &lt;code&gt;[$1]($1)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;()&lt;/code&gt; to create a group and &lt;code&gt;$1&lt;/code&gt; to reference that&amp;nbsp;group.&lt;/p&gt;</content></entry><entry><title>Run Matlab programs in Python</title><link href="https://janiceto.github.io/programming-notes-blog/matlab.html" rel="alternate"></link><published>2018-08-02T19:08:00+01:00</published><updated>2018-08-02T19:08:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-02:/programming-notes-blog/matlab.html</id><summary type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
 &lt;h2&gt;Requirements&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;A Matlab version with a license …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;This example shows how to create a Python package using a &lt;span class="caps"&gt;MATLAB&lt;/span&gt; function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of &lt;span class="caps"&gt;MATLAB&lt;/span&gt;.&lt;/p&gt;
@@ -1489,6 +1790,50 @@ Prerequisites are installed on Ubuntu 12.04 &lt;span class="caps"&gt;LTS&lt;/spa
 &lt;span class="c1"&gt;#Viewing EXIF data embedded in image&lt;/span&gt;
 &lt;span class="n"&gt;exif_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_getexif&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;exif_data&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Git Version Control System</title><link href="https://janiceto.github.io/programming-notes-blog/git.html" rel="alternate"></link><published>2017-08-25T20:19:00+01:00</published><updated>2018-08-30T20:19:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-08-25:/programming-notes-blog/git.html</id><summary type="html">&lt;h2&gt;Instalation on a Debian-based distribution, such as&amp;nbsp;Ubuntu&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt update
+$ sudo apt install git-all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
+&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
+&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add all current …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Instalation on a Debian-based distribution, such as&amp;nbsp;Ubuntu&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt update
+$ sudo apt install git-all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
+&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
+&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add some changes in &lt;file&gt; to the next commit: &lt;code&gt;$ git add -p &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Commit all local changes in tracked files: &lt;code&gt;$ git commit -a -m "Changed something"&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Working with remote&amp;nbsp;repository&lt;/h3&gt;
+&lt;p&gt;Grab changes from remote: &lt;code&gt;$ git pull origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If your default branch is different than master, you will need to specify the branch name: &lt;code&gt;git pull origin my_default_branch_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Upload changes to remote: &lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Remove a file from version&amp;nbsp;control&lt;/h3&gt;
+&lt;p&gt;Remove the file from the Git repository and from the&amp;nbsp;filesystem&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you want to remove the file only from the Git repository and not remove it from the filesystem,&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm --cached file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git push origin branch_name  
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Storing dictionaries for later use: JSON and Pickle</title><link href="https://janiceto.github.io/programming-notes-blog/store-dicts.html" rel="alternate"></link><published>2017-08-10T10:58:00+01:00</published><updated>2017-08-10T10:58:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-08-10:/programming-notes-blog/store-dicts.html</id><summary type="html">&lt;h2&gt;&lt;span class="caps"&gt;JSON&lt;/span&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Saving:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
@@ -2938,8 +3283,8 @@ Happened 10 times.
 
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;thing&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;tqdm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;alist&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;thing&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# or whatever you do...&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>*args and **kwargs</title><link href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html" rel="alternate"></link><published>2017-01-27T03:35:00+00:00</published><updated>2018-08-08T13:33:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-27:/programming-notes-blog/args-kwargs.html</id><summary type="html">&lt;p&gt;&lt;em&gt;args and &lt;/em&gt;*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&amp;nbsp;keywords …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;args and &lt;/em&gt;*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&amp;nbsp;keywords.&lt;/p&gt;
-&lt;p&gt;Note that it is not necessary to write &lt;em&gt;args or &lt;strong&gt;kwargs. Only the * (aesteric) is necessary. You can also write *var and &lt;/strong&gt;vars. Writing &lt;/em&gt;args and **kwargs is just a&amp;nbsp;convention.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>*args and **kwargs</title><link href="https://janiceto.github.io/programming-notes-blog/args-kwargs.html" rel="alternate"></link><published>2017-01-27T03:35:00+00:00</published><updated>2018-08-08T13:33:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-27:/programming-notes-blog/args-kwargs.html</id><summary type="html">&lt;p&gt;&lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt; allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&amp;nbsp;keywords …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt; allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&amp;nbsp;keywords.&lt;/p&gt;
+&lt;p&gt;Note that it is not necessary to write &lt;code&gt;*args&lt;/code&gt; or &lt;code&gt;**kwargs&lt;/code&gt;. Only the * (aesteric) is necessary. You can also write &lt;em&gt;var and &lt;/em&gt;*vars. Writing &lt;code&gt;*args&lt;/code&gt; and &lt;code&gt;**kwargs&lt;/code&gt; is just a&amp;nbsp;convention.&lt;/p&gt;
 &lt;h3&gt;A normal&amp;nbsp;function:&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;two&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2951,8 +3296,8 @@ Happened 10 times.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;*args&amp;nbsp;usage&lt;/h3&gt;
-&lt;p&gt;*args is used to send a non-keyworded variable length argument list to the function. Here’s an&amp;nbsp;example:&lt;/p&gt;
+&lt;h3&gt;&lt;code&gt;*args&lt;/code&gt; usage&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;*args&lt;/code&gt; is used to send a non-keyworded variable length argument list to the function. Here’s an&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;stuff&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stuff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2976,8 +3321,8 @@ Happened 10 times.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;**kwargs&amp;nbsp;usage:&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;kwargs allows you to pass keyworded variable length of arguments to a function. You should use &lt;/strong&gt;kwargs if you want to handle named arguments in a function. Here is an&amp;nbsp;example:&lt;/p&gt;
+&lt;h3&gt;&lt;code&gt;**kwargs&lt;/code&gt; usage:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;**kwargs&lt;/code&gt; allows you to pass keyworded variable length of arguments to a function. You should use &lt;code&gt;**kwargs&lt;/code&gt; if you want to handle named arguments in a function. Here is an&amp;nbsp;example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func4&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2990,7 +3335,7 @@ Happened 10 times.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;Order of using &lt;em&gt;args &lt;/em&gt;*kwargs and formal&amp;nbsp;args&lt;/h3&gt;
+&lt;h3&gt;Order of using &lt;code&gt;*args&lt;/code&gt; &lt;code&gt;**kwargs&lt;/code&gt; and formal&amp;nbsp;args&lt;/h3&gt;
 &lt;p&gt;If you want to use all three of these in functions then the order&amp;nbsp;is:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;some_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fargs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Sorting lists</title><link href="https://janiceto.github.io/programming-notes-blog/builtin-functions.html" rel="alternate"></link><published>2017-01-20T03:00:00+00:00</published><updated>2017-01-20T03:00:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-01-20:/programming-notes-blog/builtin-functions.html</id><summary type="html">&lt;p&gt;&lt;code&gt;sorted()&lt;/code&gt; returns a &lt;strong&gt;new&lt;/strong&gt; sorted list, leaving the original list unaffected. &lt;code&gt;list.sort()&lt;/code&gt; sorts the list &lt;strong&gt;in-place&lt;/strong&gt;, mutating the list indices, and returns None (like all in-place&amp;nbsp;operations).&lt;/p&gt;
@@ -3443,35 +3788,6 @@ $ virtualenv venv
     &lt;span class="s2"&gt;&amp;quot;order&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;asc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;]]&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Git Version Control System</title><link href="https://janiceto.github.io/programming-notes-blog/git.html" rel="alternate"></link><published>2016-08-25T20:19:00+01:00</published><updated>2016-08-25T20:19:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-08-25:/programming-notes-blog/git.html</id><summary type="html">&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
-&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
-&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
-&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add some changes in &lt;file&gt; to the next commit …&lt;/file&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
-&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
-&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
-&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add some changes in &lt;file&gt; to the next commit: &lt;code&gt;$ git add -p &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Commit all local changes in tracked files: &lt;code&gt;$ git commit -a&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Remove a file from version&amp;nbsp;control&lt;/h3&gt;
-&lt;p&gt;Remove the file from the Git repository and from the&amp;nbsp;filesystem&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm file1.txt
-git commit -m &amp;quot;remove file1.txt&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;But if you want to remove the file only from the Git repository and not remove it from the filesystem,&amp;nbsp;use:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm --cached file1.txt
-git commit -m &amp;quot;remove file1.txt&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin branch_name  
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Keep SSH sessions running after disconnecting</title><link href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html" rel="alternate"></link><published>2016-04-21T20:38:00+01:00</published><updated>2016-04-21T20:38:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-04-21:/programming-notes-blog/keep-ssh-running.html</id><summary type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup long-running-process &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
 $ &lt;span class="nb"&gt;exit&lt;/span&gt;

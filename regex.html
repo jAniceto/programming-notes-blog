@@ -58,24 +58,36 @@
 		<p>by José Aniceto</p>
 	</div>
 </div>		<div class="content container">
-	<div class="category-list">
-        <h1 class="post-title">Javascript</h1>
-        <br>
-				
-        <div>
-            <span class="date-category">Tue 28 August 2018</span> &nbsp; &nbsp;
-            <a class="read-more" href="https://janiceto.github.io/programming-notes-blog/filter-search.html">Filter a table or list by typing in search&nbsp;box</a>
-        </div>
-        <div>
-            <span class="date-category">Fri 14 July 2017</span> &nbsp; &nbsp;
-            <a class="read-more" href="https://janiceto.github.io/programming-notes-blog/cache-data.html">Caching&nbsp;data</a>
-        </div>
-        <div>
-            <span class="date-category">Sat 17 September 2016</span> &nbsp; &nbsp;
-            <a class="read-more" href="https://janiceto.github.io/programming-notes-blog/datatables.html">DataTables <span class="caps">JS</span>&nbsp;Library</a>
-        </div>
+<div class="post">
+	<h1 class="post-title">Regular&nbsp;expressions</h1>
+	<span class="post-date">Wed 08 August 2018</span>
+	<h2>Regex for finding&nbsp;URLs</h2>
+<p>Regex if you want to ensure <span class="caps">URL</span> starts with <span class="caps">HTTP</span>/<span class="caps">HTTPS</span>:</p>
+<div class="highlight"><pre><span></span>https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)
+</pre></div>
 
-	</div>
+
+<p>If you do not require <span class="caps">HTTP</span>&nbsp;protocol:</p>
+<div class="highlight"><pre><span></span>[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)
+</pre></div>
+
+
+<h4>Exemple usage in VSCode to find a <span class="caps">URL</span> and convert to Markdown link like, <code>[link](link)</code>:</h4>
+<p>Find: <code>(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*))</code></p>
+<p>Replace: <code>[$1]($1)</code></p>
+<p>Use <code>()</code> to create a group and <code>$1</code> to reference that&nbsp;group.</p>
+	<br><br><br>
+	<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'annotatio';
+			(function() {
+	 			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	 			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	 			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	 		})();
+		</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
 		</div>
 	</body>
 </html>

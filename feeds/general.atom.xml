@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-07-21T18:13:00+01:00</updated><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django.html" rel="alternate"></link><published>2018-07-21T18:13:00+01:00</published><updated>2018-07-21T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-21:/programming-notes-blog/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-12-13T14:42:00+00:00</updated><entry><title>Edit photo metadata</title><link href="https://janiceto.github.io/programming-notes-blog/image-metadata.html" rel="alternate"></link><published>2018-12-13T14:42:00+00:00</published><updated>2018-12-13T14:42:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-13:/programming-notes-blog/image-metadata.html</id><summary type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -ta+1:00 *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -ta+1:00 *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes-blog/vps-providers.html" rel="alternate"></link><published>2018-08-28T21:51:00+01:00</published><updated>2018-08-28T21:51:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/vps-providers.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Installing Python 3.7 on Raspbian</title><link href="https://janiceto.github.io/programming-notes-blog/python-raspbian.html" rel="alternate"></link><published>2018-08-27T14:30:00+01:00</published><updated>2018-08-27T14:30:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes-blog/python-raspbian.html</id><summary type="html">&lt;p&gt;As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;1) Install the required build-tools …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;1) Install the required build-tools (some might already be installed on your&amp;nbsp;system).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+$ sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If one of the packages cannot be found, try a newer version number (e.g. &lt;code&gt;libdb5.4-dev&lt;/code&gt; instead of &lt;code&gt;libdb5.3-dev&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;2) Download and install Python 3.6. When downloading the source code, select the most recent release of Python 3.6, available on the &lt;a href="https://www.python.org/downloads/source/"&gt;official site&lt;/a&gt;. Adjust the file names&amp;nbsp;accordingly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+$ tar xf Python-3.7.0.tar.xz
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; Python-3.7.0
+$ ./configure
+$ make
+$ sudo make altinstall
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3) Optionally: Delete the source code and uninstall the previously installed packages. When uninstalling the packages, make sure you only remove those that were not previously installed on your system. Also, remember to adjust version numbers if&amp;nbsp;necesarry.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo rm -r Python-3.7.0
+$ rm Python-3.7.0.tar.xz
+$ sudo apt-get --purge remove build-essential tk-dev
+$ sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+$ sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+$ sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+$ sudo apt-get autoremove
+$ sudo apt-get clean
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;https://liudr.wordpress.com/2016/02/04/install-python-on-raspberry-pi-or-debian/&lt;/li&gt;
+&lt;li&gt;https://gist.github.com/BMeu/af107b1f3d7cf1a2507c9c6429367a3b&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Regular expressions</title><link href="https://janiceto.github.io/programming-notes-blog/regex.html" rel="alternate"></link><published>2018-08-08T21:51:00+01:00</published><updated>2018-08-08T21:51:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-08:/programming-notes-blog/regex.html</id><summary type="html">&lt;h2&gt;Regex for finding&amp;nbsp;URLs&lt;/h2&gt;
+&lt;p&gt;Regex if you want to ensure &lt;span class="caps"&gt;URL&lt;/span&gt; starts with &lt;span class="caps"&gt;HTTP&lt;/span&gt;/&lt;span class="caps"&gt;HTTPS&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you do not require &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;protocol:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Exemple usage in VSCode to find …&lt;/h4&gt;</summary><content type="html">&lt;h2&gt;Regex for finding&amp;nbsp;URLs&lt;/h2&gt;
+&lt;p&gt;Regex if you want to ensure &lt;span class="caps"&gt;URL&lt;/span&gt; starts with &lt;span class="caps"&gt;HTTP&lt;/span&gt;/&lt;span class="caps"&gt;HTTPS&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you do not require &lt;span class="caps"&gt;HTTP&lt;/span&gt;&amp;nbsp;protocol:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Exemple usage in VSCode to find a &lt;span class="caps"&gt;URL&lt;/span&gt; and convert to Markdown link like, &lt;code&gt;[link](link)&lt;/code&gt;:&lt;/h4&gt;
+&lt;p&gt;Find: &lt;code&gt;(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;amp;//=]*))&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Replace: &lt;code&gt;[$1]($1)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use &lt;code&gt;()&lt;/code&gt; to create a group and &lt;code&gt;$1&lt;/code&gt; to reference that&amp;nbsp;group.&lt;/p&gt;</content></entry><entry><title>Deploy a Django app in an Ubuntu VPS (DigitalOcean)</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django.html" rel="alternate"></link><published>2018-07-21T18:13:00+01:00</published><updated>2018-07-21T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-07-21:/programming-notes-blog/deploy-django.html</id><summary type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our&amp;nbsp;apps.&lt;/p&gt;
 &lt;h2&gt;1) Initial Server&amp;nbsp;Setup&lt;/h2&gt;
 &lt;p&gt;Perform the initial server setup as detailed &lt;a href="server-setup.md"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;2) Install the Packages from the Ubuntu&amp;nbsp;Repositories&lt;/h2&gt;
@@ -605,6 +697,50 @@ cd %localhost%
 call venv\Scripts\activate.bat
 start python dashboard\__init__.py
 pause
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Git Version Control System</title><link href="https://janiceto.github.io/programming-notes-blog/git.html" rel="alternate"></link><published>2017-08-25T20:19:00+01:00</published><updated>2018-08-30T20:19:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-08-25:/programming-notes-blog/git.html</id><summary type="html">&lt;h2&gt;Instalation on a Debian-based distribution, such as&amp;nbsp;Ubuntu&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt update
+$ sudo apt install git-all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
+&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
+&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add all current …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Instalation on a Debian-based distribution, such as&amp;nbsp;Ubuntu&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt update
+$ sudo apt install git-all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
+&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
+&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Add some changes in &lt;file&gt; to the next commit: &lt;code&gt;$ git add -p &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Commit all local changes in tracked files: &lt;code&gt;$ git commit -a -m "Changed something"&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Working with remote&amp;nbsp;repository&lt;/h3&gt;
+&lt;p&gt;Grab changes from remote: &lt;code&gt;$ git pull origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If your default branch is different than master, you will need to specify the branch name: &lt;code&gt;git pull origin my_default_branch_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Upload changes to remote: &lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Remove a file from version&amp;nbsp;control&lt;/h3&gt;
+&lt;p&gt;Remove the file from the Git repository and from the&amp;nbsp;filesystem&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you want to remove the file only from the Git repository and not remove it from the filesystem,&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm --cached file1.txt
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;remove file1.txt&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git push origin branch_name  
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Initial Server Setup with Ubuntu 18.04</title><link href="https://janiceto.github.io/programming-notes-blog/server-setup.html" rel="alternate"></link><published>2017-05-14T23:52:00+01:00</published><updated>2017-05-14T23:52:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-05-14:/programming-notes-blog/server-setup.html</id><summary type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
 &lt;h2&gt;1) Creating a New&amp;nbsp;User&lt;/h2&gt;
 &lt;p&gt;Once you are logged in as root, we&amp;#8217;re prepared to add the new user (synergix) account that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic&amp;nbsp;setup.&lt;/p&gt;
@@ -711,36 +847,7 @@ pause
 &lt;h3&gt;Helpfull&amp;nbsp;links:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://crontab.guru"&gt;https://crontab.guru&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>Git Version Control System</title><link href="https://janiceto.github.io/programming-notes-blog/git.html" rel="alternate"></link><published>2016-08-25T20:19:00+01:00</published><updated>2016-08-25T20:19:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-08-25:/programming-notes-blog/git.html</id><summary type="html">&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
-&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
-&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
-&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add some changes in &lt;file&gt; to the next commit …&lt;/file&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Starting&amp;nbsp;repositories&lt;/h3&gt;
-&lt;p&gt;Clone an existing repository: &lt;code&gt;$ git clone ssh://user@domain.com/repo.git&lt;/code&gt; &lt;/p&gt;
-&lt;p&gt;Create a new local repository: &lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Local&amp;nbsp;changes&lt;/h3&gt;
-&lt;p&gt;Show changed files in your working directory: &lt;code&gt;$ git status&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add all current changes to the next commit: &lt;code&gt;$ git add&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Add some changes in &lt;file&gt; to the next commit: &lt;code&gt;$ git add -p &amp;lt;file&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Commit all local changes in tracked files: &lt;code&gt;$ git commit -a&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Remove a file from version&amp;nbsp;control&lt;/h3&gt;
-&lt;p&gt;Remove the file from the Git repository and from the&amp;nbsp;filesystem&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm file1.txt
-git commit -m &amp;quot;remove file1.txt&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;But if you want to remove the file only from the Git repository and not remove it from the filesystem,&amp;nbsp;use:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm --cached file1.txt
-git commit -m &amp;quot;remove file1.txt&amp;quot;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Then push changes to remote&amp;nbsp;repo&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin branch_name  
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Keep SSH sessions running after disconnecting</title><link href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html" rel="alternate"></link><published>2016-04-21T20:38:00+01:00</published><updated>2016-04-21T20:38:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-04-21:/programming-notes-blog/keep-ssh-running.html</id><summary type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
+&lt;/ul&gt;</content></entry><entry><title>Keep SSH sessions running after disconnecting</title><link href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html" rel="alternate"></link><published>2016-04-21T20:38:00+01:00</published><updated>2016-04-21T20:38:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-04-21:/programming-notes-blog/keep-ssh-running.html</id><summary type="html">&lt;h3&gt;Using&amp;nbsp;nohup&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup long-running-process &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
 $ &lt;span class="nb"&gt;exit&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

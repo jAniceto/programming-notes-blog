@@ -60,6 +60,116 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/image-metadata.html#image-metadata">
+					<a href="https://janiceto.github.io/programming-notes-blog/image-metadata.html#image-metadata">Edit photo&nbsp;metadata</a>
+				</h1>
+				<span class="post-date">Thu 13 December 2018</span>
+				<p>
+					<p>You can do it in one line in the Terminal using <code>jhead</code>.</p>
+<p>For example, adjust all <span class="caps">EXIF</span> times forward by 1&nbsp;hour:</p>
+<div class="highlight"><pre><span></span>jhead -ta+1:00 *.jpg
+</pre></div>
+
+
+<p>Useful&nbsp;links: </p>
+<p><a href="http://www.sentex.net/~mwandel/jhead/">jhead download&nbsp;page</a></p>
+<p><a href="http://www.sentex.net/~mwandel/jhead/usage.html">jhead&nbsp;documentation</a></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/image-metadata.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/vps-providers.html#vps-providers">
+					<a href="https://janiceto.github.io/programming-notes-blog/vps-providers.html#vps-providers"><span class="caps">VPS</span>&nbsp;providers</a>
+				</h1>
+				<span class="post-date">Tue 28 August 2018</span>
+				<p>
+					<ul>
+<li><a href="https://www.digitalocean.com/pricing/">digitalocean.com</a> - from 5 $/month + tax&nbsp;(anual)</li>
+<li><a href="https://www.heroku.com/pricing">heroku.com</a> from 7 $/month + tax&nbsp;(anual)</li>
+</ul>
+<h3><span class="caps">PT</span>:</h3>
+<ul>
+<li><a href="https://www.ovh.pt/vps/vps-ssd.xml">ovh.pt</a> - from 3 €/month + tax&nbsp;(anual)</li>
+<li><a href="https://www.flexi.pt/vps-servidor-virtual">flexi.pt</a> - from 3 €/month + tax&nbsp;(anual)</li>
+</ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/vps-providers.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/filter-search.html#filter-search">
+					<a href="https://janiceto.github.io/programming-notes-blog/filter-search.html#filter-search">Filter a table or list by typing in search&nbsp;box</a>
+				</h1>
+				<span class="post-date">Tue 28 August 2018</span>
+				<p>
+					<h2>Using a <span class="caps">JS</span>&nbsp;library:</h2>
+<ul>
+<li><a href="http://listjs.com/">listjs.com</a></li>
+</ul>
+<h2>From&nbsp;scratch:</h2>
+<h3>For a&nbsp;table</h3>
+<p>1) <span class="caps">HTML</span> </p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myInput&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;myFunction()&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Search for names..&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">table</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myTable&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:60%;&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:40%;&quot;</span><span class="p">&gt;</span>Country<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Alfreds Futterkiste<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Germany …</pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/filter-search.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/create-exe.html#create-exe">
+					<a href="https://janiceto.github.io/programming-notes-blog/create-exe.html#create-exe">Create .exe&nbsp;exacutables</a>
+				</h1>
+				<span class="post-date">Mon 27 August 2018</span>
+				<p>
+					<h1>Create a standalone exacutable from a Python&nbsp;scripy</h1>
+<h2>Using&nbsp;pyinstaller</h2>
+<p>To install pyinstaller on your pc (more details can be found here:&nbsp;https://www.pyinstaller.org/)</p>
+<p><code>pip install pyinstaller</code></p>
+<p>Use cmd to go to your program directory and to turn it into a exe&nbsp;folder</p>
+<p><code>pyinstaller yourprogram.py</code></p>
+<p>What I …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/create-exe.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/python-raspbian.html#python-raspbian">
+					<a href="https://janiceto.github.io/programming-notes-blog/python-raspbian.html#python-raspbian">Installing Python 3.7 on&nbsp;Raspbian</a>
+				</h1>
+				<span class="post-date">Mon 27 August 2018</span>
+				<p>
+					<p>As of January 2018, Raspbian does not yet include the latest Python release, Python 3.6. This means we will have to build it ourselves, and here is how to do it. There is also an ansible role attached that automates it all for&nbsp;you.</p>
+<p>1) Install the required build-tools …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/python-raspbian.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/regex.html#regex">
+					<a href="https://janiceto.github.io/programming-notes-blog/regex.html#regex">Regular&nbsp;expressions</a>
+				</h1>
+				<span class="post-date">Wed 08 August 2018</span>
+				<p>
+					<h2>Regex for finding&nbsp;URLs</h2>
+<p>Regex if you want to ensure <span class="caps">URL</span> starts with <span class="caps">HTTP</span>/<span class="caps">HTTPS</span>:</p>
+<div class="highlight"><pre><span></span>https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)
+</pre></div>
+
+
+<p>If you do not require <span class="caps">HTTP</span>&nbsp;protocol:</p>
+<div class="highlight"><pre><span></span>[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)
+</pre></div>
+
+
+<h4>Exemple usage in VSCode to find …</h4>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/regex.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/matlab.html#matlab">
 					<a href="https://janiceto.github.io/programming-notes-blog/matlab.html#matlab">Run Matlab programs in&nbsp;Python</a>
 				</h1>
@@ -114,117 +224,6 @@
 <p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/django.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html#web-dev-resources">
-					<a href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html#web-dev-resources">Online Resources For Web&nbsp;Developers</a>
-				</h1>
-				<span class="post-date">Sat 23 June 2018</span>
-				<p>
-					<h2><span class="caps">GENERATORS</span>:</h2>
-<ul>
-<li>Text Content Generator - <a href="http://www.lipsum.com">http://www.lipsum.com</a></li>
-<li>Favicon Generator - <a href="http://tools.dynamicdrive.com/favicon">http://tools.dynamicdrive.com/favicon</a>        </li>
-<li>Data Generator - <a href="https://mockaroo.com/">https://mockaroo.com/</a>                       </li>
-<li>Mobile Mockup Generator - <a href="https://mockuphone.com">https://mockuphone.com</a></li>
-<li>Logo Generator - <a href="https://www.logaster.com">https://www.logaster.com</a></li>
-<li><span class="caps">UUID</span> Generator - <a href="https://www.uuidgenerator.net/">https://www.uuidgenerator.net/</a></li>
-<li>Hash Generator - <a href="https://passwordsgenerator.net/sha256-hash-generator/">https://passwordsgenerator.net/sha256-hash-generator/</a></li>
-</ul>
-<h2><span class="caps">IMAGE</span> <span class="caps">RESOURCES</span>:</h2>
-<ul>
-<li>Free Stock Images - <a href="https://www.pexels.com">https …</a></li></ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/web-dev-resources.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/os-env-vars.html#os-env-vars">
-					<a href="https://janiceto.github.io/programming-notes-blog/os-env-vars.html#os-env-vars">Hiding Passwords and Secret Keys in Environment&nbsp;Variables</a>
-				</h1>
-				<span class="post-date">Mon 14 May 2018</span>
-				<p>
-					<h3>Adding a Environment Variable&nbsp;(Windows)</h3>
-<p>System Menu &gt; <code>Advanced System Settings</code> &gt; <code>Environment Variables...</code> &gt; in User Variables click <code>New...</code> &gt; insert variable name (VAR_NAME) and value&nbsp;(VAR_VALUE)</p>
-<p>When coding it may be necessary to restart your <span class="caps">IDE</span> or text&nbsp;editor.</p>
-<h3>Adding a Environment Variable (Linux and&nbsp;Mac)</h3>
-<p>Open the&nbsp;terminal:</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> 
-$ nano .bash_profile …</pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/os-env-vars.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/slice-notation.html#slice-notation">
-					<a href="https://janiceto.github.io/programming-notes-blog/slice-notation.html#slice-notation">Slice&nbsp;notation</a>
-				</h1>
-				<span class="post-date">Fri 30 March 2018</span>
-				<p>
-					<p>The <span class="caps">ASCII</span> art diagram is helpful too for remembering how slices&nbsp;work:</p>
-<div class="highlight"><pre><span></span> +---+---+---+---+---+---+
- | P | y | t | h | o | n |
- +---+---+---+---+---+---+
- 0   1   2   3   4   5   6
--6  -5  -4  -3  -2  -1
-</pre></div>
-
-
-<p>One way to remember how slices work is to think of the indices as pointing <em>between</em> characters, with the …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/slice-notation.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/snippets.html#snippets">
-					<a href="https://janiceto.github.io/programming-notes-blog/snippets.html#snippets">Useful Python code&nbsp;snippets</a>
-				</h1>
-				<span class="post-date">Mon 19 March 2018</span>
-				<p>
-					<p>A collection of several code snippets of common or useful operation in&nbsp;Python.</p>
-<h2>Remove dictionary from&nbsp;list</h2>
-<p>Here&#8217;s how to remove a specific dictionary, or several dictionaries, from a list of dictionaries by a specific key. In the example below we are removing from the list all dictionaries which …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/snippets.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html#ubuntu-vps">
-					<a href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html#ubuntu-vps">Deploy a Flask Application on an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
-				</h1>
-				<span class="post-date">Mon 05 March 2018</span>
-				<p>
-					<p>This page details the process of seting up a Ubuntu <span class="caps">VPS</span> (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are&nbsp;used.</p>
-<h2>1) Install&nbsp;Apache</h2>
-<div class="highlight"><pre><span></span>$ sudo apt-get update
-$ sudo apt-get upgrade
-$ sudo apt-get install apache2
-</pre></div>
-
-
-<p>You can do a …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/ubuntu-vps.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">
-					<a href="https://janiceto.github.io/programming-notes-blog/classes.html#classes">Classes and <span class="caps">OOP</span> (Object Oriented&nbsp;Programming)</a>
-				</h1>
-				<span class="post-date">Mon 22 January 2018</span>
-				<p>
-					<p>Let&#8217;s start with a simple example and some importante&nbsp;definitions:</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># &lt;-- class variable</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>  <span class="c1"># &lt;-- instance variable</span>
-
-    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># &lt;- instance method</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>  <span class="c1"># &lt;-- class method</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
-
-<span class="k">def …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/classes.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

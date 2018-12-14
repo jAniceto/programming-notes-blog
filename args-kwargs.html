@@ -61,8 +61,8 @@
 <div class="post">
 	<h1 class="post-title">*args and&nbsp;**kwargs</h1>
 	<span class="post-date">Fri 27 January 2017</span>
-	<p><em>args and </em>*kwargs allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&nbsp;keywords.</p>
-<p>Note that it is not necessary to write *args or **kwargs. Only the * (asterisk) is necessary. You can also write *var and **vars. Writing *args and **kwargs is just a convention.</p>
+	<p><code>*args</code> and <code>**kwargs</code> allow you to pass a variable number of arguments to a function. What does variable mean here is that you do not know before hand that how many arguments can be passed to your function by the user so in this case you use these two&nbsp;keywords.</p>
+<p>Note that it is not necessary to write <code>*args</code> or <code>**kwargs</code>. Only the * (aesteric) is necessary. You can also write <em>var and </em>*vars. Writing <code>*args</code> and <code>**kwargs</code> is just a&nbsp;convention.</p>
 <h3>A normal&nbsp;function:</h3>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
   <span class="k">print</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
@@ -74,8 +74,8 @@
 </pre></div>
 
 
-<h3>*args&nbsp;usage</h3>
-<p>*args is used to send a non-keyworded variable length argument list to the function. Here’s an&nbsp;example:</p>
+<h3><code>*args</code> usage</h3>
+<p><code>*args</code> is used to send a non-keyworded variable length argument list to the function. Here’s an&nbsp;example:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">stuff</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">stuff</span><span class="p">)</span>
@@ -99,8 +99,8 @@
 </pre></div>
 
 
-<h3>**kwargs&nbsp;usage:</h3>
-<p><strong>kwargs allows you to pass keyworded variable length of arguments to a function. You should use </strong>kwargs if you want to handle named arguments in a function. Here is an&nbsp;example:</p>
+<h3><code>**kwargs</code> usage:</h3>
+<p><code>**kwargs</code> allows you to pass keyworded variable length of arguments to a function. You should use <code>**kwargs</code> if you want to handle named arguments in a function. Here is an&nbsp;example:</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func4</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -113,7 +113,7 @@
 </pre></div>
 
 
-<h3>Order of using <em>args </em>*kwargs and formal&nbsp;args</h3>
+<h3>Order of using <code>*args</code> <code>**kwargs</code> and formal&nbsp;args</h3>
 <p>If you want to use all three of these in functions then the order&nbsp;is:</p>
 <div class="highlight"><pre><span></span><span class="n">some_func</span><span class="p">(</span><span class="n">fargs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
