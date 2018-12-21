@@ -20,6 +20,11 @@ Authors: José Aniceto
 * Dummy Image Placeholders - [https://placeholder.com](https://placeholder.com)
 * Free Icons - [https://www.iconfinder.com](https://www.iconfinder.com)
 
+## FONTS
+* Google Fonts - https://fonts.google.com/
+* Font Joy - https://fontjoy.com/
+* Font Pair - https://fontpair.co/
+
 ## COLOR & DESIGN:
 * Generate Color Palette from Image - [https://www.canva.com/color-palette/](https://www.canva.com/color-palette/)
 * Color Palette Generator - [https://coolors.co/app](https://coolors.co/app)
