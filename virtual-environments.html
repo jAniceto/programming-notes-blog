@@ -60,24 +60,43 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">Virtual&nbsp;enviroments</h1>
-	<span class="post-date">Thu 10 November 2016</span>
-	<h3>Virtual environment using <strong>virtualenv</strong></h3>
+	<span class="post-date">Sat 15 December 2018</span>
+	<h2>Pipenv</h2>
+<p>Installing Pipenv: <code>$ pip install pipenv</code></p>
+<p>To upgrade Pipenv at any time run: <code>$ pip install --upgrade pipenv</code></p>
+<h3>Installing packages for your&nbsp;project</h3>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> myproject
+$ pipenv install requests
+</pre></div>
+
+
+<p>Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to track which dependencies your project needs in case you need to re-install them, such as when you share your project with&nbsp;others.</p>
+<h3>Using installed&nbsp;packages</h3>
+<p>Import your packages normally in your scripts. Then you can run the script using <code>pipenv run</code>:</p>
+<div class="highlight"><pre><span></span>$ pipenv run python main.py
+</pre></div>
+
+
+<p>Using <code>$ pipenv run</code> ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with <code>$ pipenv shell</code>.</p>
+<p>Documentation: <a href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a></p>
+<hr>
+<h2>Virtual environment using <strong>virtualenv</strong></h2>
 <p>Install: <code>$ pip install virtualenv</code></p>
-<h4>Create a new virtual&nbsp;enviroment:</h4>
+<h3>Create a new virtual&nbsp;enviroment:</h3>
 <p>My prefered method is to create the environment in the respective project folder and naming it <strong>venv</strong>. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective&nbsp;project.</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">cd</span> desired_folder
 $ virtualenv venv 
 </pre></div>
 
 
-<h4>To activate the&nbsp;environment:</h4>
+<h3>To activate the&nbsp;environment:</h3>
 <p>(Windows) <code>$ venv/Scripts/activate.bat</code></p>
 <p>(Linux) <code>$ source venv/bin/activate</code> </p>
 <p>Once activated you can normaly use <strong>pip</strong> to install packages in this environment: <code>$ pip install blabla</code></p>
 <p>You can see the list of installed packages using: <code>$ pip list</code></p>
 <p>To transfer the environment to another machine you can use: <code>$ pip freeze &gt; requirements.txt</code> </p>
 <p>This will create a requirements.txt file, which contains a simple list of all the packages in the current environment, and their respective versions. Later, if you need to re-create the environment, install the same packages using the same versions: <code>$ pip install -r requirements.txt</code></p>
-<h4>To deactivate the&nbsp;environment:</h4>
+<h3>To deactivate the&nbsp;environment:</h3>
 <p>(Windows) <code>$ venv/Scripts/deactivate.bat</code></p>
 <p>(Linux) <code>$ deactivate</code></p>
 	<br><br><br>

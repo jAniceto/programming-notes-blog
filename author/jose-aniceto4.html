@@ -60,6 +60,62 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/stravalib.html#stravalib">
+					<a href="https://janiceto.github.io/programming-notes-blog/stravalib.html#stravalib">Interfacing with Strava <span class="caps">API</span> using&nbsp;stavalib</a>
+				</h1>
+				<span class="post-date">Sat 13 May 2017</span>
+				<p>
+					<h3>Instalation:</h3>
+<p><code>$ pip install stravalib</code></p>
+<h3>Usage:</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stravalib</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="s1">&#39;fgd456fgs5dgs546dfg&#39;</span><span class="p">)</span>
+<span class="n">athlete</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_athlete</span><span class="p">()</span>  <span class="c1"># Get your athlete profile</span>
+<span class="n">athlete2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_athlete</span><span class="p">(</span><span class="mi">227615</span><span class="p">)</span>  <span class="c1"># By providing an athlete ID you can access other people</span>
+</pre></div>
+
+
+<p>To get a given activity, use the get_activity function and provide&nbsp;activity_id:</p>
+<div class="highlight"><pre><span></span><span class="n">activity</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_activity</span><span class="p">(</span><span class="mi">207650614 …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/stravalib.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">
+					<a href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">Python Magic&nbsp;Methods</a>
+				</h1>
+				<span class="post-date">Sat 29 April 2017</span>
+				<p>
+					<h2>Introduction</h2>
+<p>This guide is the culmination of a few months&#8217; worth of blog posts. The subject is <strong>magic methods</strong>.</p>
+<p>What are magic methods? They&#8217;re everything in object-oriented Python. They&#8217;re special methods that you can define to add &#8220;magic&#8221; to your classes. They&#8217;re always surrounded by double underscores …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/magic-methods.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">
+					<a href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">Imports in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">Thu 27 April 2017</span>
+				<p>
+					<h3>Namespace</h3>
+<p>For example, you might be writing some code that has a function called <code>fun()</code> and there is another module available, which also has a function with the name <code>fun()</code>. Now the interpreter has no way of knowing which version of <code>fun()</code> function you are referring within your&nbsp;code.</p>
+<p><strong>Namespace …</strong></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/imports.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/csv.html#csv">
+					<a href="https://janiceto.github.io/programming-notes-blog/csv.html#csv"><span class="caps">CSV</span>&nbsp;files</a>
+				</h1>
+				<span class="post-date">Sun 12 March 2017</span>
+				<p>
+					<p><span class="caps">CSV</span> (Comma Separated Values) is a very popular import and export data format used in spreadsheets and databases. Each line in a <span class="caps">CSV</span> file is a data record. Each record consists of one or more fields, separated by commas. While <span class="caps">CSV</span> is a very simple data format, there can be …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/csv.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/email.html#email">
 					<a href="https://janiceto.github.io/programming-notes-blog/email.html#email">Sending e-mails with&nbsp;Python</a>
 				</h1>
@@ -149,93 +205,13 @@
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/css-selectors.html">Continue reading »</a>
 			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">
-					<a href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">Virtual&nbsp;enviroments</a>
-				</h1>
-				<span class="post-date">Thu 10 November 2016</span>
-				<p>
-					<h3>Virtual environment using <strong>virtualenv</strong></h3>
-<p>Install: <code>$ pip install virtualenv</code></p>
-<h4>Create a new virtual&nbsp;enviroment:</h4>
-<p>My prefered method is to create the environment in the respective project folder and naming it <strong>venv</strong>. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/datatables.html#datatables">
-					<a href="https://janiceto.github.io/programming-notes-blog/datatables.html#datatables">DataTables <span class="caps">JS</span>&nbsp;Library</a>
-				</h1>
-				<span class="post-date">Sat 17 September 2016</span>
-				<p>
-					<p><a href="https://datatables.net/manual/index">Documentation&nbsp;here</a></p>
-<h3>Requirements:</h3>
-<ul>
-<li>JQuery</li>
-</ul>
-<h3>Usage:</h3>
-<p>Include the <span class="caps">CSS</span> and <span class="caps">JS</span> code for DataTables to the head and bottom of the body of your website, respectively. <span class="caps">CSS</span> is not&nbsp;required.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span> <span class="s">&quot;{{ url_for(&#39;static&#39;,filename=&#39;style.css&#39;) }}&quot;</span><span class="p">&gt;</span> 
-
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/datatables.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html#keep-ssh-running">
-					<a href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html#keep-ssh-running">Keep <span class="caps">SSH</span> sessions running after&nbsp;disconnecting</a>
-				</h1>
-				<span class="post-date">Thu 21 April 2016</span>
-				<p>
-					<h3>Using&nbsp;nohup</h3>
-<div class="highlight"><pre><span></span>$ nohup long-running-process <span class="p">&amp;</span>
-$ <span class="nb">exit</span>
-</pre></div>
-
-
-<h3>Using <span class="caps">GNU</span>&nbsp;Screen</h3>
-<div class="highlight"><pre><span></span>$ screen             <span class="c1"># to start a screen session</span>
-$ run-a-process
-CTRL+a , d           <span class="c1"># to detatch from your screen session</span>
-$ <span class="nb">exit</span>               <span class="c1"># to disconnect from the server, while run-a-process continues</span>
-$ screen -r          <span class="c1"># to resume the screen session when you come back to your laptop</span>
-</pre></div>
-
-
-<h3>Using&nbsp;tmux</h3>
-<div class="highlight"><pre><span></span>$ <span class="n">tmux …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/dev-environments.html#dev-environments">
-					<a href="https://janiceto.github.io/programming-notes-blog/dev-environments.html#dev-environments">Development&nbsp;environments</a>
-				</h1>
-				<span class="post-date">Sat 09 January 2016</span>
-				<p>
-					<p>My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&nbsp;Pycharm.</p>
-<h2>Visual Studio&nbsp;Code</h2>
-<h4>Essentials</h4>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> for Python and&nbsp;more</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> for web&nbsp;dev</li>
-</ul>
-<h4>Other</h4>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme">OneDark-Pro&nbsp;theme</a> </li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython">Magic&nbsp;Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer">Bracket Pair&nbsp;Colorizer</a></li>
-</ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/dev-environments.html">Continue reading »</a>
-			</div>
 	</div>
 	<div class="pagination">
 		<!-- <span class="pagination-item older">Older</span>
 		<span class="pagination-item newer">Newer</span> -->
 <a href="https://janiceto.github.io/programming-notes-blog/author/jose-aniceto3.html" class="pagination-item older">Newer</a>
 
+<a href="https://janiceto.github.io/programming-notes-blog/author/jose-aniceto5.html" class="pagination-item newer">Older</a>
 	</div>
 		</div>
 	</body>

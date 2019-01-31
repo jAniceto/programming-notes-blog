@@ -60,6 +60,84 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/s3-django-setup.html#s3-django-setup">
+					<a href="https://janiceto.github.io/programming-notes-blog/s3-django-setup.html#s3-django-setup">Setting up Amazon S3 Bucket for serving Django Static and Media&nbsp;files</a>
+				</h1>
+				<span class="post-date">Thu 31 January 2019</span>
+				<p>
+					<p>Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&nbsp;App. </p>
+<h2>1) Sign up to <span class="caps">AWS</span> S3 and create <span class="caps">IAM</span>&nbsp;user</h2>
+<p>After signing up to Amazon <span class="caps">AWS</span> we need to create a user using the …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/s3-django-setup.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/deploy-django-heroku.html#deploy-django-heroku">
+					<a href="https://janiceto.github.io/programming-notes-blog/deploy-django-heroku.html#deploy-django-heroku">Deploy a Django app to&nbsp;Heroku</a>
+				</h1>
+				<span class="post-date">Tue 22 January 2019</span>
+				<p>
+					<h3>Index:</h3>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#install-the-heroku-cli">Install the Heroku <span class="caps">CLI</span></a></li>
+<li><a href="#deploying-python-and-django-apps-on-heroku">Deploying Python and Django Apps on&nbsp;Heroku</a></li>
+<li><a href="#configure-django-apps-for-heroku">Configure Django apps for&nbsp;Heroku</a></li>
+<li><a href="#deploy-to-heroku">Deploy to&nbsp;Heroku</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h3>Requirements:</h3>
+<ul>
+<li>Git&nbsp;installed</li>
+<li>Python&nbsp;&gt;3.6</li>
+<li>Heroku <span class="caps">CLI</span> (see step&nbsp;1)</li>
+</ul>
+<h2>1) Install the Heroku <span class="caps">CLI</span></h2>
+<p>Install the Heroku Command Line Interface (<span class="caps">CLI</span>) for your platform from <a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up">here …</a></p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/deploy-django-heroku.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/django-snippets.html#django-snippets">
+					<a href="https://janiceto.github.io/programming-notes-blog/django-snippets.html#django-snippets">Collection of useful Django snippets for several&nbsp;purposes</a>
+				</h1>
+				<span class="post-date">Tue 08 January 2019</span>
+				<p>
+					<h3>Index</h3>
+<ul>
+<li><a href="#create-a-slug">Create a&nbsp;slug</a></li>
+<li><a href="#send-email">Send&nbsp;email</a></li>
+<li><a href="#database-dump-to-file">Database dump to&nbsp;file</a></li>
+<li><a href="#provide-data-to-db-via-django-python-shell">Provide data to <span class="caps">DB</span> via Django Python&nbsp;Shell</a></li>
+<li><a href="#create-script-with-access-to-django-shell">Create script with access to Django&nbsp;shell</a></li>
+<li><a href="#migrate-django-from-sqlite-to-postgresql">Migrate Django from SQLite to&nbsp;PostgreSQL</a></li>
+</ul>
+<hr>
+<h3>Create a&nbsp;slug</h3>
+<p>Call the Django <code>slugify</code> function automatically by overriding the <code>save</code> method. It is preferable to generate …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/django-snippets.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">
+					<a href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">Virtual&nbsp;enviroments</a>
+				</h1>
+				<span class="post-date">Sat 15 December 2018</span>
+				<p>
+					<h2>Pipenv</h2>
+<p>Installing Pipenv: <code>$ pip install pipenv</code></p>
+<p>To upgrade Pipenv at any time run: <code>$ pip install --upgrade pipenv</code></p>
+<h3>Installing packages for your&nbsp;project</h3>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> myproject
+$ pipenv install requests
+</pre></div>
+
+
+<p>Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/image-metadata.html#image-metadata">
 					<a href="https://janiceto.github.io/programming-notes-blog/image-metadata.html#image-metadata">Edit photo&nbsp;metadata</a>
 				</h1>
@@ -83,15 +161,8 @@
 				</h1>
 				<span class="post-date">Tue 28 August 2018</span>
 				<p>
-					<ul>
-<li><a href="https://www.digitalocean.com/pricing/">digitalocean.com</a> - from 5 $/month + tax&nbsp;(anual)</li>
-<li><a href="https://www.heroku.com/pricing">heroku.com</a> from 7 $/month + tax&nbsp;(anual)</li>
-</ul>
-<h3><span class="caps">PT</span>:</h3>
-<ul>
-<li><a href="https://www.ovh.pt/vps/vps-ssd.xml">ovh.pt</a> - from 3 €/month + tax&nbsp;(anual)</li>
-<li><a href="https://www.flexi.pt/vps-servidor-virtual">flexi.pt</a> - from 3 €/month + tax&nbsp;(anual)</li>
-</ul>
+					<p>When you need to host your projects, you have several options&nbsp;available:</p>
+<p><strong>Shared hosting</strong>, where you share a server with lots of other users and have very limited control over the server. <strong>Dedicated hosting</strong>, where you have complete control over a server, a very flexible option, but requires you to …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/vps-providers.html">Continue reading »</a>
 			</div>
@@ -168,62 +239,6 @@
 <h4>Exemple usage in VSCode to find …</h4>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/regex.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/matlab.html#matlab">
-					<a href="https://janiceto.github.io/programming-notes-blog/matlab.html#matlab">Run Matlab programs in&nbsp;Python</a>
-				</h1>
-				<span class="post-date">Thu 02 August 2018</span>
-				<p>
-					<p>This example shows how to create a Python package using a <span class="caps">MATLAB</span> function. You can then pass the generated package to the developer who is responsible for integrating it into an application. The target system does not require a licensed copy of <span class="caps">MATLAB</span>.</p>
-<h2>Requirements</h2>
-<ul>
-<li>A Matlab version with a license …</li></ul>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/matlab.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/deploy-django.html#deploy-django">
-					<a href="https://janiceto.github.io/programming-notes-blog/deploy-django.html#deploy-django">Deploy a Django app in an Ubuntu <span class="caps">VPS</span>&nbsp;(DigitalOcean)</a>
-				</h1>
-				<span class="post-date">Sat 21 July 2018</span>
-				<p>
-					<p>This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/deploy-django.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/mysql.html#mysql">
-					<a href="https://janiceto.github.io/programming-notes-blog/mysql.html#mysql">Using MySQL in&nbsp;Python</a>
-				</h1>
-				<span class="post-date">Wed 18 July 2018</span>
-				<p>
-					<h3>Some basic MySQL&nbsp;commands</h3>
-<p>In MySQL a <code>DATABASE</code> is composed by one or more <code>TABLE</code>s. Typically you create a database for each&nbsp;project.</p>
-<h5>To create a new MySQL database named <code>database_name</code> (the starting point of a new project using&nbsp;MySQL):</h5>
-<div class="highlight"><pre><span></span>CREATE DATABASE database_name;
-</pre></div>
-
-
-<p>Show all databases:  <code>SHOW DATABASES;</code></p>
-<h5>To …</h5>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/mysql.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/django.html#django">
-					<a href="https://janiceto.github.io/programming-notes-blog/django.html#django">Building a Django&nbsp;site</a>
-				</h1>
-				<span class="post-date">Sun 15 July 2018</span>
-				<p>
-					<h2>Installing&nbsp;Django</h2>
-<p><code>pip install Django</code></p>
-<h2>Start&nbsp;project</h2>
-<p>Navigate via the terminal or command prompt to an area where you want to work on your project, then&nbsp;do:</p>
-<p><code>django-admin startproject mysite</code></p>
-<p>This will create a directory called mysite. Within that directory, you have another one called mysite, along with a manage …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/django.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

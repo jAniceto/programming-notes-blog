@@ -1,5 +1,471 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-12-13T14:42:00+00:00</updated><entry><title>Edit photo metadata</title><link href="https://janiceto.github.io/programming-notes-blog/image-metadata.html" rel="alternate"></link><published>2018-12-13T14:42:00+00:00</published><updated>2018-12-13T14:42:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-13:/programming-notes-blog/image-metadata.html</id><summary type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/all.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2019-01-31T14:05:00+00:00</updated><entry><title>Setting up Amazon S3 Bucket for serving Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes-blog/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T13:15:00+00:00</published><updated>2019-01-31T13:15:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes-blog/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+&lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
+&lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+&lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
+&lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Services&lt;/strong&gt; dropdown select &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Users&lt;/strong&gt; and select &lt;strong&gt;Add User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the name of the user and make sure that &lt;strong&gt;Programmatic access&lt;/strong&gt; is selected under &lt;strong&gt;Access type&lt;/strong&gt; as you will need this to provide upload access for your S3 bucket. Click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;Attatch existing policies directly&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the list that appears select &lt;strong&gt;AmazonS3FullAccess&lt;/strong&gt; and again click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This will create the user and generate an access id and key for the user. The id-key pair can only be downloaded at this step so do that by clicking on &lt;strong&gt;Download .csv&lt;/strong&gt;. Keep it&amp;nbsp;secret.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the Users Dashboard click on the user you have just created. Make a note of &lt;strong&gt;User &lt;span class="caps"&gt;ARN&lt;/span&gt;&lt;/strong&gt;. You will be using this&amp;nbsp;later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2) Create a S3&amp;nbsp;Bucket&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From the Services dropdown select s3. This opens up the dashboard for the S3&amp;nbsp;buckets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create Bucket&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select the region you&amp;nbsp;want.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Note: Try to create  a bucket in the same region where your app is running to take advantage of &lt;span class="caps"&gt;AWS&lt;/span&gt;&amp;#8217;s free in-region data transfer&amp;nbsp;rates.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give your bucket a name and click on next that brings you to the &lt;strong&gt;Set Properties&lt;/strong&gt; tab. Click on &lt;strong&gt;Next&lt;/strong&gt; a couple more times and then click on &lt;strong&gt;Create Bucket&lt;/strong&gt; to create your&amp;nbsp;bucket.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3) Set up Bucket&amp;nbsp;permissions&lt;/h2&gt;
+&lt;p&gt;Now let&amp;#8217;s define the policy for allowing restricted access to our&amp;nbsp;bucket.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the name of the bucket that you just&amp;nbsp;created.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the &lt;strong&gt;Permissions&lt;/strong&gt;&amp;nbsp;tab.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Since you have to set the permissions for access, click on &lt;strong&gt;Bucket Policy&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the bottom left click on &lt;strong&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; Policy Generator&lt;/strong&gt; which opens up the tool Amazon provides for quick policy&amp;nbsp;generation. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now we have to generate two policy rules. The first one is to allow our hosted website to access your files from the&amp;nbsp;bucket:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Select Type of Policy : S3 Bucket Policy
+Effect : Allow
+Principal : *      //This gives everybody access
+AWS Service : Amazon S3
+Actions : GetObject
+Amazon Resource Name : arn:aws:s3:::&amp;lt;your bucket name&amp;gt;/* 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; at the end siginifies that access is being given to all the&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;After setting the values as mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt;. Do not click on &lt;strong&gt;Generate Policy&lt;/strong&gt; yet as you have to create a policy to allow the Django application to put files into the bucket on deployment. The policy will be as&amp;nbsp;follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Select Type of Policy : S3 Bucket Policy
+Effect : Allow
+Principal : &amp;lt;User ARN&amp;gt;     //This is the user arn that you kept a note of earlier.
+AWS Service : Amazon S3
+Actions : *    //I gave full access, though I think GetObject, PutObject will be better. Will try it out soon. 
+Amazon Resource Name : arn:aws:s3:::&amp;lt;your bucket name&amp;gt;/*,arn:aws:s3:::&amp;lt;your bucket name&amp;gt;  // Gives full access to buckets and its contents.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After setting the values mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt; and then &lt;strong&gt;Generate Policy&lt;/strong&gt; . This will show you the policy which you can copy, paste in the dialogue box on S3 dashboard and click on &lt;strong&gt;Save&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;4) Providing S3 access to your Heroku&amp;nbsp;app&lt;/h2&gt;
+&lt;p&gt;The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; configuration&lt;/strong&gt;. To do this click on the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; Configuration&lt;/strong&gt; tab and click on Save. The default configuration will&amp;nbsp;suffice.&lt;/p&gt;
+&lt;p&gt;You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using&amp;nbsp;pip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-storages boto3
+pip freeze &amp;gt;&amp;gt; requirements.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and add &lt;code&gt;storages&lt;/code&gt; to the list of INSTALLED_APPS in the &lt;code&gt;settings.py&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;INSTALLED_APPS = (
+          ...,
+          &amp;#39;storages&amp;#39;,
+     )
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next you have to add the following settings to the &lt;code&gt;settings.py&lt;/code&gt; file in your&amp;nbsp;application.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Set S3 as the place to store your files.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
+&lt;span class="n"&gt;storages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backends&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s3boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# This will make sure that the file URL does not have unnecessary parameters like your access key.&lt;/span&gt;
+&lt;span class="n"&gt;AWS_S3_CUSTOM_DOMAIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Static media settings&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;media/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_DIRS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;staticfiles&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;ADMIN_MEDIA_PREFIX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;admin/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_FINDERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles.finders.FileSystemFinder&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, make sure the main &lt;code&gt;urls.py&lt;/code&gt; file does include the url configuration for your media&amp;nbsp;files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;static&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;document_root&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And as a last step there should be a folder called static in the root of your application (same level as the manage.py file). Git does not allow you to commit empty folders so you can inlcude a readme file in there to commit the&amp;nbsp;folder.&lt;/p&gt;
+&lt;p&gt;If you are using Heroku before pushing your code&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku config:set DISABLE_COLLECTSTATIC=1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually&amp;nbsp;using&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku run python manage.py collectstatic --noinput
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property &lt;code&gt;upload_to&lt;/code&gt; set for them and as a result don&amp;#8217;t overwrite the static&amp;nbsp;files. &lt;/p&gt;
+&lt;p&gt;We are nouw ready to serve static and media files from the S3&amp;nbsp;bucket!&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5"&gt;Setting up Amazon S3 Bucket for serving Django Static and Media&amp;nbsp;files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/"&gt;Using Amazon S3 to Store your Django Site&amp;#8217;s Static and Media&amp;nbsp;Files&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:35:00+00:00</published><updated>2019-01-22T14:35:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes-blog/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploying-python-and-django-apps-on-heroku"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-django-apps-for-heroku"&gt;Configure Django apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploy-to-heroku"&gt;Deploy to&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&amp;nbsp;installed&lt;/li&gt;
+&lt;li&gt;Python&amp;nbsp;&amp;gt;3.6&lt;/li&gt;
+&lt;li&gt;Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; (see step&amp;nbsp;1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1) Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Install the Heroku Command Line Interface (&lt;span class="caps"&gt;CLI&lt;/span&gt;) for your platform from &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up"&gt;here …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploying-python-and-django-apps-on-heroku"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-django-apps-for-heroku"&gt;Configure Django apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploy-to-heroku"&gt;Deploy to&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&amp;nbsp;installed&lt;/li&gt;
+&lt;li&gt;Python&amp;nbsp;&amp;gt;3.6&lt;/li&gt;
+&lt;li&gt;Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; (see step&amp;nbsp;1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1) Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Install the Heroku Command Line Interface (&lt;span class="caps"&gt;CLI&lt;/span&gt;) for your platform from &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up"&gt;here&lt;/a&gt;. Once installed, you can use the &lt;code&gt;heroku&lt;/code&gt; command from your command shell. To log in to the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2) Deploying Python and Django apps on&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Heroku automatically identifies your app as a Python app if any of the following files are present in its root directory:
+&lt;em&gt; &lt;code&gt;Pipfile&lt;/code&gt;
+&lt;/em&gt; &lt;code&gt;setup.py&lt;/code&gt;
+* &lt;code&gt;requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When you deploy to Heroku, the dependencies you specify are automatically installed. If you’re using Django, the &lt;code&gt;collectstatic&lt;/code&gt; command also runs automatically during the deployment process. For this to work properly make sure you install the Django-Heroku Python package (step&amp;nbsp;3).&lt;/p&gt;
+&lt;h2&gt;3) Configure Django apps for&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Create a &lt;code&gt;Procfile&lt;/code&gt; (no extension) and add the following content where &lt;code&gt;myproject&lt;/code&gt; is the name of your Django&amp;nbsp;app.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gunicorn&lt;/span&gt; &lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;wsgi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;gunicorn&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv install gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install the &lt;code&gt;django-heroku&lt;/code&gt; package&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv install django-heroku
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following import statement to the top of &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django_heroku&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then add the following to the bottom of &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Activate Django-Heroku.&lt;/span&gt;
+&lt;span class="n"&gt;django_heroku&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4) Deploy to&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Using the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; lets create our app and the&amp;nbsp;database.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+$ heroku create &amp;lt;desired_app_name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now lets push our code to&amp;nbsp;Heroku:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Ready to heroku this.&amp;quot;&lt;/span&gt;
+$ git push heroku master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, migrate your Database to the Heroku&amp;nbsp;app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku run python manage.py migrate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You should now be able to see your app in the Heroku Dashboard as well as a Dyno web process with the &lt;code&gt;ON&lt;/code&gt; indication.&lt;/p&gt;
+&lt;h2&gt;5) Import local database to Heroky&amp;nbsp;(Optional)&lt;/h2&gt;
+&lt;p&gt;If you are using a postgresql database locally you can easily import it to your newly created Heroku app. First create a backup of your local &lt;span class="caps"&gt;DB&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pg_dump -U USERNAME DATABASE &amp;gt; pg_db_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To import it to Heroku&amp;nbsp;run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku pg:psql --app APPNAME &amp;lt; pg_db_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python"&gt;Getting Started on Heroku with&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/deploying-python"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/django-app-configuration"&gt;Configuring Django Apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/heroku/django-heroku"&gt;django-heroku&amp;nbsp;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/git"&gt;Deploying with&amp;nbsp;Git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Collection of useful Django snippets for several purposes</title><link href="https://janiceto.github.io/programming-notes-blog/django-snippets.html" rel="alternate"></link><published>2019-01-08T13:33:00+00:00</published><updated>2019-01-08T13:33:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-08:/programming-notes-blog/django-snippets.html</id><summary type="html">&lt;h3&gt;Index&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#create-a-slug"&gt;Create a&amp;nbsp;slug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#send-email"&gt;Send&amp;nbsp;email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#database-dump-to-file"&gt;Database dump to&amp;nbsp;file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#provide-data-to-db-via-django-python-shell"&gt;Provide data to &lt;span class="caps"&gt;DB&lt;/span&gt; via Django Python&amp;nbsp;Shell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-script-with-access-to-django-shell"&gt;Create script with access to Django&amp;nbsp;shell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#migrate-django-from-sqlite-to-postgresql"&gt;Migrate Django from SQLite to&amp;nbsp;PostgreSQL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;Create a&amp;nbsp;slug&lt;/h3&gt;
+&lt;p&gt;Call the Django &lt;code&gt;slugify&lt;/code&gt; function automatically by overriding the &lt;code&gt;save&lt;/code&gt; method. It is preferable to generate …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Index&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#create-a-slug"&gt;Create a&amp;nbsp;slug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#send-email"&gt;Send&amp;nbsp;email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#database-dump-to-file"&gt;Database dump to&amp;nbsp;file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#provide-data-to-db-via-django-python-shell"&gt;Provide data to &lt;span class="caps"&gt;DB&lt;/span&gt; via Django Python&amp;nbsp;Shell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-script-with-access-to-django-shell"&gt;Create script with access to Django&amp;nbsp;shell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#migrate-django-from-sqlite-to-postgresql"&gt;Migrate Django from SQLite to&amp;nbsp;PostgreSQL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;Create a&amp;nbsp;slug&lt;/h3&gt;
+&lt;p&gt;Call the Django &lt;code&gt;slugify&lt;/code&gt; function automatically by overriding the &lt;code&gt;save&lt;/code&gt; method. It is preferable to generate the slug only once when you create a new object, otherwise your URLs may change when the &lt;code&gt;q&lt;/code&gt; field is edited, which can cause broken links. More info &lt;a href="https://stackoverflow.com/questions/837828/how-do-i-create-a-slug-in-django"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# models.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.utils.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;slugify&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SlugField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="c1"&gt;# Newly created object, so set slug&lt;/span&gt;
+            &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;slugify&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Send&amp;nbsp;email&lt;/h3&gt;
+&lt;p&gt;If &lt;code&gt;html_message&lt;/code&gt; keyword argument is provided, the resulting email will be a multipart/alternative email with &lt;code&gt;message&lt;/code&gt; as the text/plain content type and &lt;code&gt;html_message&lt;/code&gt; as the text/html content&amp;nbsp;type. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# views.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.mail&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;send_mail&lt;/span&gt;
+
+&lt;span class="n"&gt;send_mail&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;Subject here&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;Here is the message.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;from@example.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;to@example.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;fail_silently&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Mail is sent using the &lt;span class="caps"&gt;SMTP&lt;/span&gt; host and port specified in the &lt;code&gt;EMAIL_HOST&lt;/code&gt; and &lt;code&gt;EMAIL_PORT&lt;/code&gt; settings. The &lt;code&gt;EMAIL_HOST_USER&lt;/code&gt; and &lt;code&gt;EMAIL_HOST_PASSWORD&lt;/code&gt; settings, if set, are used to authenticate to the &lt;span class="caps"&gt;SMTP&lt;/span&gt; server, and the &lt;code&gt;EMAIL_USE_TLS&lt;/code&gt; and &lt;code&gt;EMAIL_USE_SSL&lt;/code&gt; settings control whether a secure connection is used. More info &lt;a href="https://docs.djangoproject.com/en/2.1/topics/email/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Database dump to&amp;nbsp;file&lt;/h3&gt;
+&lt;p&gt;Save from &lt;span class="caps"&gt;DB&lt;/span&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py dumpdata &amp;gt; db_dump.json
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Load fixture to &lt;span class="caps"&gt;DB&lt;/span&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py loaddata &amp;lt;fixture&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Provide data to &lt;span class="caps"&gt;DB&lt;/span&gt; via Django Python&amp;nbsp;Shell&lt;/h3&gt;
+&lt;p&gt;Exemple for loading data in a json file named &lt;code&gt;filename.json&lt;/code&gt; to the Model &lt;code&gt;Member&lt;/code&gt; in the app &lt;code&gt;website&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python manage.py shell
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;website.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;filename.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;members_json&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;member&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;members_json&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;member&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Member&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;member&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;member&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;position&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;alumni&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;member&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;alumni&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;member&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Create script with access to Django&amp;nbsp;shell&lt;/h3&gt;
+&lt;p&gt;If you wnat to run an external script but have access to the Django environment like you do with &lt;code&gt;python manage.py shell&lt;/code&gt; you can do the following. More info &lt;a href="https://stackoverflow.com/questions/8047204/django-script-to-access-model-objects-without-using-manage-py-shell"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# your_script.py&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setdefault&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;DJANGO_SETTINGS_MODULE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;your_project_name.settings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# your imports, e.g. Django models&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;your_project_name.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Location&lt;/span&gt;
+
+&lt;span class="c1"&gt;# From now onwards start your script..&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here is an example to access and modify your&amp;nbsp;model:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# models.py&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Location&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# your_script.py&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    
+    &lt;span class="c1"&gt;# e.g. add a new location&lt;/span&gt;
+    &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Berlin&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# this is an example to access your model&lt;/span&gt;
+    &lt;span class="n"&gt;locations&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;locations&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# e.g. delete the location&lt;/span&gt;
+    &lt;span class="n"&gt;berlin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Berlin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;berlin&lt;/span&gt;
+    &lt;span class="n"&gt;berlin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Migrate Django from SQLite to&amp;nbsp;PostgreSQL&lt;/h3&gt;
+&lt;p&gt;Here&amp;#8217;s how to migrate a Django database from SQLite to PostgreSQL. More info &lt;a href="https://stackoverflow.com/questions/3034910/whats-the-best-way-to-migrate-a-django-db-from-sqlite-to-mysql"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;1) Dump existing&amp;nbsp;data:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py dumpdata &amp;gt; datadump.json
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2) Change settings.py to Postgres&amp;nbsp;backend.&lt;/p&gt;
+&lt;p&gt;3) Make sure you can connect on PostgreSQL.&amp;nbsp;Then:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate --run-syncdb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;4) Run this on Django shell to exclude contentype&amp;nbsp;data&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py shell
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.contenttypes.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContentType&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ContentType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="sb"&gt;````&lt;/span&gt;
+
+&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;Finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;python manage.py loaddata datadump.json&amp;nbsp;&amp;#8220;`&lt;/p&gt;</content></entry><entry><title>Virtual enviroments</title><link href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html" rel="alternate"></link><published>2018-12-15T13:53:00+00:00</published><updated>2018-12-15T13:53:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-15:/programming-notes-blog/virtual-environments.html</id><summary type="html">&lt;h2&gt;Pipenv&lt;/h2&gt;
+&lt;p&gt;Installing Pipenv: &lt;code&gt;$ pip install pipenv&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To upgrade Pipenv at any time run: &lt;code&gt;$ pip install --upgrade pipenv&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Installing packages for your&amp;nbsp;project&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; myproject
+$ pipenv install requests
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Pipenv&lt;/h2&gt;
+&lt;p&gt;Installing Pipenv: &lt;code&gt;$ pip install pipenv&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To upgrade Pipenv at any time run: &lt;code&gt;$ pip install --upgrade pipenv&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Installing packages for your&amp;nbsp;project&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; myproject
+$ pipenv install requests
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to track which dependencies your project needs in case you need to re-install them, such as when you share your project with&amp;nbsp;others.&lt;/p&gt;
+&lt;h3&gt;Using installed&amp;nbsp;packages&lt;/h3&gt;
+&lt;p&gt;Import your packages normally in your scripts. Then you can run the script using &lt;code&gt;pipenv run&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv run python main.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Using &lt;code&gt;$ pipenv run&lt;/code&gt; ensures that your installed packages are available to your script. It’s also possible to spawn a new shell that ensures all commands have access to your installed packages with &lt;code&gt;$ pipenv shell&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Documentation: &lt;a href="https://pipenv.readthedocs.io/en/latest/"&gt;Pipenv&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Virtual environment using &lt;strong&gt;virtualenv&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Install: &lt;code&gt;$ pip install virtualenv&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Create a new virtual&amp;nbsp;enviroment:&lt;/h3&gt;
+&lt;p&gt;My prefered method is to create the environment in the respective project folder and naming it &lt;strong&gt;venv&lt;/strong&gt;. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective&amp;nbsp;project.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; desired_folder
+$ virtualenv venv 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;To activate the&amp;nbsp;environment:&lt;/h3&gt;
+&lt;p&gt;(Windows) &lt;code&gt;$ venv/Scripts/activate.bat&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(Linux) &lt;code&gt;$ source venv/bin/activate&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Once activated you can normaly use &lt;strong&gt;pip&lt;/strong&gt; to install packages in this environment: &lt;code&gt;$ pip install blabla&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can see the list of installed packages using: &lt;code&gt;$ pip list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To transfer the environment to another machine you can use: &lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;This will create a requirements.txt file, which contains a simple list of all the packages in the current environment, and their respective versions. Later, if you need to re-create the environment, install the same packages using the same versions: &lt;code&gt;$ pip install -r requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;To deactivate the&amp;nbsp;environment:&lt;/h3&gt;
+&lt;p&gt;(Windows) &lt;code&gt;$ venv/Scripts/deactivate.bat&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;(Linux) &lt;code&gt;$ deactivate&lt;/code&gt;&lt;/p&gt;</content></entry><entry><title>Edit photo metadata</title><link href="https://janiceto.github.io/programming-notes-blog/image-metadata.html" rel="alternate"></link><published>2018-12-13T14:42:00+00:00</published><updated>2018-12-13T14:42:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-13:/programming-notes-blog/image-metadata.html</id><summary type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -ta+1:00 *.jpg
 &lt;/pre&gt;&lt;/div&gt;
@@ -15,19 +481,17 @@
 
 &lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes-blog/vps-providers.html" rel="alternate"></link><published>2018-08-28T21:51:00+01:00</published><updated>2018-08-28T21:51:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/vps-providers.html</id><summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes-blog/vps-providers.html" rel="alternate"></link><published>2018-08-28T21:51:00+01:00</published><updated>2019-01-31T14:05:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/vps-providers.html</id><summary type="html">&lt;p&gt;When you need to host your projects, you have several options&amp;nbsp;available:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shared hosting&lt;/strong&gt;, where you share a server with lots of other users and have very limited control over the server. &lt;strong&gt;Dedicated hosting&lt;/strong&gt;, where you have complete control over a server, a very flexible option, but requires you to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When you need to host your projects, you have several options&amp;nbsp;available:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shared hosting&lt;/strong&gt;, where you share a server with lots of other users and have very limited control over the server. &lt;strong&gt;Dedicated hosting&lt;/strong&gt;, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a &lt;strong&gt;Virtual Private Server&lt;/strong&gt;, or &lt;strong&gt;&lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&amp;nbsp;all).&lt;/p&gt;
+&lt;p&gt;Here is a list of several popular &lt;span class="caps"&gt;VPS&lt;/span&gt;&amp;nbsp;providers:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.linode.com"&gt;linode.com&lt;/a&gt; - from 5 $/month +&amp;nbsp;tax&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;h3&gt;Portugal based&amp;nbsp;providers:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
@@ -1000,6 +1464,12 @@ python manage.py runserver
 &lt;li&gt;Dummy Image Placeholders - &lt;a href="https://source.unsplash.com/"&gt;https://source.unsplash.com/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Dummy Image Placeholders - &lt;a href="https://placeholder.com"&gt;https://placeholder.com&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Free Icons - &lt;a href="https://www.iconfinder.com"&gt;https://www.iconfinder.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;FONTS&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Fonts -&amp;nbsp;https://fonts.google.com/&lt;/li&gt;
+&lt;li&gt;Font Joy -&amp;nbsp;https://fontjoy.com/&lt;/li&gt;
+&lt;li&gt;Font Pair -&amp;nbsp;https://fontpair.co/&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;span class="caps"&gt;COLOR&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;DESIGN&lt;/span&gt;:&lt;/h2&gt;
 &lt;ul&gt;
@@ -3728,28 +4198,7 @@ Happened 10 times.
 &lt;td&gt;1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content></entry><entry><title>Virtual enviroments</title><link href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html" rel="alternate"></link><published>2016-11-10T22:09:00+00:00</published><updated>2016-11-10T22:09:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-11-10:/programming-notes-blog/virtual-environments.html</id><summary type="html">&lt;h3&gt;Virtual environment using &lt;strong&gt;virtualenv&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Install: &lt;code&gt;$ pip install virtualenv&lt;/code&gt;&lt;/p&gt;
-&lt;h4&gt;Create a new virtual&amp;nbsp;enviroment:&lt;/h4&gt;
-&lt;p&gt;My prefered method is to create the environment in the respective project folder and naming it &lt;strong&gt;venv&lt;/strong&gt;. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Virtual environment using &lt;strong&gt;virtualenv&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Install: &lt;code&gt;$ pip install virtualenv&lt;/code&gt;&lt;/p&gt;
-&lt;h4&gt;Create a new virtual&amp;nbsp;enviroment:&lt;/h4&gt;
-&lt;p&gt;My prefered method is to create the environment in the respective project folder and naming it &lt;strong&gt;venv&lt;/strong&gt;. Another alternative is to have a folder where you place all your virtualenvironments and name them according to their respective&amp;nbsp;project.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; desired_folder
-$ virtualenv venv 
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;To activate the&amp;nbsp;environment:&lt;/h4&gt;
-&lt;p&gt;(Windows) &lt;code&gt;$ venv/Scripts/activate.bat&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;(Linux) &lt;code&gt;$ source venv/bin/activate&lt;/code&gt; &lt;/p&gt;
-&lt;p&gt;Once activated you can normaly use &lt;strong&gt;pip&lt;/strong&gt; to install packages in this environment: &lt;code&gt;$ pip install blabla&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;You can see the list of installed packages using: &lt;code&gt;$ pip list&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;To transfer the environment to another machine you can use: &lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt; &lt;/p&gt;
-&lt;p&gt;This will create a requirements.txt file, which contains a simple list of all the packages in the current environment, and their respective versions. Later, if you need to re-create the environment, install the same packages using the same versions: &lt;code&gt;$ pip install -r requirements.txt&lt;/code&gt;&lt;/p&gt;
-&lt;h4&gt;To deactivate the&amp;nbsp;environment:&lt;/h4&gt;
-&lt;p&gt;(Windows) &lt;code&gt;$ venv/Scripts/deactivate.bat&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;(Linux) &lt;code&gt;$ deactivate&lt;/code&gt;&lt;/p&gt;</content></entry><entry><title>DataTables JS Library</title><link href="https://janiceto.github.io/programming-notes-blog/datatables.html" rel="alternate"></link><published>2016-09-17T00:11:00+01:00</published><updated>2016-09-17T00:11:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-09-17:/programming-notes-blog/datatables.html</id><summary type="html">&lt;p&gt;&lt;a href="https://datatables.net/manual/index"&gt;Documentation&amp;nbsp;here&lt;/a&gt;&lt;/p&gt;
+&lt;/table&gt;</content></entry><entry><title>DataTables JS Library</title><link href="https://janiceto.github.io/programming-notes-blog/datatables.html" rel="alternate"></link><published>2016-09-17T00:11:00+01:00</published><updated>2016-09-17T00:11:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-09-17:/programming-notes-blog/datatables.html</id><summary type="html">&lt;p&gt;&lt;a href="https://datatables.net/manual/index"&gt;Documentation&amp;nbsp;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Requirements:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;JQuery&lt;/li&gt;

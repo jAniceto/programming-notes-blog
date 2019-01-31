@@ -1,8 +1,7 @@
-Title: Create .exe exacutables
+Title: Create a standalone executable (.exe) from a Python script
 Date: 2018-08-27 18:13 
 Authors: José Aniceto
 
-# Create a standalone exacutable from a Python scripy
 
 ## Using pyinstaller
 

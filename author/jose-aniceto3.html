@@ -60,6 +60,98 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/hosting.html#hosting">
+					<a href="https://janiceto.github.io/programming-notes-blog/hosting.html#hosting">Hosting Python scripts and&nbsp;services</a>
+				</h1>
+				<span class="post-date">Fri 05 January 2018</span>
+				<p>
+					<h2>Hosting&nbsp;options:</h2>
+<ul>
+<li><a href="https://cloud.google.com/appengine/">Google App Engine</a> (Free&nbsp;Tier)</li>
+<li><a href="https://aws.amazon.com/ec2">Amazon <span class="caps">EC2</span></a> (Free&nbsp;Tier)</li>
+<li><a href="https://www.pythonanywhere.com">Python Anywhaere</a> (Free&nbsp;Tier)</li>
+<li><a href="https://www.heroku.com/">Heroku</a> (Free Tier disconects when inactive, 7$/month&nbsp;Min)</li>
+<li><a href="https://www.digitalocean.com">Digital Ocean</a> (5$/month Min, 50$ credit from Github Student&nbsp;Pack)</li>
+<li><a href="https://www.linode.com/">Linode</a> (5$/month&nbsp;Min)</li>
+</ul>
+<h2>Useful&nbsp;Software</h2>
+<ul>
+<li><a href="https://www.putty.org/">PuTTY</a> - for <span class="caps">SSH</span>&nbsp;access</li>
+<li><a href="https://winscp.net/eng/index.php">WinSCP</a> - To transfer files to …</li></ul>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/hosting.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">
+					<a href="https://janiceto.github.io/programming-notes-blog/string-formatting.html#string-formatting">String formatting in&nbsp;Python</a>
+				</h1>
+				<span class="post-date">Sun 19 November 2017</span>
+				<p>
+					<h3>F-strings (Python&nbsp;&gt;=3.6)</h3>
+<div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+<span class="n">f</span><span class="s1">&#39;My app name is {name}.&#39;</span>  <span class="c1"># &#39;My app name is Test.</span>
+</pre></div>
+
+
+<h3>New method (Python&nbsp;&gt;=2.6)</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;{} {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2&#39;</span>
+</pre></div>
+
+
+<h3>Old&nbsp;method</h3>
+<div class="highlight"><pre><span></span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>  <span class="c1"># Output: &#39;one two&#39;</span>
+<span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Output: &#39;1 2 …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/string-formatting.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/batch-script.html#batch-script">
+					<a href="https://janiceto.github.io/programming-notes-blog/batch-script.html#batch-script">Create a Windows batch&nbsp;script</a>
+				</h1>
+				<span class="post-date">Fri 17 November 2017</span>
+				<p>
+					<p>A batch file is a text file with the extension <strong>.bat</strong> that contains one or more command line commands to be run&nbsp;consecutively. </p>
+<h2>Some usefull&nbsp;commands:</h2>
+<p><strong>@echo</strong> - This parameter will allow you to view your working script in the command prompt. This parameter is useful for viewing your working code …</p>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/batch-script.html">Continue reading »</a>
+			</div>
+			<div class="post">
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/flask.html#flask">
+					<a href="https://janiceto.github.io/programming-notes-blog/flask.html#flask">Building a Flask&nbsp;site</a>
+				</h1>
+				<span class="post-date">Sun 22 October 2017</span>
+				<p>
+					<h3>Installing Flask and other usefull Python&nbsp;modules</h3>
+<div class="highlight"><pre><span></span>pip install Flask
+pip install flask-mysqldb
+pip install Flask-WTF
+pip install passlib
+</pre></div>
+
+
+<h3>Project file&nbsp;structure</h3>
+<div class="highlight"><pre><span></span>/flask-site
+    /venv
+    /flask-site
+        __init__.py
+        /static
+            style.css
+        /templates
+            layout.html
+            index.html
+            about.html
+            ...
+</pre></div>
+
+
+<h3>The <code>__init__.py</code> file</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">session …</span></pre></div>
+				</p>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/flask.html">Continue reading »</a>
+			</div>
+			<div class="post">
 				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html#image-manipulation">
 					<a href="https://janiceto.github.io/programming-notes-blog/image-manipulation.html#image-manipulation">Image manipulation in&nbsp;Python</a>
 				</h1>
@@ -168,62 +260,6 @@ pip install requests
 <p>Once you are logged in as root, we&#8217;re prepared to add the new user (synergix) account that …</p>
 				</p>
 				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/server-setup.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/stravalib.html#stravalib">
-					<a href="https://janiceto.github.io/programming-notes-blog/stravalib.html#stravalib">Interfacing with Strava <span class="caps">API</span> using&nbsp;stavalib</a>
-				</h1>
-				<span class="post-date">Sat 13 May 2017</span>
-				<p>
-					<h3>Instalation:</h3>
-<p><code>$ pip install stravalib</code></p>
-<h3>Usage:</h3>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">stravalib</span> <span class="kn">import</span> <span class="n">Client</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">access_token</span><span class="o">=</span><span class="s1">&#39;fgd456fgs5dgs546dfg&#39;</span><span class="p">)</span>
-<span class="n">athlete</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_athlete</span><span class="p">()</span>  <span class="c1"># Get your athlete profile</span>
-<span class="n">athlete2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_athlete</span><span class="p">(</span><span class="mi">227615</span><span class="p">)</span>  <span class="c1"># By providing an athlete ID you can access other people</span>
-</pre></div>
-
-
-<p>To get a given activity, use the get_activity function and provide&nbsp;activity_id:</p>
-<div class="highlight"><pre><span></span><span class="n">activity</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_activity</span><span class="p">(</span><span class="mi">207650614 …</span></pre></div>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/stravalib.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">
-					<a href="https://janiceto.github.io/programming-notes-blog/magic-methods.html#magic-methods">Python Magic&nbsp;Methods</a>
-				</h1>
-				<span class="post-date">Sat 29 April 2017</span>
-				<p>
-					<h2>Introduction</h2>
-<p>This guide is the culmination of a few months&#8217; worth of blog posts. The subject is <strong>magic methods</strong>.</p>
-<p>What are magic methods? They&#8217;re everything in object-oriented Python. They&#8217;re special methods that you can define to add &#8220;magic&#8221; to your classes. They&#8217;re always surrounded by double underscores …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/magic-methods.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">
-					<a href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">Imports in&nbsp;Python</a>
-				</h1>
-				<span class="post-date">Thu 27 April 2017</span>
-				<p>
-					<h3>Namespace</h3>
-<p>For example, you might be writing some code that has a function called <code>fun()</code> and there is another module available, which also has a function with the name <code>fun()</code>. Now the interpreter has no way of knowing which version of <code>fun()</code> function you are referring within your&nbsp;code.</p>
-<p><strong>Namespace …</strong></p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/imports.html">Continue reading »</a>
-			</div>
-			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/csv.html#csv">
-					<a href="https://janiceto.github.io/programming-notes-blog/csv.html#csv"><span class="caps">CSV</span>&nbsp;files</a>
-				</h1>
-				<span class="post-date">Sun 12 March 2017</span>
-				<p>
-					<p><span class="caps">CSV</span> (Comma Separated Values) is a very popular import and export data format used in spreadsheets and databases. Each line in a <span class="caps">CSV</span> file is a data record. Each record consists of one or more fields, separated by commas. While <span class="caps">CSV</span> is a very simple data format, there can be …</p>
-				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/csv.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

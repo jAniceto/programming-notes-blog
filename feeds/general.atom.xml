@@ -1,5 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-12-13T14:42:00+00:00</updated><entry><title>Edit photo metadata</title><link href="https://janiceto.github.io/programming-notes-blog/image-metadata.html" rel="alternate"></link><published>2018-12-13T14:42:00+00:00</published><updated>2018-12-13T14:42:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-13:/programming-notes-blog/image-metadata.html</id><summary type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - General</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/general.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2019-01-31T14:05:00+00:00</updated><entry><title>Setting up Amazon S3 Bucket for serving Django Static and Media files</title><link href="https://janiceto.github.io/programming-notes-blog/s3-django-setup.html" rel="alternate"></link><published>2019-01-31T13:15:00+00:00</published><updated>2019-01-31T13:15:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-31:/programming-notes-blog/s3-django-setup.html</id><summary type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+&lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
+&lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Amazon S3 Buckets are a cheap way to store your staticfiles and media files. It also seems like the easiest way when serving a Django&amp;nbsp;App. &lt;/p&gt;
+&lt;h2&gt;1) Sign up to &lt;span class="caps"&gt;AWS&lt;/span&gt; S3 and create &lt;span class="caps"&gt;IAM&lt;/span&gt;&amp;nbsp;user&lt;/h2&gt;
+&lt;p&gt;After signing up to Amazon &lt;span class="caps"&gt;AWS&lt;/span&gt; we need to create a user using the &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt; service. This way you can restrict the access to the bucket. Each user will have its own access id and key. To do&amp;nbsp;this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In the &lt;strong&gt;Services&lt;/strong&gt; dropdown select &lt;strong&gt;&lt;span class="caps"&gt;IAM&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Users&lt;/strong&gt; and select &lt;strong&gt;Add User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the name of the user and make sure that &lt;strong&gt;Programmatic access&lt;/strong&gt; is selected under &lt;strong&gt;Access type&lt;/strong&gt; as you will need this to provide upload access for your S3 bucket. Click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &lt;strong&gt;Attatch existing policies directly&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the list that appears select &lt;strong&gt;AmazonS3FullAccess&lt;/strong&gt; and again click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create User&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This will create the user and generate an access id and key for the user. The id-key pair can only be downloaded at this step so do that by clicking on &lt;strong&gt;Download .csv&lt;/strong&gt;. Keep it&amp;nbsp;secret.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From the Users Dashboard click on the user you have just created. Make a note of &lt;strong&gt;User &lt;span class="caps"&gt;ARN&lt;/span&gt;&lt;/strong&gt;. You will be using this&amp;nbsp;later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2) Create a S3&amp;nbsp;Bucket&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;From the Services dropdown select s3. This opens up the dashboard for the S3&amp;nbsp;buckets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &lt;strong&gt;Create Bucket&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select the region you&amp;nbsp;want.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Note: Try to create  a bucket in the same region where your app is running to take advantage of &lt;span class="caps"&gt;AWS&lt;/span&gt;&amp;#8217;s free in-region data transfer&amp;nbsp;rates.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give your bucket a name and click on next that brings you to the &lt;strong&gt;Set Properties&lt;/strong&gt; tab. Click on &lt;strong&gt;Next&lt;/strong&gt; a couple more times and then click on &lt;strong&gt;Create Bucket&lt;/strong&gt; to create your&amp;nbsp;bucket.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3) Set up Bucket&amp;nbsp;permissions&lt;/h2&gt;
+&lt;p&gt;Now let&amp;#8217;s define the policy for allowing restricted access to our&amp;nbsp;bucket.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the name of the bucket that you just&amp;nbsp;created.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click on the &lt;strong&gt;Permissions&lt;/strong&gt;&amp;nbsp;tab.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Since you have to set the permissions for access, click on &lt;strong&gt;Bucket Policy&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the bottom left click on &lt;strong&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; Policy Generator&lt;/strong&gt; which opens up the tool Amazon provides for quick policy&amp;nbsp;generation. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now we have to generate two policy rules. The first one is to allow our hosted website to access your files from the&amp;nbsp;bucket:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Select Type of Policy : S3 Bucket Policy
+Effect : Allow
+Principal : *      //This gives everybody access
+AWS Service : Amazon S3
+Actions : GetObject
+Amazon Resource Name : arn:aws:s3:::&amp;lt;your bucket name&amp;gt;/* 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;*&lt;/code&gt; at the end siginifies that access is being given to all the&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;After setting the values as mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt;. Do not click on &lt;strong&gt;Generate Policy&lt;/strong&gt; yet as you have to create a policy to allow the Django application to put files into the bucket on deployment. The policy will be as&amp;nbsp;follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Select Type of Policy : S3 Bucket Policy
+Effect : Allow
+Principal : &amp;lt;User ARN&amp;gt;     //This is the user arn that you kept a note of earlier.
+AWS Service : Amazon S3
+Actions : *    //I gave full access, though I think GetObject, PutObject will be better. Will try it out soon. 
+Amazon Resource Name : arn:aws:s3:::&amp;lt;your bucket name&amp;gt;/*,arn:aws:s3:::&amp;lt;your bucket name&amp;gt;  // Gives full access to buckets and its contents.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After setting the values mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt; and then &lt;strong&gt;Generate Policy&lt;/strong&gt; . This will show you the policy which you can copy, paste in the dialogue box on S3 dashboard and click on &lt;strong&gt;Save&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;4) Providing S3 access to your Heroku&amp;nbsp;app&lt;/h2&gt;
+&lt;p&gt;The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; configuration&lt;/strong&gt;. To do this click on the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; Configuration&lt;/strong&gt; tab and click on Save. The default configuration will&amp;nbsp;suffice.&lt;/p&gt;
+&lt;p&gt;You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using&amp;nbsp;pip.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-storages boto3
+pip freeze &amp;gt;&amp;gt; requirements.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and add &lt;code&gt;storages&lt;/code&gt; to the list of INSTALLED_APPS in the &lt;code&gt;settings.py&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;INSTALLED_APPS = (
+          ...,
+          &amp;#39;storages&amp;#39;,
+     )
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next you have to add the following settings to the &lt;code&gt;settings.py&lt;/code&gt; file in your&amp;nbsp;application.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Set S3 as the place to store your files.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 
+&lt;span class="n"&gt;storages&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backends&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s3boto3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;storages.backends.s3boto3.S3Boto3Storage&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_ACCESS_KEY_ID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_SECRET_ACCESS_KEY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AWS_STORAGE_BUCKET_NAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt; &lt;span class="c1"&gt;# This will make sure that the file URL does not have unnecessary parameters like your access key.&lt;/span&gt;
+&lt;span class="n"&gt;AWS_S3_CUSTOM_DOMAIN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Static media settings&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.s3.amazonaws.com/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;media/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_DIRS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;staticfiles&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;ADMIN_MEDIA_PREFIX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;admin/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATICFILES_FINDERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles.finders.FileSystemFinder&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, make sure the main &lt;code&gt;urls.py&lt;/code&gt; file does include the url configuration for your media&amp;nbsp;files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;static&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;document_root&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And as a last step there should be a folder called static in the root of your application (same level as the manage.py file). Git does not allow you to commit empty folders so you can inlcude a readme file in there to commit the&amp;nbsp;folder.&lt;/p&gt;
+&lt;p&gt;If you are using Heroku before pushing your code&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku config:set DISABLE_COLLECTSTATIC=1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually&amp;nbsp;using&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku run python manage.py collectstatic --noinput
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property &lt;code&gt;upload_to&lt;/code&gt; set for them and as a result don&amp;#8217;t overwrite the static&amp;nbsp;files. &lt;/p&gt;
+&lt;p&gt;We are nouw ready to serve static and media files from the S3&amp;nbsp;bucket!&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5"&gt;Setting up Amazon S3 Bucket for serving Django Static and Media&amp;nbsp;files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/"&gt;Using Amazon S3 to Store your Django Site&amp;#8217;s Static and Media&amp;nbsp;Files&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:35:00+00:00</published><updated>2019-01-22T14:35:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes-blog/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploying-python-and-django-apps-on-heroku"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-django-apps-for-heroku"&gt;Configure Django apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploy-to-heroku"&gt;Deploy to&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&amp;nbsp;installed&lt;/li&gt;
+&lt;li&gt;Python&amp;nbsp;&amp;gt;3.6&lt;/li&gt;
+&lt;li&gt;Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; (see step&amp;nbsp;1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1) Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Install the Heroku Command Line Interface (&lt;span class="caps"&gt;CLI&lt;/span&gt;) for your platform from &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up"&gt;here …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Index:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-the-heroku-cli"&gt;Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploying-python-and-django-apps-on-heroku"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configure-django-apps-for-heroku"&gt;Configure Django apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#deploy-to-heroku"&gt;Deploy to&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Requirements:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Git&amp;nbsp;installed&lt;/li&gt;
+&lt;li&gt;Python&amp;nbsp;&amp;gt;3.6&lt;/li&gt;
+&lt;li&gt;Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; (see step&amp;nbsp;1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1) Install the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Install the Heroku Command Line Interface (&lt;span class="caps"&gt;CLI&lt;/span&gt;) for your platform from &lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python#set-up"&gt;here&lt;/a&gt;. Once installed, you can use the &lt;code&gt;heroku&lt;/code&gt; command from your command shell. To log in to the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt;&amp;nbsp;use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2) Deploying Python and Django apps on&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Heroku automatically identifies your app as a Python app if any of the following files are present in its root directory:
+&lt;em&gt; &lt;code&gt;Pipfile&lt;/code&gt;
+&lt;/em&gt; &lt;code&gt;setup.py&lt;/code&gt;
+* &lt;code&gt;requirements.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When you deploy to Heroku, the dependencies you specify are automatically installed. If you’re using Django, the &lt;code&gt;collectstatic&lt;/code&gt; command also runs automatically during the deployment process. For this to work properly make sure you install the Django-Heroku Python package (step&amp;nbsp;3).&lt;/p&gt;
+&lt;h2&gt;3) Configure Django apps for&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Create a &lt;code&gt;Procfile&lt;/code&gt; (no extension) and add the following content where &lt;code&gt;myproject&lt;/code&gt; is the name of your Django&amp;nbsp;app.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gunicorn&lt;/span&gt; &lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;wsgi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install &lt;code&gt;gunicorn&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv install gunicorn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install the &lt;code&gt;django-heroku&lt;/code&gt; package&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pipenv install django-heroku
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the following import statement to the top of &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django_heroku&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then add the following to the bottom of &lt;code&gt;settings.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Activate Django-Heroku.&lt;/span&gt;
+&lt;span class="n"&gt;django_heroku&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4) Deploy to&amp;nbsp;Heroku&lt;/h2&gt;
+&lt;p&gt;Using the Heroku &lt;span class="caps"&gt;CLI&lt;/span&gt; lets create our app and the&amp;nbsp;database.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku login
+$ heroku create &amp;lt;desired_app_name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now lets push our code to&amp;nbsp;Heroku:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Ready to heroku this.&amp;quot;&lt;/span&gt;
+$ git push heroku master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, migrate your Database to the Heroku&amp;nbsp;app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ heroku run python manage.py migrate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You should now be able to see your app in the Heroku Dashboard as well as a Dyno web process with the &lt;code&gt;ON&lt;/code&gt; indication.&lt;/p&gt;
+&lt;h2&gt;5) Import local database to Heroky&amp;nbsp;(Optional)&lt;/h2&gt;
+&lt;p&gt;If you are using a postgresql database locally you can easily import it to your newly created Heroku app. First create a backup of your local &lt;span class="caps"&gt;DB&lt;/span&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pg_dump -U USERNAME DATABASE &amp;gt; pg_db_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To import it to Heroku&amp;nbsp;run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku pg:psql --app APPNAME &amp;lt; pg_db_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;References:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/getting-started-with-python"&gt;Getting Started on Heroku with&amp;nbsp;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/deploying-python"&gt;Deploying Python and Django Apps on&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/django-app-configuration"&gt;Configuring Django Apps for&amp;nbsp;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/heroku/django-heroku"&gt;django-heroku&amp;nbsp;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://devcenter.heroku.com/articles/git"&gt;Deploying with&amp;nbsp;Git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>Edit photo metadata</title><link href="https://janiceto.github.io/programming-notes-blog/image-metadata.html" rel="alternate"></link><published>2018-12-13T14:42:00+00:00</published><updated>2018-12-13T14:42:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-12-13:/programming-notes-blog/image-metadata.html</id><summary type="html">&lt;p&gt;You can do it in one line in the Terminal using &lt;code&gt;jhead&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;For example, adjust all &lt;span class="caps"&gt;EXIF&lt;/span&gt; times forward by 1&amp;nbsp;hour:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;jhead -ta+1:00 *.jpg
 &lt;/pre&gt;&lt;/div&gt;
@@ -15,19 +274,17 @@
 
 &lt;p&gt;Useful&amp;nbsp;links: &lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/"&gt;jhead download&amp;nbsp;page&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes-blog/vps-providers.html" rel="alternate"></link><published>2018-08-28T21:51:00+01:00</published><updated>2018-08-28T21:51:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/vps-providers.html</id><summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://www.sentex.net/~mwandel/jhead/usage.html"&gt;jhead&amp;nbsp;documentation&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>VPS providers</title><link href="https://janiceto.github.io/programming-notes-blog/vps-providers.html" rel="alternate"></link><published>2018-08-28T21:51:00+01:00</published><updated>2019-01-31T14:05:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/vps-providers.html</id><summary type="html">&lt;p&gt;When you need to host your projects, you have several options&amp;nbsp;available:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shared hosting&lt;/strong&gt;, where you share a server with lots of other users and have very limited control over the server. &lt;strong&gt;Dedicated hosting&lt;/strong&gt;, where you have complete control over a server, a very flexible option, but requires you to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When you need to host your projects, you have several options&amp;nbsp;available:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shared hosting&lt;/strong&gt;, where you share a server with lots of other users and have very limited control over the server. &lt;strong&gt;Dedicated hosting&lt;/strong&gt;, where you have complete control over a server, a very flexible option, but requires you to manage the whole server, worry about hardware failures and backups, and is typically expensive. A third option that is in between these two choices is a &lt;strong&gt;Virtual Private Server&lt;/strong&gt;, or &lt;strong&gt;&lt;span class="caps"&gt;VPS&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;VPSs virtualized nature provides several advantages such as instant reinstallation of the operating system, quick recovery and backup, and fast and simple hardware upgrades (the hardware is virtual, after&amp;nbsp;all).&lt;/p&gt;
+&lt;p&gt;Here is a list of several popular &lt;span class="caps"&gt;VPS&lt;/span&gt;&amp;nbsp;providers:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
-&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.linode.com"&gt;linode.com&lt;/a&gt; - from 5 $/month +&amp;nbsp;tax&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;&lt;span class="caps"&gt;PT&lt;/span&gt;:&lt;/h3&gt;
+&lt;h3&gt;Portugal based&amp;nbsp;providers:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.ovh.pt/vps/vps-ssd.xml"&gt;ovh.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.flexi.pt/vps-servidor-virtual"&gt;flexi.pt&lt;/a&gt; - from 3 €/month + tax&amp;nbsp;(anual)&lt;/li&gt;
@@ -405,6 +662,12 @@ $ sudo systemctl restart gunicorn
 &lt;li&gt;Dummy Image Placeholders - &lt;a href="https://source.unsplash.com/"&gt;https://source.unsplash.com/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Dummy Image Placeholders - &lt;a href="https://placeholder.com"&gt;https://placeholder.com&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Free Icons - &lt;a href="https://www.iconfinder.com"&gt;https://www.iconfinder.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;FONTS&lt;/span&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Fonts -&amp;nbsp;https://fonts.google.com/&lt;/li&gt;
+&lt;li&gt;Font Joy -&amp;nbsp;https://fontjoy.com/&lt;/li&gt;
+&lt;li&gt;Font Pair -&amp;nbsp;https://fontpair.co/&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;span class="caps"&gt;COLOR&lt;/span&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;span class="caps"&gt;DESIGN&lt;/span&gt;:&lt;/h2&gt;
 &lt;ul&gt;
