@@ -33,3 +33,7 @@ CONTENT
   color: #9a9a9a;
   font-size: 0.7em;
 }
+
+h1.post-title {
+  color: #1ABC9C;
+}
