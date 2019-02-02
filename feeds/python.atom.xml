@@ -206,14 +206,13 @@ $ virtualenv venv
 &lt;p&gt;This will create a requirements.txt file, which contains a simple list of all the packages in the current environment, and their respective versions. Later, if you need to re-create the environment, install the same packages using the same versions: &lt;code&gt;$ pip install -r requirements.txt&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;To deactivate the&amp;nbsp;environment:&lt;/h3&gt;
 &lt;p&gt;(Windows) &lt;code&gt;$ venv/Scripts/deactivate.bat&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;(Linux) &lt;code&gt;$ deactivate&lt;/code&gt;&lt;/p&gt;</content></entry><entry><title>Create .exe exacutables</title><link href="https://janiceto.github.io/programming-notes-blog/create-exe.html" rel="alternate"></link><published>2018-08-27T18:13:00+01:00</published><updated>2018-08-27T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes-blog/create-exe.html</id><summary type="html">&lt;h1&gt;Create a standalone exacutable from a Python&amp;nbsp;scripy&lt;/h1&gt;
-&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
+&lt;p&gt;(Linux) &lt;code&gt;$ deactivate&lt;/code&gt;&lt;/p&gt;</content></entry><entry><title>Create a standalone executable (.exe) from a Python script</title><link href="https://janiceto.github.io/programming-notes-blog/create-exe.html" rel="alternate"></link><published>2018-08-27T18:13:00+01:00</published><updated>2018-08-27T18:13:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-27:/programming-notes-blog/create-exe.html</id><summary type="html">&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
 &lt;p&gt;To install pyinstaller on your pc (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/)&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pip install pyinstaller&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Use cmd to go to your program directory and to turn it into a exe&amp;nbsp;folder&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pyinstaller yourprogram.py&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;What I …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Create a standalone exacutable from a Python&amp;nbsp;scripy&lt;/h1&gt;
-&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
+&lt;p&gt;What I&amp;nbsp;run:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pyinstaller -F --windowed --icon=myapp.ico SumExcel …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Using&amp;nbsp;pyinstaller&lt;/h2&gt;
 &lt;p&gt;To install pyinstaller on your pc (more details can be found here:&amp;nbsp;https://www.pyinstaller.org/)&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pip install pyinstaller&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Use cmd to go to your program directory and to turn it into a exe&amp;nbsp;folder&lt;/p&gt;

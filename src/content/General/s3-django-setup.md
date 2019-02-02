@@ -76,7 +76,18 @@ After setting the values mentioned above click on **Add Statement** and then **G
 
 ## 4) Providing S3 access to your Heroku app
 
-The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the **CORS configuration**. To do this click on the **CORS Configuration** tab and click on Save. The default configuration will suffice.
+The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the **CORS configuration**. To do this click on the **CORS Configuration** tab and click on Save. The default configuration will suffice. Something like this:
+
+```
+<CORSConfiguration>
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <AllowedHeader>Authorization</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+```
 
 You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using pip.
 
@@ -137,17 +148,44 @@ If you are using Heroku before pushing your code use:
 heroku config:set DISABLE_COLLECTSTATIC=1
 ```
 
-to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually using
+to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can now push all changes to Heroku with
+
+```
+git push heroku master
+```
+
+or if you want to push from a different branch:
+
+```
+git push heroku testbranch:master
+```
+
+You can now run the `collectstatic` command manually using:
 
 ```
 heroku run python manage.py collectstatic --noinput
 ```
 
+If you get the following error:
+
+```
+UserWarning: The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). Version 2.0 will default to using the bucket's ACL. To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL. "The default behavior of S3Boto3Storage is insecure and will change "
+...
+AccessDenied
+```
+
+add the following variable to `settings.py`: 
+
+```
+AWS_DEFAULT_ACL = None
+```
+
 One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property `upload_to` set for them and as a result don't overwrite the static files. 
 
-We are nouw ready to serve static and media files from the S3 bucket!
+We are now ready to serve static and media files from the S3 bucket!
 
 
 ### References
 * [Setting up Amazon S3 Bucket for serving Django Static and Media files](https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5)
 * [Using Amazon S3 to Store your Django Site's Static and Media Files](https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/)
+* [How to Setup Amazon S3 in a Django Project](https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html)

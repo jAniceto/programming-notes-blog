@@ -85,7 +85,18 @@ Amazon Resource Name : arn:aws:s3:::&amp;lt;your bucket name&amp;gt;/*,arn:aws:s
 
 &lt;p&gt;After setting the values mentioned above click on &lt;strong&gt;Add Statement&lt;/strong&gt; and then &lt;strong&gt;Generate Policy&lt;/strong&gt; . This will show you the policy which you can copy, paste in the dialogue box on S3 dashboard and click on &lt;strong&gt;Save&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;4) Providing S3 access to your Heroku&amp;nbsp;app&lt;/h2&gt;
-&lt;p&gt;The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; configuration&lt;/strong&gt;. To do this click on the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; Configuration&lt;/strong&gt; tab and click on Save. The default configuration will&amp;nbsp;suffice.&lt;/p&gt;
+&lt;p&gt;The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; configuration&lt;/strong&gt;. To do this click on the &lt;strong&gt;&lt;span class="caps"&gt;CORS&lt;/span&gt; Configuration&lt;/strong&gt; tab and click on Save. The default configuration will suffice. Something like&amp;nbsp;this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;CORSConfiguration&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;CORSRule&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;AllowedOrigin&amp;gt;&lt;/span&gt;*&lt;span class="nt"&gt;&amp;lt;/AllowedOrigin&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;AllowedMethod&amp;gt;&lt;/span&gt;GET&lt;span class="nt"&gt;&amp;lt;/AllowedMethod&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;MaxAgeSeconds&amp;gt;&lt;/span&gt;3000&lt;span class="nt"&gt;&amp;lt;/MaxAgeSeconds&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;AllowedHeader&amp;gt;&lt;/span&gt;Authorization&lt;span class="nt"&gt;&amp;lt;/AllowedHeader&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/CORSRule&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/CORSConfiguration&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using&amp;nbsp;pip.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-storages boto3
 pip freeze &amp;gt;&amp;gt; requirements.txt
@@ -139,17 +150,40 @@ pip freeze &amp;gt;&amp;gt; requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually&amp;nbsp;using&lt;/p&gt;
+&lt;p&gt;to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can now push all changes to Heroku&amp;nbsp;with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push heroku master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;or if you want to push from a different&amp;nbsp;branch:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push heroku testbranch:master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can now run the &lt;code&gt;collectstatic&lt;/code&gt; command manually&amp;nbsp;using:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heroku run python manage.py collectstatic --noinput
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;If you get the following&amp;nbsp;error:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;UserWarning&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;behavior&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;S3Boto3Storage&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;insecure&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;storages&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;By&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;buckets&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;ACL&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;public-read&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;globally&lt;/span&gt; &lt;span class="n"&gt;publicly&lt;/span&gt; &lt;span class="n"&gt;readable&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt; &lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;ACL&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;To&lt;/span&gt; &lt;span class="n"&gt;opt&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;behavior&lt;/span&gt; &lt;span class="kd"&gt;set&lt;/span&gt; &lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;otherwise&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;silence&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt; &lt;span class="n"&gt;warning&lt;/span&gt; &lt;span class="n"&gt;explicitly&lt;/span&gt; &lt;span class="kd"&gt;set&lt;/span&gt; &lt;span class="n"&gt;AWS_DEFAULT_ACL&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;The default behavior of S3Boto3Storage is insecure and will change &amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;AccessDenied&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;add the following variable to &lt;code&gt;settings.py&lt;/code&gt;: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;AWS_DEFAULT_ACL = None
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property &lt;code&gt;upload_to&lt;/code&gt; set for them and as a result don&amp;#8217;t overwrite the static&amp;nbsp;files. &lt;/p&gt;
-&lt;p&gt;We are nouw ready to serve static and media files from the S3&amp;nbsp;bucket!&lt;/p&gt;
+&lt;p&gt;We are now ready to serve static and media files from the S3&amp;nbsp;bucket!&lt;/p&gt;
 &lt;h3&gt;References&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5"&gt;Setting up Amazon S3 Bucket for serving Django Static and Media&amp;nbsp;files&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/"&gt;Using Amazon S3 to Store your Django Site&amp;#8217;s Static and Media&amp;nbsp;Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html"&gt;How to Setup Amazon S3 in a Django&amp;nbsp;Project&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content></entry><entry><title>Deploy a Django app to Heroku</title><link href="https://janiceto.github.io/programming-notes-blog/deploy-django-heroku.html" rel="alternate"></link><published>2019-01-22T14:35:00+00:00</published><updated>2019-01-22T14:35:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2019-01-22:/programming-notes-blog/deploy-django-heroku.html</id><summary type="html">&lt;h3&gt;Index:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
@@ -283,6 +317,8 @@ $ git push heroku master
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/pricing/"&gt;digitalocean.com&lt;/a&gt; - from 5 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.linode.com"&gt;linode.com&lt;/a&gt; - from 5 $/month +&amp;nbsp;tax&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.heroku.com/pricing"&gt;heroku.com&lt;/a&gt; from 7 $/month + tax&amp;nbsp;(anual)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://console.cloud.google.com/compute"&gt;Google&amp;nbsp;Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/ec2/"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; &lt;span class="caps"&gt;EC2&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Portugal based&amp;nbsp;providers:&lt;/h3&gt;
 &lt;ul&gt;

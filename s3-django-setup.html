@@ -49,8 +49,7 @@
 		</div>
 		<nav class="sidebar-nav">
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
-			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
-			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-css-javascript.html">HTML CSS Javascript</a>
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
 			
 		</nav>
@@ -145,7 +144,18 @@ Amazon Resource Name : arn:aws:s3:::&lt;your bucket name&gt;/*,arn:aws:s3:::&lt;
 
 <p>After setting the values mentioned above click on <strong>Add Statement</strong> and then <strong>Generate Policy</strong> . This will show you the policy which you can copy, paste in the dialogue box on S3 dashboard and click on <strong>Save</strong>.</p>
 <h2>4) Providing S3 access to your Heroku&nbsp;app</h2>
-<p>The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the <strong><span class="caps">CORS</span> configuration</strong>. To do this click on the <strong><span class="caps">CORS</span> Configuration</strong> tab and click on Save. The default configuration will&nbsp;suffice.</p>
+<p>The last step for setting up the Bucket access is providing the application hosted on Heroku, access to the bucket content. This can be done by setting up the <strong><span class="caps">CORS</span> configuration</strong>. To do this click on the <strong><span class="caps">CORS</span> Configuration</strong> tab and click on Save. The default configuration will suffice. Something like&nbsp;this:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;CORSConfiguration&gt;</span>
+    <span class="nt">&lt;CORSRule&gt;</span>
+        <span class="nt">&lt;AllowedOrigin&gt;</span>*<span class="nt">&lt;/AllowedOrigin&gt;</span>
+        <span class="nt">&lt;AllowedMethod&gt;</span>GET<span class="nt">&lt;/AllowedMethod&gt;</span>
+        <span class="nt">&lt;MaxAgeSeconds&gt;</span>3000<span class="nt">&lt;/MaxAgeSeconds&gt;</span>
+        <span class="nt">&lt;AllowedHeader&gt;</span>Authorization<span class="nt">&lt;/AllowedHeader&gt;</span>
+    <span class="nt">&lt;/CORSRule&gt;</span>
+<span class="nt">&lt;/CORSConfiguration&gt;</span>
+</pre></div>
+
+
 <p>You have the bucket access set up. Now all you have to do is set up your Django application to access the bucket which is fairly easy. The first step to achieve the goal will be to install Boto3 and DjangoStorages. Nifty APIs to make working with S3 buckets easy. This can be easily done using&nbsp;pip.</p>
 <div class="highlight"><pre><span></span>pip install django-storages boto3
 pip freeze &gt;&gt; requirements.txt
@@ -199,17 +209,40 @@ pip freeze &gt;&gt; requirements.txt
 </pre></div>
 
 
-<p>to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can run it manually&nbsp;using</p>
+<p>to disable collectstatic running automatically as your static folder is not yet present on the server and an error will be thrown regarding the same. You can now push all changes to Heroku&nbsp;with</p>
+<div class="highlight"><pre><span></span>git push heroku master
+</pre></div>
+
+
+<p>or if you want to push from a different&nbsp;branch:</p>
+<div class="highlight"><pre><span></span>git push heroku testbranch:master
+</pre></div>
+
+
+<p>You can now run the <code>collectstatic</code> command manually&nbsp;using:</p>
 <div class="highlight"><pre><span></span>heroku run python manage.py collectstatic --noinput
 </pre></div>
 
 
+<p>If you get the following&nbsp;error:</p>
+<div class="highlight"><pre><span></span><span class="n">UserWarning</span><span class="o">:</span> <span class="n">The</span> <span class="k">default</span> <span class="n">behavior</span> <span class="n">of</span> <span class="n">S3Boto3Storage</span> <span class="k">is</span> <span class="n">insecure</span> <span class="n">and</span> <span class="n">will</span> <span class="n">change</span> <span class="k">in</span> <span class="n">django</span><span class="o">-</span><span class="n">storages</span> <span class="mf">2.0</span><span class="o">.</span> <span class="n">By</span> <span class="k">default</span> <span class="n">files</span> <span class="n">and</span> <span class="k">new</span> <span class="n">buckets</span> <span class="n">are</span> <span class="n">saved</span> <span class="k">with</span> <span class="n">an</span> <span class="n">ACL</span> <span class="n">of</span> <span class="s1">&#39;public-read&#39;</span> <span class="o">(</span><span class="n">globally</span> <span class="n">publicly</span> <span class="n">readable</span><span class="o">).</span> <span class="n">Version</span> <span class="mf">2.0</span> <span class="n">will</span> <span class="k">default</span> <span class="n">to</span> <span class="n">using</span> <span class="n">the</span> <span class="n">bucket</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">ACL</span><span class="o">.</span> <span class="n">To</span> <span class="n">opt</span> <span class="n">into</span> <span class="n">the</span> <span class="k">new</span> <span class="n">behavior</span> <span class="kd">set</span> <span class="n">AWS_DEFAULT_ACL</span> <span class="o">=</span> <span class="n">None</span><span class="o">,</span> <span class="n">otherwise</span> <span class="n">to</span> <span class="n">silence</span> <span class="k">this</span> <span class="n">warning</span> <span class="n">explicitly</span> <span class="kd">set</span> <span class="n">AWS_DEFAULT_ACL</span><span class="o">.</span> <span class="s2">&quot;The default behavior of S3Boto3Storage is insecure and will change &quot;</span>
+<span class="o">...</span>
+<span class="n">AccessDenied</span>
+</pre></div>
+
+
+<p>add the following variable to <code>settings.py</code>: </p>
+<div class="highlight"><pre><span></span>AWS_DEFAULT_ACL = None
+</pre></div>
+
+
 <p>One important point before you go on this adventure. At the moment all the media files (files that are uploaded by the user) used in our models have the property <code>upload_to</code> set for them and as a result don&#8217;t overwrite the static&nbsp;files. </p>
-<p>We are nouw ready to serve static and media files from the S3&nbsp;bucket!</p>
+<p>We are now ready to serve static and media files from the S3&nbsp;bucket!</p>
 <h3>References</h3>
 <ul>
 <li><a href="https://medium.com/@manibatra23/setting-up-amazon-s3-bucket-for-serving-django-static-and-media-files-3e781ab325d5">Setting up Amazon S3 Bucket for serving Django Static and Media&nbsp;files</a></li>
 <li><a href="https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/">Using Amazon S3 to Store your Django Site&#8217;s Static and Media&nbsp;Files</a></li>
+<li><a href="https://simpleisbetterthancomplex.com/tutorial/2017/08/01/how-to-setup-amazon-s3-in-a-django-project.html">How to Setup Amazon S3 in a Django&nbsp;Project</a></li>
 </ul>
 	<br><br><br>
 	<div id="disqus_thread"></div>
