@@ -1,4 +1,4 @@
-Title: Setting up Amazon S3 Bucket for serving Django Static and Media files
+Title: Set up Amazon S3 to serve Django Static and Media files
 Date: 2019-01-31 12:10
 Authors: José Aniceto
 Modified: 2019-01-31 22:52
