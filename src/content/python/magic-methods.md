@@ -1,9 +1,7 @@
-Title: Python Magic Methods
-Date: 2017-04-29 16:10 
+Title: Introduction
+Date: 2017-12-12 10:48
 Authors: José Aniceto
 
-
-## Introduction
 
 This guide is the culmination of a few months' worth of blog posts. The subject is **magic methods**.
 
@@ -782,4 +780,4 @@ The goal of this guide is to bring something to anyone that reads it, regardless
 
 ## References
 
-* [https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown](https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown)
+https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown

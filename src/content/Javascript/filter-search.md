@@ -1,6 +1,7 @@
 Title: Filter a table or list by typing in search box
-Date: 2018-08-28 20:49 
+Date: 2018-08-28 11:27
 Authors: José Aniceto
+Modified: 2018-08-28 11:30
 
 ## Using a JS library:
 

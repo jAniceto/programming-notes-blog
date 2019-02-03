@@ -1,8 +1,7 @@
 Title: Git Version Control System
-Date: 2017-08-25 20:19
-Modified: 2018-08-30 20:19
+Date: 2017-09-11 10:41
 Authors: José Aniceto
-
+Modified: 2018-08-30 13:55
 
 ## Instalation on a Debian-based distribution, such as Ubuntu
 

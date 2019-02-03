@@ -1,8 +1,7 @@
 Title: VPS providers
-Date: 2018-08-28 21:51 
-Modified: 2019-01-31 14:05
+Date: 2018-08-28 11:16
 Authors: José Aniceto
-
+Modified: 2019-01-31 17:01
 
 When you need to host your projects, you have several options available:
 
@@ -15,7 +14,7 @@ Here is a list of several popular VPS providers:
 * [digitalocean.com](https://www.digitalocean.com/pricing/) - from 5 $/month + tax (anual)
 * [linode.com](https://www.linode.com) - from 5 $/month + tax
 * [heroku.com](https://www.heroku.com/pricing) from 7 $/month + tax (anual)
-* [Google Cloud](https://console.cloud.google.com/compute)
+* [Google Cloudm](https://console.cloud.google.com/compute)
 * [AWS EC2](https://aws.amazon.com/ec2/)
 
 ### Portugal based providers:

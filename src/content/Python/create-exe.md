@@ -1,5 +1,5 @@
-Title: Create a standalone executable (.exe) from a Python script
-Date: 2018-08-27 18:13 
+Title: Create a standalone exacutable from a Python scripy
+Date: 2018-08-27 17:21
 Authors: José Aniceto
 
 

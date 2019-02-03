@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Javascript</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/javascript.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-08-28T20:49:00+01:00</updated><entry><title>Filter a table or list by typing in search box</title><link href="https://janiceto.github.io/programming-notes-blog/filter-search.html" rel="alternate"></link><published>2018-08-28T20:49:00+01:00</published><updated>2018-08-28T20:49:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/filter-search.html</id><summary type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Annotatio - Javascript</title><link href="https://janiceto.github.io/programming-notes-blog/" rel="alternate"></link><link href="https://janiceto.github.io/programming-notes-blog/feeds/javascript.atom.xml" rel="self"></link><id>https://janiceto.github.io/programming-notes-blog/</id><updated>2018-08-28T11:30:00+01:00</updated><entry><title>Filter a table or list by typing in search box</title><link href="https://janiceto.github.io/programming-notes-blog/filter-search.html" rel="alternate"></link><published>2018-08-28T11:27:00+01:00</published><updated>2018-08-28T11:30:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-08-28:/programming-notes-blog/filter-search.html</id><summary type="html">&lt;h2&gt;Using a &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;library:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://listjs.com/"&gt;listjs.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -194,44 +194,7 @@
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Caching data</title><link href="https://janiceto.github.io/programming-notes-blog/cache-data.html" rel="alternate"></link><published>2017-07-14T05:36:00+01:00</published><updated>2017-07-14T05:36:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-07-14:/programming-notes-blog/cache-data.html</id><summary type="html">&lt;p&gt;You have three&amp;nbsp;options:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Cookies: &lt;a href="https://developer.mozilla.org/en-US/docs/DOM/document.cookie"&gt;https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/document.cookie&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;DOMStorage (sessionStorage or localStorage): &lt;a href="https://developer.mozilla.org/en-US/docs/DOM/Storage"&gt;https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/Storage&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;If your users are logged in, you could persist data in your server&amp;#8217;s &lt;span class="caps"&gt;DB&lt;/span&gt; that is keyed to a user (or …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;You have three&amp;nbsp;options:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Cookies: &lt;a href="https://developer.mozilla.org/en-US/docs/DOM/document.cookie"&gt;https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/document.cookie&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;DOMStorage (sessionStorage or localStorage): &lt;a href="https://developer.mozilla.org/en-US/docs/DOM/Storage"&gt;https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/Storage&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;If your users are logged in, you could persist data in your server&amp;#8217;s &lt;span class="caps"&gt;DB&lt;/span&gt; that is keyed to a user (or&amp;nbsp;group)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;Using localStorage (persistent over&amp;nbsp;sessions)&lt;/h3&gt;
-&lt;p&gt;Writing&amp;nbsp;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;somestring&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// only strings&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Reading&amp;nbsp;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;defaultValue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;If you need to store complex structures, you might serialize them in &lt;span class="caps"&gt;JSON&lt;/span&gt;. For example&amp;nbsp;:&lt;/p&gt;
-&lt;p&gt;Reading&amp;nbsp;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;stored&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;stored&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;stored&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="nx"&gt;myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Writing&amp;nbsp;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;stringify&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;myVar&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Note that you may use more than one key. They&amp;#8217;ll all be retrieved by all pages on the same&amp;nbsp;domain.&lt;/p&gt;
-&lt;p&gt;Unless you want to be compatible with &lt;span class="caps"&gt;IE7&lt;/span&gt;, you have no reason to use the obsolete and small&amp;nbsp;cookies.&lt;/p&gt;
-&lt;h3&gt;References&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable"&gt;https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>DataTables JS Library</title><link href="https://janiceto.github.io/programming-notes-blog/datatables.html" rel="alternate"></link><published>2016-09-17T00:11:00+01:00</published><updated>2016-09-17T00:11:00+01:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2016-09-17:/programming-notes-blog/datatables.html</id><summary type="html">&lt;p&gt;&lt;a href="https://datatables.net/manual/index"&gt;Documentation&amp;nbsp;here&lt;/a&gt;&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>DataTables JS Library</title><link href="https://janiceto.github.io/programming-notes-blog/datatables.html" rel="alternate"></link><published>2018-01-21T00:49:00+00:00</published><updated>2018-01-21T00:49:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2018-01-21:/programming-notes-blog/datatables.html</id><summary type="html">&lt;p&gt;&lt;a href="https://datatables.net/manual/index"&gt;Documentation&amp;nbsp;here&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;Requirements:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;JQuery&lt;/li&gt;
@@ -270,4 +233,41 @@
     &lt;span class="s2"&gt;&amp;quot;order&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;asc&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;]]&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Caching data</title><link href="https://janiceto.github.io/programming-notes-blog/cache-data.html" rel="alternate"></link><published>2017-12-03T11:50:00+00:00</published><updated>2017-12-03T11:50:00+00:00</updated><author><name>José Aniceto</name></author><id>tag:janiceto.github.io,2017-12-03:/programming-notes-blog/cache-data.html</id><summary type="html">&lt;p&gt;You have three&amp;nbsp;options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cookies: https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/document.cookie&lt;/li&gt;
+&lt;li&gt;DOMStorage (sessionStorage or localStorage): https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/Storage&lt;/li&gt;
+&lt;li&gt;If your users are logged in, you could persist data in your server&amp;#8217;s &lt;span class="caps"&gt;DB&lt;/span&gt; that is keyed to a user (or …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;You have three&amp;nbsp;options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cookies: https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/document.cookie&lt;/li&gt;
+&lt;li&gt;DOMStorage (sessionStorage or localStorage): https://developer.mozilla.org/en-&lt;span class="caps"&gt;US&lt;/span&gt;/docs/&lt;span class="caps"&gt;DOM&lt;/span&gt;/Storage&lt;/li&gt;
+&lt;li&gt;If your users are logged in, you could persist data in your server&amp;#8217;s &lt;span class="caps"&gt;DB&lt;/span&gt; that is keyed to a user (or&amp;nbsp;group)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Using localStorage (persistent over&amp;nbsp;sessions)&lt;/h3&gt;
+&lt;p&gt;Writing&amp;nbsp;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;somestring&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// only strings&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reading&amp;nbsp;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;defaultValue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you need to store complex structures, you might serialize them in &lt;span class="caps"&gt;JSON&lt;/span&gt;. For example&amp;nbsp;:&lt;/p&gt;
+&lt;p&gt;Reading&amp;nbsp;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;stored&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;stored&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;stored&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="nx"&gt;myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Writing&amp;nbsp;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;localStorage&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;myKey&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;stringify&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;myVar&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that you may use more than one key. They&amp;#8217;ll all be retrieved by all pages on the same&amp;nbsp;domain.&lt;/p&gt;
+&lt;p&gt;Unless you want to be compatible with &lt;span class="caps"&gt;IE7&lt;/span&gt;, you have no reason to use the obsolete and small&amp;nbsp;cookies.&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;p&gt;https://stackoverflow.com/questions/14266730/js-how-to-cache-a-variable&lt;/p&gt;</content></entry></feed>

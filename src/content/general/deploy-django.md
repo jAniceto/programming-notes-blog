@@ -1,7 +1,7 @@
 Title: Deploy a Django app in an Ubuntu VPS (DigitalOcean)
-Date: 2018-07-21 18:13 
+Date: 2018-06-06 23:29
 Authors: José Aniceto
-
+Modified: 2018-06-13 14:31
 
 This guide will demonstrate how to install and configure some components on Ubuntu 16.04 to support and serve Django applications. We will be setting up a PostgreSQL database and configure the Gunicorn application server to interface with our applications. We will then set up Nginx to reverse proxy to Gunicorn, giving us access to its security and performance features to serve our apps.
 

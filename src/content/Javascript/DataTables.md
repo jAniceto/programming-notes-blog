@@ -1,5 +1,5 @@
 Title: DataTables JS Library
-Date: 2016-09-17 00:11 
+Date: 2018-01-21 00:49
 Authors: José Aniceto
 
 

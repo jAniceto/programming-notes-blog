@@ -1,7 +1,7 @@
 Title: Deploy a Django app to Heroku
-Date: 2019-01-22 14:35 
+Date: 2019-01-22 14:45
 Authors: José Aniceto
-
+Modified: 2019-02-01 23:11
 
 ### Index:
 * [Requirements](#requirements)
@@ -90,7 +90,7 @@ $ heroku run python manage.py migrate
 You should now be able to see your app in the Heroku Dashboard as well as a Dyno web process with the `ON` indication.
 
 
-## 5) Import local database to Heroky (Optional)
+## 5) Import local database to Heroku (Optional)
 
 If you are using a postgresql database locally you can easily import it to your newly created Heroku app. First create a backup of your local DB:
 

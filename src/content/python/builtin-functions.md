@@ -1,5 +1,5 @@
 Title: Sorting lists
-Date: 2017-01-20 03:00 
+Date: 2017-11-26 15:10
 Authors: José Aniceto
 
 
@@ -12,8 +12,6 @@ Authors: José Aniceto
 * No, you cannot retrieve the original positions. Once you called `list.sort()` the original order is gone.
 
 #### Useful links:
-* [https://stackoverflow.com/questions/22442378/what-is-the-difference-between-sortedlist-vs-list-sort-python](https://stackoverflow.com/questions/22442378/what-is-the-difference-between-sortedlist-vs-list-sort-python)
-
-* [https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multiple-keys-with-different-ordering](https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multiple-keys-with-different-ordering)
-
-* [https://stackoverflow.com/questions/16082954/python-how-to-sort-a-list-of-dictionaries-by-several-values](https://stackoverflow.com/questions/16082954/python-how-to-sort-a-list-of-dictionaries-by-several-values)
+https://stackoverflow.com/questions/22442378/what-is-the-difference-between-sortedlist-vs-list-sort-python
+https://stackoverflow.com/questions/18761776/sort-list-of-dictionaries-by-multiple-keys-with-different-ordering
+https://stackoverflow.com/questions/16082954/python-how-to-sort-a-list-of-dictionaries-by-several-values

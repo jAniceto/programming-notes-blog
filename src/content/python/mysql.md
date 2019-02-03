@@ -1,7 +1,7 @@
 Title: Using MySQL in Python
-Date: 2018-07-18 23:47 
+Date: 2017-08-04 11:13
 Authors: José Aniceto
-
+Modified: 2017-09-06 23:09
 
 ### Some basic MySQL commands
 

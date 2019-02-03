@@ -1,5 +1,5 @@
-Title: Edit photo metadata
-Date: 2018-12-13 14:42 
+Title: Editing photos metadata
+Date: 2018-12-14 10:43
 Authors: José Aniceto
 
 

@@ -1,5 +1,5 @@
 Title: Image manipulation in Python
-Date: 2017-09-03 18:12 
+Date: 2017-08-12 15:24
 Authors: José Aniceto
 
 

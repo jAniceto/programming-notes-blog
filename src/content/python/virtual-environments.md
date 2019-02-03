@@ -1,7 +1,7 @@
 Title: Virtual enviroments
-Date: 2018-12-15 13:53 
+Date: 2017-08-02 22:57
 Authors: José Aniceto
-
+Modified: 2018-12-15 01:51
 
 ## Pipenv
 

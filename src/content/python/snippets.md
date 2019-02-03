@@ -1,7 +1,7 @@
 Title: Useful Python code snippets
-Date: 2018-03-19 23:33 
+Date: 2018-06-03 14:27
 Authors: José Aniceto
-
+Modified: 2018-06-06 13:49
 
 A collection of several code snippets of common or useful operation in Python.
 
@@ -66,6 +66,8 @@ list(filter(lambda x: x > 2, seq))
 # [3, 4, 5]
 ```
 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/cKlnR-CB3tk/0.jpg)](http://www.youtube.com/watch?v=cKlnR-CB3tk "Python: Lambda, Map, Filter, Reduce Functions")
+
 ## Arange and Linspace
 
 For creating quick and easy Numpy arrays, look no further than the arange and linspace functions. Each one has their specific purpose, but the appeal here (instead of using range), is that they output NumPy arrays, which are typically easier to work with for data science.
@@ -85,7 +87,3 @@ np.arange(3, 7, 2)
 np.linspace(2.0, 3.0, num=5)
 # array([ 2.0,  2.25,  2.5,  2.75, 3.0])
 ```
-
-## References 
-
-* [https://www.youtube.com/watch?v=cKlnR-CB3tk](https://www.youtube.com/watch?v=cKlnR-CB3tk)

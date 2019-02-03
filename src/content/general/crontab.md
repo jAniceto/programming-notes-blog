@@ -1,7 +1,7 @@
 Title: Linux Crontab
-Date: 2017-01-17 15:23 
+Date: 2017-09-07 10:44
 Authors: José Aniceto
-
+Modified: 2017-11-05 20:36
 
 To view currently active crontab entries: `$ sudo crontab -l`
 
@@ -42,4 +42,4 @@ string        | meaning
 
 ### Helpfull links:
 
-* [https://crontab.guru](https://crontab.guru)
+https://crontab.guru

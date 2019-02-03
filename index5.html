@@ -49,7 +49,8 @@
 		</div>
 		<nav class="sidebar-nav">
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
-			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-css-javascript.html">HTML CSS Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
 			
 		</nav>
@@ -59,72 +60,49 @@
 </div>		<div class="content container">
 	<div class="posts">
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/datatables.html#datatables">
-					<a href="https://janiceto.github.io/programming-notes-blog/datatables.html#datatables">DataTables <span class="caps">JS</span>&nbsp;Library</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/email.html#email">
+					<a href="https://janiceto.github.io/programming-notes-blog/email.html#email">Sending e-mails with&nbsp;Python</a>
 				</h1>
-				<span class="post-date">Sat 17 September 2016</span>
+				<span class="post-date">Fri 04 August 2017</span>
 				<p>
-					<p><a href="https://datatables.net/manual/index">Documentation&nbsp;here</a></p>
-<h3>Requirements:</h3>
+					<p>In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the&nbsp;port.</p>
 <ul>
-<li>JQuery</li>
-</ul>
-<h3>Usage:</h3>
-<p>Include the <span class="caps">CSS</span> and <span class="caps">JS</span> code for DataTables to the head and bottom of the body of your website, respectively. <span class="caps">CSS</span> is not&nbsp;required.</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span> <span class="s">&quot;{{ url_for(&#39;static&#39;,filename=&#39;style.css&#39;) }}&quot;</span><span class="p">&gt;</span> 
-
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.datatables.net …</span></pre></div>
+<li>Gmail: smtp.gmail.com, port&nbsp;587</li>
+<li>Hotmail: smtp.live.com, port&nbsp;587</li>
+<li>Outlook: smtp-mail.outlook.com, port&nbsp;587 …</li></ul>
 				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/datatables.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/email.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html#keep-ssh-running">
-					<a href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html#keep-ssh-running">Keep <span class="caps">SSH</span> sessions running after&nbsp;disconnecting</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">
+					<a href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html#virtual-environments">Virtual&nbsp;enviroments</a>
 				</h1>
-				<span class="post-date">Thu 21 April 2016</span>
+				<span class="post-date">Wed 02 August 2017</span>
 				<p>
-					<h3>Using&nbsp;nohup</h3>
-<div class="highlight"><pre><span></span>$ nohup long-running-process <span class="p">&amp;</span>
-$ <span class="nb">exit</span>
+					<h2>Pipenv</h2>
+<p>Installing Pipenv: <code>$ pip install pipenv</code></p>
+<p>To upgrade Pipenv at any time run: <code>$ pip install --upgrade pipenv</code></p>
+<h3>Installing packages for your&nbsp;project</h3>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> myproject
+$ pipenv install requests
 </pre></div>
 
 
-<h3>Using <span class="caps">GNU</span>&nbsp;Screen</h3>
-<div class="highlight"><pre><span></span>$ screen             <span class="c1"># to start a screen session</span>
-$ run-a-process
-CTRL+a , d           <span class="c1"># to detatch from your screen session</span>
-$ <span class="nb">exit</span>               <span class="c1"># to disconnect from the server, while run-a-process continues</span>
-$ screen -r          <span class="c1"># to resume the screen session when you come back to your laptop</span>
-</pre></div>
-
-
-<h3>Using&nbsp;tmux</h3>
-<div class="highlight"><pre><span></span>$ <span class="n">tmux …</span></pre></div>
+<p>Pipenv will install the excellent Requests library and create a Pipfile for you in your project’s directory. The Pipfile is used to …</p>
 				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/keep-ssh-running.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/virtual-environments.html">Continue reading »</a>
 			</div>
 			<div class="post">
-				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/dev-environments.html#dev-environments">
-					<a href="https://janiceto.github.io/programming-notes-blog/dev-environments.html#dev-environments">Development&nbsp;environments</a>
+				<h1 class="post-title" href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">
+					<a href="https://janiceto.github.io/programming-notes-blog/imports.html#imports">Imports in&nbsp;Python</a>
 				</h1>
-				<span class="post-date">Sat 09 January 2016</span>
+				<span class="post-date">Wed 02 August 2017</span>
 				<p>
-					<p>My prefered configurations and extensions in various development environments. Mostly focused on Python and web development. For Python I mostly use&nbsp;Pycharm.</p>
-<h2>Visual Studio&nbsp;Code</h2>
-<h4>Essentials</h4>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner</a> for Python and&nbsp;more</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> for web&nbsp;dev</li>
-</ul>
-<h4>Other</h4>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme">OneDark-Pro&nbsp;theme</a> </li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=magicstack.MagicPython">Magic&nbsp;Python</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer">Bracket Pair&nbsp;Colorizer</a></li>
-</ul>
+					<h3>Namespace</h3>
+<p>For example, you might be writing some code that has a function called <code>fun()</code> and there is another module available, which also has a function with the name <code>fun()</code>. Now the interpreter has no way of knowing which version of <code>fun()</code> function you are referring within your&nbsp;code.</p>
+<p><strong>Namespace …</strong></p>
 				</p>
-				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/dev-environments.html">Continue reading »</a>
+				<a class="read-more" href="https://janiceto.github.io/programming-notes-blog/imports.html">Continue reading »</a>
 			</div>
 	</div>
 	<div class="pagination">

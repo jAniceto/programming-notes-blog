@@ -1,7 +1,7 @@
 Title: Initial Server Setup with Ubuntu 18.04
-Date: 2017-05-14 23:52 
+Date: 2018-06-06 23:19
 Authors: José Aniceto
-
+Modified: 2018-06-13 22:30
 
 When first creating a new Ubuntu 18.04 server, there are a few configuration steps that you should take early on as part of the basic setup.
 
@@ -72,4 +72,4 @@ You should be logged in to the new user account without using a password.
 Chose the timezone by running: `sudo dpkg-reconfigure tzdata`
 
 ## References:
-* [https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
+* https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04

@@ -1,7 +1,7 @@
 Title: Web scrapping with Beautiful Soup 4 
-Date: 2017-06-26 08:47 
+Date: 2017-11-09 13:27
 Authors: José Aniceto
-
+Modified: 2017-11-28 14:16
 
 ## Required modules
 ```
@@ -23,4 +23,4 @@ soup = BeautifulSoup(source, 'lxml')
 
 ## References
 
-* [https://www.youtube.com/watch?v=ng2o98k983k](https://www.youtube.com/watch?v=ng2o98k983k)
+https://www.youtube.com/watch?v=ng2o98k983k

@@ -49,7 +49,8 @@
 		</div>
 		<nav class="sidebar-nav">
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/general.html">General</a>
-			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-css-javascript.html">HTML CSS Javascript</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/html-and-css.html">HTML and CSS</a>
+			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/javascript.html">Javascript</a>
 			<a class="sidebar-nav-item" href="https://janiceto.github.io/programming-notes-blog/category/python.html">Python</a>
 			
 		</nav>
@@ -59,7 +60,7 @@
 </div>		<div class="content container">
 <div class="post">
 	<h1 class="post-title">String formatting in&nbsp;Python</h1>
-	<span class="post-date">Sun 19 November 2017</span>
+	<span class="post-date">Thu 10 August 2017</span>
 	<h3>F-strings (Python&nbsp;&gt;=3.6)</h3>
 <div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
 <span class="n">f</span><span class="s1">&#39;My app name is {name}.&#39;</span>  <span class="c1"># &#39;My app name is Test.</span>
@@ -93,79 +94,79 @@
 <tbody>
 <tr>
 <td>3.1415926</td>
-<td><code>{:.2f}</code></td>
+<td class="2f"></td>
 <td>3.14</td>
 <td>2 decimal places</td>
 </tr>
 <tr>
 <td>3.1415926</td>
-<td><code>{:+.2f}</code></td>
+<td _.2f="+.2f"></td>
 <td>+3.14</td>
 <td>2 decimal places with sign</td>
 </tr>
 <tr>
 <td>-1</td>
-<td><code>{:+.2f}</code></td>
+<td _.2f="+.2f"></td>
 <td>-1.00</td>
 <td>2 decimal places with sign</td>
 </tr>
 <tr>
 <td>2.71828</td>
-<td><code>{:.0f}</code></td>
+<td class="0f"></td>
 <td>3</td>
 <td>No decimal places</td>
 </tr>
 <tr>
 <td>5</td>
-<td><code>{:0&gt;2d}</code></td>
+<td 0_2d="0&gt;2d"></td>
 <td>05</td>
 <td>Pad number with zeros (left padding, width 2)</td>
 </tr>
 <tr>
 <td>5</td>
-<td><code>{:x&lt;4d}</code></td>
+<td x_4d="x&lt;4d"></td>
 <td>5xxx</td>
 <td>Pad number with x’s (right padding, width 4)</td>
 </tr>
 <tr>
 <td>10</td>
-<td><code>{:x&lt;4d}</code></td>
+<td x_4d="x&lt;4d"></td>
 <td>10xx</td>
 <td>Pad number with x’s (right padding, width 4)</td>
 </tr>
 <tr>
 <td>1000000</td>
-<td><code>{:,}</code></td>
+<td _=","></td>
 <td>1,000,000</td>
 <td>Number format with comma separator</td>
 </tr>
 <tr>
 <td>0.25</td>
-<td><code>{:.2%}</code></td>
+<td class="2%"></td>
 <td>25.00%</td>
 <td>Format percentage</td>
 </tr>
 <tr>
 <td>1000000000</td>
-<td><code>{:.2e}</code></td>
+<td class="2e"></td>
 <td>1.00e+09</td>
 <td>Exponent notation</td>
 </tr>
 <tr>
 <td>13</td>
-<td><code>{:10d}</code></td>
+<td 10d></td>
 <td>13</td>
 <td>Right aligned (default, width 10)</td>
 </tr>
 <tr>
 <td>13</td>
-<td><code>{:&lt;10d}</code></td>
+<td _10d="&lt;10d"></td>
 <td>13</td>
 <td>Left aligned (width 10)</td>
 </tr>
 <tr>
 <td>13</td>
-<td><code>{:^10d}</code></td>
+<td _10d="^10d"></td>
 <td>13</td>
 <td>Center aligned (width 10)</td>
 </tr>

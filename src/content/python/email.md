@@ -1,7 +1,7 @@
 Title: Sending e-mails with Python
-Date: 2017-03-09 21:18 
+Date: 2017-08-04 11:12
 Authors: José Aniceto
-
+Modified: 2017-08-04 21:44
 
 In all examples I am using a gmail server to send emails. If you are not using a gmail address you need to insert the respective smtp server and possibly the port.
 

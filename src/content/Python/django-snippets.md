@@ -1,8 +1,7 @@
 Title: Collection of useful Django snippets for several purposes
-Date: 2019-01-08 13:33 
+Date: 2019-01-08 10:32
 Authors: José Aniceto
-
-
+Modified: 2019-01-22 22:48
 
 ### Index
 * [Create a slug](#create-a-slug)

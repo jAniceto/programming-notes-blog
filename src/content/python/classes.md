@@ -1,9 +1,8 @@
 Title: Classes and OOP (Object Oriented Programming)
-Date: 2018-01-22 19:14 
+Date: 2017-09-13 14:36
 Authors: José Aniceto
+Modified: 2018-04-24 13:13
 
-
-Let's start with a simple example and some importante definitions:
 
 ```python
 class Foo:
@@ -74,7 +73,7 @@ class Airplane:
 So if you wanted to call this method you'd do something like this: `airplane1.fly()`. Actually this is the same thing as this: `Airplane.fly(airplane1)`. Both of these would do the same thing, i.e. print out "I'm flying!". So `airplane1` is the instance that we used to call our `fly` method. This instance is what gets passed to `self`. 
 
 
-### Another example
+### Classes
 
 ```python
 # Function, this lives outside a class

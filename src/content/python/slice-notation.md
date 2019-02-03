@@ -1,5 +1,5 @@
 Title: Slice notation
-Date: 2018-03-30 03:19 
+Date: 2017-12-15 14:57
 Authors: José Aniceto
 
 

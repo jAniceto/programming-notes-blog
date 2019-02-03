@@ -1,7 +1,7 @@
 Title: Interfacing with Strava API using stavalib
-Date: 2017-05-13 14:57 
+Date: 2017-08-12 16:08
 Authors: José Aniceto
-
+Modified: 2017-08-13 19:54
 
 ### Instalation:
 `$ pip install stravalib`
