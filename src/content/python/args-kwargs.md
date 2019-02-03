@@ -1,7 +1,7 @@
 Title: *args and **kwargs
 Date: 2017-10-13 11:58
 Authors: José Aniceto
-Modified: 2017-10-13 11:59
+
 
 ### A normal function: 
 

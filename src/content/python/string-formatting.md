@@ -1,7 +1,7 @@
 Title: String formatting in Python
 Date: 2017-08-10 22:13
 Authors: José Aniceto
-Modified: 2017-08-10 22:14
+
 
 ### F-strings (Python >=3.6)
 ```python

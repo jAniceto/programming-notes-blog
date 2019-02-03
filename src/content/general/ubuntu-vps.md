@@ -1,7 +1,7 @@
 Title: Deploy a Flask Application on an Ubuntu VPS (DigitalOcean)
 Date: 2018-01-25 14:14
 Authors: José Aniceto
-Modified: 2018-01-25 19:44
+
 
 This page details the process of seting up a Ubuntu VPS (in this case a DigitalOcean dropplet using Ubuntu 16.04 was used) to serve a Flask based websiite. MySQL databases are used.
 
